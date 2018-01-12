@@ -50,4 +50,5 @@ Further things to look at: GC-Content, codon usage, length of IR/SSC/LSC, whole-
  - [Endosymbiotic Gene Transfer](https://www.nature.com/articles/nrg1271)
  - [Chloroplast Review](https://dx.doi.org/10.12703%2FP6-40)
  - [Chloroplast Genome Review](https://doi.org/10.1186/s13059-016-1004-2)
- - [Verdant](https://doi.org/10.1093/bioinformatics/btw583
+ - [Verdant](https://doi.org/10.1093/bioinformatics/btw583)
+
