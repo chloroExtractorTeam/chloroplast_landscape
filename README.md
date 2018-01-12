@@ -44,6 +44,7 @@ Further things to look at: GC-Content, codon usage, length of IR/SSC/LSC, whole-
  - [Variation Graphs](https://github.com/vgteam/vg)
  - [PhyloAlps](http://phyloalps.org/)
  - [ORG.asm](http://pythonhosted.org/ORG.asm/index.html)
+ - [SequenceTupeMaps](https://github.com/vgteam/sequenceTubeMap)
 
 #### Literature
  - [Genome Graphs](http://dx.doi.org/10.1101/101378)
