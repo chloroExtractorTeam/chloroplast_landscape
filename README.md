@@ -44,7 +44,9 @@ Further things to look at: GC-Content, codon usage, length of IR/SSC/LSC, whole-
  - [Variation Graphs](https://github.com/vgteam/vg)
  - [PhyloAlps](http://phyloalps.org/)
  - [ORG.asm](http://pythonhosted.org/ORG.asm/index.html)
- - [SequenceTupeMaps](https://github.com/vgteam/sequenceTubeMap)
+ - [SequenceTubeMaps](https://github.com/vgteam/sequenceTubeMap)
+ - [NOVOPlasty](https://github.com/ndierckx/NOVOPlasty)
+ - [fast-plast](https://github.com/mrmckain/Fast-Plast)
 
 #### Literature
  - [Genome Graphs](http://dx.doi.org/10.1101/101378)
@@ -52,4 +54,6 @@ Further things to look at: GC-Content, codon usage, length of IR/SSC/LSC, whole-
  - [Chloroplast Review](https://dx.doi.org/10.12703%2FP6-40)
  - [Chloroplast Genome Review](https://doi.org/10.1186/s13059-016-1004-2)
  - [Verdant](https://doi.org/10.1093/bioinformatics/btw583)
-
+ - [What to do with 1000 chloros](https://doi.org/10.1111/tpj.13491)
+ - [Strategies for chloro sequencing](https://doi.org/10.1111/1755-0998.12626)
+ - [NOVOPlasty](https://doi.org/10.1093/nar/gkw955)
