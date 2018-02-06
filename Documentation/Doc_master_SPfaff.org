@@ -1,0 +1,39 @@
+Documentation Simon Pfaff Master Bioinformatic
+Start 05.02.18
+
+
+
+
+* PROGRESS Week 1 05.02.18 - 09.02.18
+  - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:41]
+** PROGRESS Build Dockercontainer
+   - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:38]
+*** DONE chloroExtractor
+    - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+      
+      Prebuild by markus
+   
+*** DONE Org.asm
+    - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+
+      Prebuilt by markus
+
+*** DONE NOVOPlasty
+    - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+
+      built together on Monday, 05.02
+*** DONE fast-plast
+    - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+
+      prebuilt by markus
+*** PROGRESS getOrganel
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+
+** TODO build run scripts and wrapper for all programs
+
+** TODO running SRAs over weekend 10.2 - 12.2 
+
