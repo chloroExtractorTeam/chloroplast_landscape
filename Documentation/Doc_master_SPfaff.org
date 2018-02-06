@@ -30,8 +30,16 @@ Start 05.02.18
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
 
       prebuilt by markus
-*** PROGRESS getOrganel
+*** PROGRESS getOrganelle
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
+
+    Dependencies: SPAdes, bowtie2, BLAST
+
+*** PROGRESS IOGA 
+    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 16:57]
+    
+    Dependencies: Python, BioPython, BBmap, SOAPdenovo2, SeqTK, SPAdes.py, ALE, Samtools 0.1.19, Picardtools
+      
 
 ** TODO build run scripts and wrapper for all programs
 
