@@ -25,12 +25,15 @@ Start 05.02.18
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
 
       built together on Monday, 05.02
+
 *** DONE fast-plast
     - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
 
       prebuilt by markus
-*** PROGRESS getOrganelle
+
+*** DONE getOrganelle
+    - State "DONE"       from "PROGRESS"   [2018-02-07 Mi 14:16]
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:37]
 
     Dependencies: SPAdes, bowtie2, BLAST
@@ -39,9 +42,19 @@ Start 05.02.18
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 16:57]
     
     Dependencies: Python, BioPython, BBmap, SOAPdenovo2, SeqTK, SPAdes.py, ALE, Samtools 0.1.19, Picardtools
+    has an install script for all dep.
+
+    i hate python... -.-
       
 
 ** TODO build run scripts and wrapper for all programs
 
 ** TODO running SRAs over weekend 10.2 - 12.2 
 
+* Importend executables / shortcuts 
+** exe 
+  
+  ~/singularity/bin/singularity shell -w docker://ubuntu  
+
+** shortcuts
+   alt+F2 Anwendungsfilter... merks dir endlich ma -.-
