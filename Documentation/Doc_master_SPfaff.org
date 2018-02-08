@@ -6,7 +6,8 @@ Start 05.02.18
 
 * PROGRESS Week 1 05.02.18 - 09.02.18
   - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:41]
-** PROGRESS Build Dockercontainer
+** DONE Build Dockercontainer
+   - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:10]
    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:38]
 *** DONE chloroExtractor
     - State "DONE"       from "PROGRESS"   [2018-02-06 Di 14:37]
@@ -38,16 +39,36 @@ Start 05.02.18
 
     Dependencies: SPAdes, bowtie2, BLAST
 
-*** PROGRESS IOGA 
+*** DONE IOGA 
+    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:07]
     - State "PROGRESS"   from "TODO"       [2018-02-06 Di 16:57]
     
     Dependencies: Python, BioPython, BBmap, SOAPdenovo2, SeqTK, SPAdes.py, ALE, Samtools 0.1.19, Picardtools
     has an install script for all dep.
 
     i hate python... -.-
+
+    fu* python, who changes syntax -.-
+
+    Problem: script can't import wget..
+     -> pip intstall -U wget
+     still can not import wget
+
+     python3 can import wget, but don't run the script 'cuz it hast python2 syntax of print .....
+
+     Final solution provided by Frank
       
 
-** TODO build run scripts and wrapper for all programs
+** PROGRESS build run scripts and wrapper for all programs
+   - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:07]
+
+*** PROGRESS Run for GetOrganelle
+    - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:07]
+
+*** TODO Run for IOGA
+
+*** TODO Run for NOVOPlasty
+
 
 ** TODO running SRAs over weekend 10.2 - 12.2 
 
