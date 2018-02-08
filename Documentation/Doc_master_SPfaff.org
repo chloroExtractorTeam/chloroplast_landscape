@@ -4,7 +4,7 @@ Start 05.02.18
 
 
 
-* PROGRESS Week 1 05.02.18 - 09.02.18
+* PROGRESS [#A] Week 1 05.02.18 - 09.02.18
   - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:41]
 ** DONE Build Dockercontainer
    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:10]
@@ -57,25 +57,44 @@ Start 05.02.18
      python3 can import wget, but don't run the script 'cuz it hast python2 syntax of print .....
 
      Final solution provided by Frank
+
+
+** TODO [#C] All Dockers in one Repo
       
 
-** PROGRESS build run scripts and wrapper for all programs
+** PROGRESS [#A] build run scripts and wrapper for all programs
    - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:07]
 
-*** PROGRESS Run for GetOrganelle
+*** DONE Run for GetOrganelle
+    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:40]
     - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:07]
 
-*** TODO Run for IOGA
+**** DONE Test run on Testdata
+     - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:40]
+     - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:24]
+
+*** DONE Run for IOGA
+    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 16:22]
+    - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:40]
+**** DONE Test run for IOGA
+     - State "DONE"       from "PROGRESS"   [2018-02-08 Do 16:22]
+     - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:58]
 
 *** TODO Run for NOVOPlasty
+
+*** TODO Write Wrapper
 
 
 ** TODO running SRAs over weekend 10.2 - 12.2 
 
+
+
+
 * Importend executables / shortcuts 
 ** exe 
   
-  ~/singularity/bin/singularity shell -w docker://ubuntu  
+  ~/singularity/bin/singularity shell -w docker://ubuntu
+  which doenst work anymore with 2.4 *yeah* 
 
 ** shortcuts
    alt+F2 Anwendungsfilter... merks dir endlich ma -.-
