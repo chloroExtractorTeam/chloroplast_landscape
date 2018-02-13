@@ -59,7 +59,10 @@ Start 05.02.18
      Final solution provided by Frank
 
 
-** TODO [#C] All Dockers in one Repo
+** CANCELED [#C] All Dockers in one Repo
+   - State "CANCELED"   from ""           [2018-02-12 Mo 10:19]
+     
+     Issue moved to "Less importent stuff"
       
 
 ** PROGRESS [#A] build run scripts and wrapper for all programs
@@ -81,15 +84,336 @@ Start 05.02.18
      - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:58]
 
 *** TODO Run for NOVOPlasty
+    needs his file paths in a config file....
 
 *** TODO Write Wrapper
 
 
-** TODO running SRAs over weekend 10.2 - 12.2 
+** DONE running SRAs over weekend 10.2 - 12.2 
+   - State "DONE"       from "PROGRESS"   [2018-02-12 Mo 10:10]
+   - State "PROGRESS"   from "TODO"       [2018-02-09 Fr 13:45]
+
+     Dir: /home/s229502/Master_thesis/FirstTest_9-2
+
+     startet three SSRs for GO, CE, IOGA, O.G, FP
+     
+     none of them finished...
+
+
+* PROGRESS Week 2 12.02.18 - 16.02.18
+  - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:12]
+
+** PROGRESS [#A] Evaluate the test runs, why none finished?
+   - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:13]
+
+     dir: /home/s229502/Master_thesis/FirstTest_9-2
+
+*** chloroExtractor
+**** Testset SRR5216995 / slurm-31034.out *WORKED*
+-> Docker runs with testset SRR5216995, finished!
+
+**** SRR1945435 / slurm-30871.out *ERROR*
+    Reading seed kmers
+    Reading total kmers
+    Plotting seed and total kmers
+    Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+    Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+    Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+    [18-02-09 15:12:46] [PipeWrap] scr exited:65280 
+    [18-02-09 15:12:46] [PipeWrap] HASH(0x20d09a8) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+    
+**** SRR1945436 / slurm-30876.out *ERROR*
+     
+     Reading seed kmers
+     Reading total kmers
+     Plotting seed and total kmers
+     Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     [18-02-09 15:34:31] [PipeWrap] scr exited:65280 
+     [18-02-09 15:34:31] [PipeWrap] HASH(0x35eb9d8) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945437 / slurm-30877.out *ERROR*
+
+     Reading seed kmers
+     Reading total kmers
+     Plotting seed and total kmers
+     Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+     [18-02-09 15:38:04] [PipeWrap] scr exited:65280 
+     [18-02-09 15:38:04] [PipeWrap] HASH(0x2a719d8) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+
+*** IOGA
+
+    All give the error that they don't find a dir, "/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR*..." - but the program writes to  "/home/s229502/Master_thesis/FirstTest_9-2/data_9-2SRR*", a bug?
+
+**** Testset  SRR5216995 / slurm-31044.out *ERROR*
+     Same Error, maybe a bug....
+
+**** SRR1945435 / slurm-30874.out *ERROR*
+
+     Traceback (most recent call last):
+  File "/IOGA/IOGA.py", line 432, in <module>
+    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+  File "/IOGA/IOGA.py", line 377, in main
+    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
+  File "/IOGA/IOGA.py", line 322, in IOGA_loop
+    shutil.rmtree(name + '.' + str(iteration-2))
+  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
+    onerror(os.listdir, path, sys.exc_info())
+  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
+    names = os.listdir(path)
+OSError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945435_1.fastq_IOGA_OUT.1'
+
+**** SRR1945436 / slurm-30882.out *ERROR*
+
+     Traceback (most recent call last):
+  File "/IOGA/IOGA.py", line 432, in <module>
+    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+  File "/IOGA/IOGA.py", line 377, in main
+    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
+  File "/IOGA/IOGA.py", line 322, in IOGA_loop
+    shutil.rmtree(name + '.' + str(iteration-2))
+  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
+    onerror(os.listdir, path, sys.exc_info())
+  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
+    names = os.listdir(path)
+OSError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945436_1.fastq_IOGA_OUT.1'
+
+**** SRR1945437 / slurm-30883.out *ERROR*
+     
+     Traceback (most recent call last):
+  File "/IOGA/IOGA.py", line 432, in <module>
+    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+  File "/IOGA/IOGA.py", line 377, in main
+    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
+  File "/IOGA/IOGA.py", line 322, in IOGA_loop
+    shutil.rmtree(name + '.' + str(iteration-2))
+  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
+    onerror(os.listdir, path, sys.exc_info())
+  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
+    names = os.listdir(path)
+OSError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945437_1.fastq_IOGA_OUT.1'
 
 
 
 
+*** Fast-plast
+**** PROGRESS Docker problem?
+     - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 13:02]
+    None Information in slurm files, no other log data found, only trimmed reads and a mapping file.
+    maybe finished?
+    no log at all?
+
+    --> Problem maybe with Docker / Singularity writeable rights
+    Markus is looking into it
+
+*** GetOrganelle
+
+**** Testset SRR5216995 / slurm-31036.out *WORKED*
+     Finisehd, but you have to assamble the contigs of the ring by yourself.... 
+     -> maybe Frank's find_cyclic skirpt?
+
+**** SRR1945435 / slurm-30873.out *ERROR*
+     
+     2018-02-09 15:16:11,572 - INFO: Assembling with SPAdes ...
+     2018-02-09 15:16:13,056 - ERROR: Error in SPAdes: 
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945435_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+     2018-02-09 15:16:13,057 - ERROR: Assembling failed.
+     
+**** SRR1945436 / slurm-30878.out *ERROR*
+     2018-02-09 15:41:06,317 - INFO: Assembling with SPAdes ...
+     2018-02-09 15:41:08,166 - ERROR: Error in SPAdes: 
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945436_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+     2018-02-09 15:41:08,168 - ERROR: Assembling failed.
+
+**** SRR1945437 / slurm-30879.out *ERROR*
+     
+     2018-02-09 15:44:09,739 - INFO: Assembling with SPAdes ...
+     2018-02-09 15:44:11,767 - ERROR: Error in SPAdes: 
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945437_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+     
+
+     2018-02-09 15:44:11,769 - ERROR: Assembling failed.
+     
+
+*** Org.asm
+**** DONE Docker problem
+     - State "DONE"       from "PROGRESS"   [2018-02-12 Mo 13:11]
+     - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 14:00]
+    
+     Docker does not work, maybe PATH not set correctly by Org.asm after installation?
+
+      Creating container runtime...
+      /.singularity.d/actions/exec: 9: exec: oa: not found
+      Docker image path: index.docker.io/chloroextractorteam/org.asm_docker:latest
+      Cache folder set to /home/s229502/.singularity/docker
+      Creating container runtime...
+      /.singularity.d/actions/exec: 9: exec: oa: not found
+      /.singularity.d/actions/exec: 9: exec: oa: not found
+
+      -> Markus and I fixed the Bug, it was a path problem after a version update:
+
+**** Testdata SRR5216995 / slurm-31039.out *WORKED*
+     Finished w/o problems - got the circular path
+
+**** SRR1945435 / slurm-31048.out *ERROR*
+     
+Traceback (most recent call last):
+  File "/usr/bin/oa", line 64, in <module>
+    config[root_config_name]['module'].run(config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 149, in run
+    asm = restoreGraph(output+'.oax',r,x)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 2068, in restoreGraph
+    filein = open(filein)
+FileNotFoundError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945435_1.fastq_oa_test.chl.oas/assembling.oax'
+
+**** SRR1945436 / slurm-31049.out *ERROR*
+Traceback (most recent call last):
+  File "/usr/bin/oa", line 64, in <module>
+    config[root_config_name]['module'].run(config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 194, in run
+    paths=buildPath(asm, cg, back, minlink, config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 113, in buildPath
+    back=int(back),minlink=minlink)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1665, in pathConstraints
+    constraints = mergeConstraints(constraints,minisatDoubleConstraints(self,cg))
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1532, in minisatDoubleConstraints
+    r1 = round(middleFcov/float(inputcov))
+ZeroDivisionError: float division by zero
+
+**** SRR1945437 / slurm-31050.out *WORKED*
+     Finished w/o problems and got the circular path
+     
+
+*** NOVOPlasty
+
+**** Testdata SRR5216995 / slurm-31046.out *WORKED*
+
+**** SRR1945435 / slurm-31175.out *ERROR*
+     Building Hash Table......OK
+
+     Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945436 / slurm-31176.out *ERROR*
+     Building Hash Table......OK
+
+     Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945437 /  slurm-31177.out *ERROR*
+     Building Hash Table......OK
+
+     Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+
+** DONE Start new run with test-data SRR5216995_1M.fastq
+   - State "DONE"       from "PROGRESS"   [2018-02-13 Di 10:18]
+   - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:14]
+     
+   except IOGA (and Fast-plast (pending)) all tools got the chloroplast from the Demo set 
+
+** DONE Maybe a data problem, mapping the 3 tested SRRs on a chloroplast to find out weather the reads are maybe sorted
+   - State "DONE"       from "PROGRESS"   [2018-02-13 Di 13:09]
+   - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 15:20]
+     
+     -Make Bowtie index on TAIR10_chC
+     -Map all 3 on the chloroplast
+
+     - dir: /home/s229502/Master_thesis/mapping_chloro
+
+*** SRR1945435 / *19.95% overall alignment rate*
+
+    2000000 reads; of these:
+    2000000 (100.00%) were paired; of these:
+    1614057 (80.70%) aligned concordantly 0 times
+    232033 (11.60%) aligned concordantly exactly 1 time
+    153910 (7.70%) aligned concordantly >1 times
+    ----
+    1614057 pairs aligned concordantly 0 times; of these:
+      6049 (0.37%) aligned discordantly 1 time
+    ----
+    1608008 pairs aligned 0 times concordantly or discordantly; of these:
+      3216016 mates make up the pairs; of these:
+        3202005 (99.56%) aligned 0 times
+        3080 (0.10%) aligned exactly 1 time
+        10931 (0.34%) aligned >1 times
+    19.95% overall alignment rate
+
+    
+*** SRR1945436 / *23.85% overall alignment rate*
+    2000000 reads; of these:
+    2000000 (100.00%) were paired; of these:
+    1539334 (76.97%) aligned concordantly 0 times
+    277214 (13.86%) aligned concordantly exactly 1 time
+    183452 (9.17%) aligned concordantly >1 times
+    ----
+    1539334 pairs aligned concordantly 0 times; of these:
+      7937 (0.52%) aligned discordantly 1 time
+    ----
+    1531397 pairs aligned 0 times concordantly or discordantly; of these:
+      3062794 mates make up the pairs; of these:
+        3045823 (99.45%) aligned 0 times
+        3010 (0.10%) aligned exactly 1 time
+        13961 (0.46%) aligned >1 times
+    23.85% overall alignment rate
+
+
+    
+*** SRR1945437 / *24.56% overall alignment rate*
+    2000000 reads; of these:
+    2000000 (100.00%) were paired; of these:
+    1528641 (76.43%) aligned concordantly 0 times
+    288135 (14.41%) aligned concordantly exactly 1 time
+    183224 (9.16%) aligned concordantly >1 times
+    ----
+    1528641 pairs aligned concordantly 0 times; of these:
+      9982 (0.65%) aligned discordantly 1 time
+    ----
+    1518659 pairs aligned 0 times concordantly or discordantly; of these:
+      3037318 mates make up the pairs; of these:
+        3017525 (99.35%) aligned 0 times
+        3352 (0.11%) aligned exactly 1 time
+        16441 (0.54%) aligned >1 times
+    24.56% overall alignment rate
+
+
+
+
+
+** PROGRESS Run on Sim-Reads
+   - State "PROGRESS"   from "TODO"       [2018-02-13 Di 15:14]
+
+     
+** PROGRESS Run on ~7 more SSR data sets from 1001 Genom Project
+   - State "PROGRESS"   from "TODO"       [2018-02-13 Di 17:00]
+
+
+
+
+
+* Less Importend stuff
+
+** TODO Fix Docker error for perl
+
+   perl: warning: Setting locale failed.
+   perl: warning: Please check that your locale settings:
+        LANGUAGE = (unset),
+        LC_ALL = (unset),
+        LANG = "de_DE.UTF-8"
+    are supported and installed on your system.
+    perl: warning: Falling back to the standard locale ("C").
+
+
+** TODO All Docker in one Repo
+
+** TODO Error message for chloroExtractor, when no peak is found - scaling reads! Error deivision by 0
+   
 * Importend executables / shortcuts 
 ** exe 
   
