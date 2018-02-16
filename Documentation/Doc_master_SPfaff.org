@@ -4,7 +4,8 @@ Start 05.02.18
 
 
 
-* PROGRESS [#A] Week 1 05.02.18 - 09.02.18
+* DONE [#A] Week 1 05.02.18 - 09.02.18
+  - State "DONE"       from "PROGRESS"   [2018-02-14 Mi 14:32]
   - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:41]
 ** DONE Build Dockercontainer
    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:10]
@@ -65,7 +66,8 @@ Start 05.02.18
      Issue moved to "Less importent stuff"
       
 
-** PROGRESS [#A] build run scripts and wrapper for all programs
+** DONE [#A] build run scripts and wrapper for all programs
+   - State "DONE"       from "PROGRESS"   [2018-02-14 Mi 14:32]
    - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:07]
 
 *** DONE Run for GetOrganelle
@@ -83,10 +85,13 @@ Start 05.02.18
      - State "DONE"       from "PROGRESS"   [2018-02-08 Do 16:22]
      - State "PROGRESS"   from "TODO"       [2018-02-08 Do 15:58]
 
-*** TODO Run for NOVOPlasty
+*** DONE Run for NOVOPlasty
+    - State "DONE"       from "PROGRESS"   [2018-02-14 Mi 14:31]
+    - State "PROGRESS"   from "TODO"       [2018-02-14 Mi 14:31]
     needs his file paths in a config file....
 
-*** TODO Write Wrapper
+*** CANCELED Write Wrapper
+    - State "CANCELED"   from ""           [2018-02-14 Mi 14:32]
 
 
 ** DONE running SRAs over weekend 10.2 - 12.2 
@@ -120,8 +125,7 @@ Start 05.02.18
     Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
     Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
     [18-02-09 15:12:46] [PipeWrap] scr exited:65280 
-    [18-02-09 15:12:46] [PipeWrap] HASH(0x20d09a8) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
-    
+    [18-02-09 15:12:46] [PipeWrap] HASH(0x20d09a8) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.     
 **** SRR1945436 / slurm-30876.out *ERROR*
      
      Reading seed kmers
@@ -149,8 +153,15 @@ Start 05.02.18
 
     All give the error that they don't find a dir, "/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR*..." - but the program writes to  "/home/s229502/Master_thesis/FirstTest_9-2/data_9-2SRR*", a bug?
 
-**** Testset  SRR5216995 / slurm-31044.out *ERROR*
+**** Testset  SRR5216995 / slurm-31044.out *worked*
      Same Error, maybe a bug....
+     
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR5216995_1M_1.fastq_IOGA_OUT.final/SRR5216995_1M_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR5216995_1M_1.fastq_IOGA_OUT.soap.ctg  -2502790.673759 3 128507 1 84317 has the highest ALE score
+     [IOGA] Started  16:42:37.176055
+     [IOGA] Finished 17:35:27.600898
+
 
 **** SRR1945435 / slurm-30874.out *ERROR*
 
@@ -201,14 +212,18 @@ OSError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/First
 
 
 *** Fast-plast
-**** PROGRESS Docker problem?
+**** DONE Docker problem?
+     - State "DONE"       from "PROGRESS"   [2018-02-16 Fr 12:59]
      - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 13:02]
-    None Information in slurm files, no other log data found, only trimmed reads and a mapping file.
-    maybe finished?
-    no log at all?
-
-    --> Problem maybe with Docker / Singularity writeable rights
-    Markus is looking into it
+  #  None Information in slurm files, no other log data found, only trimmed reads and a mapping file.
+  #  maybe finished?
+  #  no log at all?
+  #
+  #  --> Problem maybe with Docker / Singularity writeable rights
+  #  Markus is looking into it
+**** SRRSRR5216995
+    Fri Feb 16 11:03:17 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                    Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
 
 *** GetOrganelle
 
@@ -295,6 +310,31 @@ ZeroDivisionError: float division by zero
 *** NOVOPlasty
 
 **** Testdata SRR5216995 / slurm-31046.out *WORKED*
+     Start Assembly...
+
+
+-----------------Assembly 1 finished successfully: The genome has been circularized-----------------
+
+Contig 1                  : 154479 bp
+
+Total contigs              : 1
+Largest contig             : 154479 bp
+Smallest contig            : 154479 bp
+Average insert size        : 312 bp
+
+
+-----------------------------------------Input data metrics-----------------------------------------
+
+Total reads                : 1999718
+Aligned reads              : 68422
+Assembled reads            : 58906
+Organelle genome %         : 3.42 %
+Average organelle coverage : 133
+
+----------------------------------------------------------------------------------------------------
+
+
+Thank you for using NOVOPlasty!
 
 **** SRR1945435 / slurm-31175.out *ERROR*
      Building Hash Table......OK
@@ -312,11 +352,15 @@ ZeroDivisionError: float division by zero
      Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
 
 
+
+
 ** DONE Start new run with test-data SRR5216995_1M.fastq
    - State "DONE"       from "PROGRESS"   [2018-02-13 Di 10:18]
    - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:14]
      
    except IOGA (and Fast-plast (pending)) all tools got the chloroplast from the Demo set 
+
+
 
 ** DONE Maybe a data problem, mapping the 3 tested SRRs on a chloroplast to find out weather the reads are maybe sorted
    - State "DONE"       from "PROGRESS"   [2018-02-13 Di 13:09]
@@ -386,13 +430,751 @@ ZeroDivisionError: float division by zero
 
 
 
+*** SRR5216995 / *10.60% overall alignment rate*
+    1000000 reads; of these:
+    1000000 (100.00%) were paired; of these:
+    919781 (91.98%) aligned concordantly 0 times
+    55464 (5.55%) aligned concordantly exactly 1 time
+    24755 (2.48%) aligned concordantly >1 times
+    ----
+    919781 pairs aligned concordantly 0 times; of these:
+      15731 (1.71%) aligned discordantly 1 time
+    ----
+    904050 pairs aligned 0 times concordantly or discordantly; of these:
+      1808100 mates make up the pairs; of these:
+        1788073 (98.89%) aligned 0 times
+        2751 (0.15%) aligned exactly 1 time
+        17276 (0.96%) aligned >1 times
+10.60% overall alignment rate
+
+
+
+
 ** PROGRESS Run on Sim-Reads
    - State "PROGRESS"   from "TODO"       [2018-02-13 Di 15:14]
 
+*** Testmappings [Genom:Chloroplast]
+**** 1:10 *1.30% overall alignment rate*
+     2000000 reads; of these:
+     2000000 (100.00%) were paired; of these:
+     1987341 (99.37%) aligned concordantly 0 times
+     8446 (0.42%) aligned concordantly exactly 1 time
+     4213 (0.21%) aligned concordantly >1 times
+     ----
+     1987341 pairs aligned concordantly 0 times; of these:
+     8670 (0.44%) aligned discordantly 1 time
+     ----
+     1978671 pairs aligned 0 times concordantly or discordantly; of these:
+     3957342 mates make up the pairs; of these:
+        3948066 (99.77%) aligned 0 times
+        272 (0.01%) aligned exactly 1 time
+        9004 (0.23%) aligned >1 times
+     1.30% overall alignment rate
+
+**** 1:100 *11.51% overall alignment rate*
+     2000000 reads; of these:
+     2000000 (100.00%) were paired; of these:
+     1885616 (94.28%) aligned concordantly 0 times
+     75787 (3.79%) aligned concordantly exactly 1 time
+     38597 (1.93%) aligned concordantly >1 times
+     ----
+     1885616 pairs aligned concordantly 0 times; of these:
+     75678 (4.01%) aligned discordantly 1 time
+     ----
+     1809938 pairs aligned 0 times concordantly or discordantly; of these:
+     3619876 mates make up the pairs; of these:
+        3539661 (97.78%) aligned 0 times
+        1675 (0.05%) aligned exactly 1 time
+        78540 (2.17%) aligned >1 times
+     11.51% overall alignment rate
+
+**** 1:1000 *54.16% overall alignment rate*
+     2000000 reads; of these:
+     2000000 (100.00%) were paired; of these:
+     1461704 (73.09%) aligned concordantly 0 times
+     356693 (17.83%) aligned concordantly exactly 1 time
+     181603 (9.08%) aligned concordantly >1 times
+     ----
+     1461704 pairs aligned concordantly 0 times; of these:
+     356108 (24.36%) aligned discordantly 1 time
+     ----
+     1105596 pairs aligned 0 times concordantly or discordantly; of these:
+     2211192 mates make up the pairs; of these:
+     1833404 (82.91%) aligned 0 times
+     7471 (0.34%) aligned exactly 1 time
+     370317 (16.75%) aligned >1 times
+     54.16% overall alignment rate
      
+
+*** CE
+**** 1:10 *ERROR - n.e. coverage*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+[18-02-14 13:58:35] [scr] Insufficient plastid coverage detected: 39X. At least 200X required
+[18-02-14 13:58:35] [scr] You might need to increase the amount of input data
+[18-02-14 13:58:35] [scr] If values are very low, make sure your library contains plastid reads
+[18-02-14 13:58:36] [PipeWrap] scr exited:256 
+[18-02-14 13:58:36] [PipeWrap] HASH(0x38cb180) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+**** 1:100 *worked - circular*
+[18-02-14 14:26:22] [fcg] Found 3 different nodes
+[18-02-14 14:26:22] [fcg] The inverted repeat is node number: 2
+[18-02-14 14:26:22] [fcg] The LSC is node number: 1 and the SSC is node number: 3
+[18-02-14 14:26:22] [fcg] Single circular chloroplast seems to be found
+[18-02-14 14:26:22] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+[18-02-14 14:26:23] [PipeWrap] ptx pipeline completed
+
+**** 1:1000 *worked - circular*
+[18-02-14 14:38:59] [fcg] Found 3 different nodes
+[18-02-14 14:38:59] [fcg] The inverted repeat is node number: 1
+[18-02-14 14:38:59] [fcg] The LSC is node number: 0 and the SSC is node number: 2
+[18-02-14 14:38:59] [fcg] Single circular chloroplast seems to be found
+[18-02-14 14:38:59] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+[18-02-14 14:39:00] [PipeWrap] ptx pipeline completed
+
+
+*** GO
+**** 1:10 *ERROR*
+2018-02-14 14:34:55,359 - INFO: Assembling with SPAdes ...
+2018-02-14 14:34:58,208 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/test_sim/data_2M/sim_1_10_2M/sim_1_10_2M_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 14:34:58,209 - ERROR: Assembling failed.
+
+**** 1:100 *ERROR*
+2018-02-14 14:17:56,957 - INFO: Assembling with SPAdes ...
+2018-02-14 14:17:59,560 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/test_sim/data_2M/sim_1_100_2M/sim_1_100_2M_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 14:17:59,561 - ERROR: Assembling failed.
+
+**** 1:1000 *ERROR*
+2018-02-14 14:23:34,194 - INFO: Assembling with SPAdes ...
+2018-02-14 14:23:37,944 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/test_sim/data_2M/sim_1_1000_2M/sim_1_1000_2M_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 14:23:37,945 - ERROR: Assembling failed.
+    
+
+*** IOGA
+**** 1:10 *ERROR*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/test_sim/data_2M/sim_1_10_2M/sim_1_10_2M_1.fastq_IOGA_OUT.final/sim_1_10_2M_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     Traceback (most recent call last):
+     File "/IOGA/IOGA.py", line 432, in <module>
+     main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+     File "/IOGA/IOGA.py", line 407, in main
+     print '[IOGA] {} {} {} {} {} {} has the highest ALE score'.format(*ALE_score[0])
+     IndexError: list index out of range
+**** 1:100
+     
+**** 1:1000
+
+*** O.A
+**** 1:10 *worked - circular*
+2018-02-14 14:24:54,047 [INFO ]  Minimum stem coverage = 37
+2018-02-14 14:24:54,772 [INFO ]  Both segments -2 and -1 are connected (paired-end=46 frg length=521.282609 sd=132.905089)
+2018-02-14 14:24:54,775 [INFO ]  Both segments -1 and 3 are connected (paired-end=48 frg length=519.187500 sd=100.379208)
+2018-02-14 14:24:54,778 [INFO ]  Both segments 3 and 1 are connected (paired-end=50 frg length=523.120000 sd=93.818896)
+2018-02-14 14:24:54,782 [INFO ]  Path is circular and connected by 62  (length: 570, sd: 126)
+
+**** 1:100 *worked - circular*
+2018-02-14 14:32:50,978 [INFO ]  Minimum stem coverage = 327
+2018-02-14 14:32:53,070 [INFO ]  Both segments -3 and 1 are connected (paired-end=347 frg length=535.867435 sd=120.084483)
+2018-02-14 14:32:53,084 [INFO ]  Both segments 1 and -2 are connected (paired-end=308 frg length=540.691558 sd=110.788934)
+2018-02-14 14:32:53,096 [INFO ]  Both segments -2 and -1 are connected (paired-end=313 frg length=556.968051 sd=121.149088)
+2018-02-14 14:32:53,109 [INFO ]  Path is circular and connected by 311  (length: 554, sd: 125)
+
+**** 1:1000 *worked - circular*
+2018-02-14 14:45:03,567 [INFO ]  Minimum stem coverage = 1562
+2018-02-14 14:45:10,731 [INFO ]  Both segments -3 and 1 are connected (paired-end=1301 frg length=545.867025 sd=126.561101)
+2018-02-14 14:45:10,766 [INFO ]  Both segments 1 and -2 are connected (paired-end=1247 frg length=547.178829 sd=128.751784)
+2018-02-14 14:45:10,796 [INFO ]  Both segments -2 and -1 are connected (paired-end=1258 frg length=537.937202 sd=126.617321)
+2018-02-14 14:45:10,831 [INFO ]  Path is circular and connected by 1229  (length: 537, sd: 127)
+
+*** NP
+**** 1:10 *worked - 3 contigs*
+------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+Contig 01                  : 136698 bp
+Contig 02                  : 18656 bp
+Contig 03                  : 18830 bp
+
+Total contigs              : 3
+Largest contig             : 136698 bp
+Smallest contig            : 18656 bp
+Average insert size        : 446 bp
+
+
+-----------------------------------------Input data metrics-----------------------------------------
+
+Total reads                : 3999984
+Aligned reads              : 48242
+Assembled reads            : 40442
+Organelle genome %         : 1.21 %
+Average organelle coverage : 94
+
+----------------------------------------------------------------------------------------------------
+
+**** 1:100 *worked - 3 contigs*
+------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+Contig 01                  : 136698 bp
+Contig 02                  : 18773 bp
+Contig 03                  : 18651 bp
+
+Total contigs              : 3
+Largest contig             : 136698 bp
+Smallest contig            : 18651 bp
+Average insert size        : 397 bp
+
+
+-----------------------------------------Input data metrics-----------------------------------------
+
+Total reads                : 3999982
+Aligned reads              : 427364
+Assembled reads            : 272742
+Organelle genome %         : 10.68 %
+Average organelle coverage : 830
+
+----------------------------------------------------------------------------------------------------
+**** 1:1000 *worked - 3 contigs*
+     Start Assembly...
+
+
+------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+Contig 01                  : 136698 bp
+Contig 02                  : 18642 bp
+Contig 03                  : 18764 bp
+
+Total contigs              : 3
+Largest contig             : 136698 bp
+Smallest contig            : 18642 bp
+Average insert size        : 398 bp
+
+
+-----------------------------------------Input data metrics-----------------------------------------
+
+Total reads                : 3999998
+Aligned reads              : 2013610
+Assembled reads            : 729016
+Organelle genome %         : 50.34 %
+Average organelle coverage : 3910
+
+----------------------------------------------------------------------------------------------------
+
+
+
+*** FP
+
 ** PROGRESS Run on ~7 more SSR data sets from 1001 Genom Project
    - State "PROGRESS"   from "TODO"       [2018-02-13 Di 17:00]
 
+     
+*** CE
+
+**** SRR1945438 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-13 16:06:10] [PipeWrap] scr exited:65280 
+[18-02-13 16:06:10] [PipeWrap] HASH(0x3e41f10) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945439 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-14 09:03:33] [PipeWrap] scr exited:65280 
+[18-02-14 09:03:33] [PipeWrap] HASH(0x2ca8f80) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945440 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-14 10:08:54] [PipeWrap] scr exited:65280 
+[18-02-14 10:08:54] [PipeWrap] HASH(0x329bd60) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945441 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-14 12:08:07] [PipeWrap] scr exited:65280 
+[18-02-14 12:08:07] [PipeWrap] HASH(0x2a4b350) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945442 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-14 12:22:21] [PipeWrap] scr exited:65280 
+[18-02-14 12:22:21] [PipeWrap] HASH(0x20d51c0) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+**** SRR1945443 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+
+**** SRR1945444 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+**** SRR1945445 *ERROR*
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+
+
+*** GO
+**** SRR1945438 *ERROR*
+2018-02-13 16:08:20,125 - INFO: Assembling with SPAdes ...
+2018-02-13 16:08:21,911 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945438/SRR1945438_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-13 16:08:21,913 - ERROR: Assembling failed.
+
+**** SRR1945439 *ERROR*
+2018-02-14 09:03:58,070 - INFO: Assembling with SPAdes ...
+2018-02-14 09:04:00,235 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945439/SRR1945439_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 09:04:00,237 - ERROR: Assembling failed.
+
+**** SRR1945440 *ERROR*
+2018-02-14 10:09:50,316 - INFO: Assembling with SPAdes ...
+2018-02-14 10:09:51,960 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945440/SRR1945440_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 10:09:51,962 - ERROR: Assembling failed.
+
+**** SRR1945441 *ERROR*
+2018-02-14 12:09:07,830 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945441/SRR1945441_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 12:09:07,832 - ERROR: Assembling failed.
+
+**** SRR1945442 *ERROR*
+2018-02-14 12:22:46,623 - INFO: Assembling with SPAdes ...
+2018-02-14 12:22:48,751 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945442/SRR1945442_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 12:22:48,753 - ERROR: Assembling failed.
+
+**** SRR1945443 *ERROR*
+2018-02-14 12:27:09,501 - INFO: Assembling with SPAdes ...
+2018-02-14 12:27:11,117 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945443/SRR1945443_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 12:27:11,119 - ERROR: Assembling failed.
+
+**** SRR1945444 *ERROR*
+2018-02-14 12:28:13,692 - INFO: Assembling with SPAdes ...
+2018-02-14 12:28:16,411 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945444/SRR1945444_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 12:28:16,412 - ERROR: Assembling failed.
+
+**** SRR1945445 *ERROR*
+2018-02-14 12:29:01,280 - ERROR: Error in SPAdes: 
+== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945445/SRR1945445_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+
+2018-02-14 12:29:01,283 - ERROR: Assembling failed.
+
+
+*** IOGA
+**** SRR1945438 *ERROR - again DIR*
+Traceback (most recent call last):
+  File "/IOGA/IOGA.py", line 432, in <module>
+    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+  File "/IOGA/IOGA.py", line 377, in main
+    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
+  File "/IOGA/IOGA.py", line 322, in IOGA_loop
+    shutil.rmtree(name + '.' + str(iteration-2))
+  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
+    onerror(os.listdir, path, sys.exc_info())
+  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
+    names = os.listdir(path)
+OSError: [Errno 2] No such file or directory: '../SRR1945438_1.fastq_IOGA_OUT.1'
+
+**** SRR1945439 *Terminated - more than 16G -> Startet with 25G again*
+     slurmstepd: Job 31354 exceeded memory limit (18092360 > 16777216), being killed
+     slurmstepd: Exceeded job memory limit
+     slurmstepd: *** JOB 31354 ON uranus1 CANCELLED AT 2018-02-15T02:21:41 ***
+**** SRR1945440 *worked*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945440/SRR1945440_1.fastq_IOGA_OUT.final/SRR1945440_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945440_1.fastq_IOGA_OUT.spades.k.77.scaffolds  -4582014.048077 9 108509 2 30328 has the highest ALE score
+     [IOGA] Started  10:07:20.650823
+     [IOGA] Finished 14:47:27.054108
+
+**** SRR1945441 *worked*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945441/SRR1945441_1.fastq_IOGA_OUT.final/SRR1945441_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945441_1.fastq_IOGA_OUT.spades.k.55.77.95.scaffolds  -5133410.247351 6 110704 1 76914 has the highest ALE score
+     [IOGA] Started  12:08:02.628599
+     [IOGA] Finished 21:09:33.686531
+**** SRR1945442
+**** SRR1945443 Terminated - memory -> startet with 25G again *worked*
+     
+     # Creating container runtime...
+     # slurmstepd: Job 31438 exceeded memory limit (18430644 > 16777216), being killed
+     # slurmstepd: Exceeded job memory limit
+     # slurmstepd: *** JOB 31438 ON uranus1 CANCELLED AT 2018-02-15T07:05:40 ***
+
+
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945444_1.fastq_IOGA_OUT.spades.k.55.77.95.contigs  -4670142.974645 8 109521 1 79118 has the highest ALE score
+     [IOGA] Started  09:26:02.588976
+     [IOGA] Finished 03:46:16.606412
+
+**** SRR1945444 *Terminated - memory -> startet with 25G again *worked*
+     # Creating container runtime...
+     # slurmstepd: Job 31439 exceeded memory limit (16796576 > 16777216), being killed
+     # slurmstepd: Exceeded job memory limit
+     # slurmstepd: *** JOB 31439 ON uranus1 CANCELLED AT 2018-02-15T04:42:38 ***
+
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945444/SRR1945444_1.fastq_IOGA_OUT.final/SRR1945444_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945444_1.fastq_IOGA_OUT.spades.k.55.77.95.contigs  -4670142.974645 8 109521 1 79118 has the highest ALE score
+     [IOGA] Started  09:26:02.588976
+     [IOGA] Finished 03:46:16.606412
+
+**** SRR1945445 *Terminated - memory -> startet with 25G again*
+     slurmstepd: Job 31437 exceeded memory limit (18503268 > 16777216), being killed
+     slurmstepd: Exceeded job memory limit
+     slurmstepd: *** JOB 31437 ON uranus1 CANCELLED AT 2018-02-15T06:16:03 ***
+
+
+*** O.A
+**** SRR1945438 *ERROR ?*
+Reading indexed sequence reads...
+
+        0 sequences read
+
+Reading indexed pair data...
+
+Done.
+
+Loading reverse index...
+
+Done.
+
+Indexing reverse complement sequences ...
+
+
+Fast indexing forward reads...
+
+
+Fast indexing reverse reads...
+
+Done.
+2018-02-13 16:15:16,777 [INFO ]  No new probe set specified
+2018-02-13 16:15:16,778 [INFO ]  No new probe set specified
+2018-02-13 16:15:16,778 [INFO ]  No previous matches loaded
+2018-02-13 16:15:16,779 [INFO ]  No --seeds option specified and not previous matches stored
+
+**** SRR1945439 *ERROR - by connecting..*
+2018-02-14 10:32:12,590 [INFO ]  Minimum stem coverage = 41
+2018-02-14 10:32:20,023 [INFO ]  -19 -> -19 scaffolded by 393 pair ended links
+2018-02-14 10:32:20,033 [INFO ]  -19 -> 15 overlap of 49bp supported by 8 pair ended links
+2018-02-14 10:32:20,447 [INFO ]  -15 -> 19 overlap of 49bp supported by 8 pair ended links
+2018-02-14 10:32:20,563 [INFO ]  -2 -> -19 overlap of 18bp supported by 133 pair ended links
+2018-02-14 10:32:20,750 [INFO ]  19 -> 2 overlap of 18bp supported by 133 pair ended links
+2018-02-14 10:32:20,801 [INFO ]  19 -> 19 scaffolded by 393 pair ended links
+2018-02-14 10:32:21,037 [INFO ]  Select the good connected components
+Traceback (most recent call last):
+  File "/usr/bin/oa", line 64, in <module>
+    config[root_config_name]['module'].run(config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 194, in run
+    paths=buildPath(asm, cg, back, minlink, config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 113, in buildPath
+    back=int(back),minlink=minlink)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1665, in pathConstraints
+    constraints = mergeConstraints(constraints,minisatDoubleConstraints(self,cg))
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1532, in minisatDoubleConstraints
+    r1 = round(middleFcov/float(inputcov))
+ZeroDivisionError: float division by zero
+
+**** SRR1945440 *ERROR*
+Loading global data...
+
+Done.
+
+Reading indexed sequence reads...
+
+        0 sequences read
+
+Reading indexed pair data...
+
+Done.
+
+Loading reverse index...
+
+Done.
+
+Indexing reverse complement sequences ...
+
+
+Fast indexing forward reads...
+
+
+Fast indexing reverse reads...
+
+Done.
+2018-02-14 10:18:12,406 [INFO ]  No new probe set specified
+2018-02-14 10:18:12,407 [INFO ]  No new probe set specified
+2018-02-14 10:18:12,407 [INFO ]  No previous matches loaded
+2018-02-14 10:18:12,408 [INFO ]  No --seeds option specified and not previous matches stored
+
+**** SRR1945441 *worked - linear*
+2018-02-14 14:23:17,823 [INFO ]  Minimum stem coverage = 260
+2018-02-14 14:23:23,575 [INFO ]  Both segments 4 and -1 are disconnected
+2018-02-14 14:23:23,577 [INFO ]     But overlap by 43bp supported by 6 pair ended links
+2018-02-14 14:23:23,596 [INFO ]  Both segments -1 and 2 are disconnected
+2018-02-14 14:23:23,597 [INFO ]     But overlap by 58bp supported by 319 pair ended links
+2018-02-14 14:23:23,638 [INFO ]  Both segments 2 and -3 are connected (paired-end=179 frg length=284.575419 sd=84.065442)
+2018-02-14 14:23:23,688 [INFO ]  Both segments -3 and -2 are connected (paired-end=364 frg length=280.167582 sd=87.554891)
+2018-02-14 14:23:23,706 [INFO ]  Both segments -2 and 1 are disconnected
+2018-02-14 14:23:23,707 [INFO ]     But overlap by 58bp supported by 319 pair ended links
+2018-02-14 14:23:23,725 [INFO ]  Both segments 1 and -4 are disconnected
+2018-02-14 14:23:23,725 [INFO ]     But overlap by 43bp supported by 6 pair ended links
+2018-02-14 14:23:23,732 [INFO ]  Path is linear
+
+**** SRR1945442 *ERROR*
+Traceback (most recent call last):
+  File "/usr/bin/oa", line 64, in <module>
+    config[root_config_name]['module'].run(config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 149, in run
+    asm = restoreGraph(output+'.oax',r,x)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 2068, in restoreGraph
+    filein = open(filein)
+FileNotFoundError: [Errno 2] No such file or directory: '../SRR1945442_1.fastq_oa_test.chl.oas/assembling.oax'
+
+**** SRR1945443 *worked - linear*
+2018-02-14 13:26:13,121 [INFO ]  Minimum stem coverage = 17
+2018-02-14 13:26:16,321 [INFO ]  Both segments -2 and -13 are disconnected
+2018-02-14 13:26:16,322 [INFO ]     But linked by 211 pair ended links (gap length=20.000000 sd=103.000000)
+2018-02-14 13:26:16,342 [INFO ]  Both segments -13 and -1 are connected (paired-end=254 frg length=362.015748 sd=100.603435)
+2018-02-14 13:26:16,351 [INFO ]  Both segments -1 and -11 are connected (paired-end=75 frg length=303.640000 sd=86.607009)
+2018-02-14 13:26:16,361 [INFO ]  Both segments -11 and -5 are connected (paired-end=120 frg length=292.466667 sd=118.460144)
+2018-02-14 13:26:16,397 [INFO ]  Both segments -5 and -14 are connected (paired-end=337 frg length=335.937685 sd=110.606602)
+2018-02-14 13:26:16,422 [INFO ]  Both segments -14 and 5 are connected (paired-end=178 frg length=328.382022 sd=103.439767)
+2018-02-14 13:26:16,444 [INFO ]  Path is linear
+
+**** SRR1945444 *worked - linear*
+2018-02-14 13:44:12,715 [INFO ]  Expanded path : (12,)
+2018-02-14 13:44:14,272 [INFO ]  Compacting graph  19.8 % remain : 00:00:06
+2018-02-14 13:44:14,403 [INFO ]  Compacting graph  28.8 % remain : 00:00:04
+2018-02-14 13:44:14,554 [INFO ]  Compacting graph  40.6 % remain : 00:00:02
+2018-02-14 13:44:14,707 [INFO ]  Compacting graph  51.9 % remain : 00:00:01
+2018-02-14 13:44:14,882 [INFO ]  Compacting graph  65.4 % remain : 00:00:01
+2018-02-14 13:44:15,356 [INFO ]  Compacting graph  96.9 % remain : 00:00:00
+2018-02-14 13:44:15,448 [INFO ]  Minimum stem coverage = 51
+2018-02-14 13:44:19,793 [INFO ]  Path is linear
+
+**** SRR1945445 *ERROR*
+2018-02-14 12:34:06,459 [INFO ]  No new probe set specified
+2018-02-14 12:34:06,460 [INFO ]  No new probe set specified
+2018-02-14 12:34:06,461 [INFO ]  No previous matches loaded
+2018-02-14 12:34:06,461 [INFO ]  No --seeds option specified and not previous matches stored
+
+
+
+
+
+*** NP
+**** SRR1945438 *ERROR - seed*
+     Building Hash Table......OK
+
+     Subsampled fraction: 100.00 %
+
+     Retrieve Seed...
+
+     INVALID SEED, PLEASE TRY AGAIN WITH A NEW ONE
+**** SRR1945439 *ERROR*
+Building Hash Table......OK
+
+Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945440 *ERROR - seed*
+Retrieve Seed...
+
+INVALID SEED, PLEASE TRY AGAIN WITH A NEW ONE
+
+**** SRR1945441 *ERROR*
+Building Hash Table......OK
+
+Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945442 *ERROR*
+Building Hash Table......OK
+
+Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945443 *ERROR*
+Building Hash Table......OK
+
+Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+
+**** SRR1945444 *ERROR*
+Building Hash Table......OK
+
+Illegal division by zero at /NOVOPlasty/NOVOPlasty2.6.3.pl line 2045.
+**** SRR1945445 *ERROR - seed*
+Retrieve Seed...
+
+INVALID SEED, PLEASE TRY AGAIN WITH A NEW ONE
+
+
+
+
+*** FP
+**** SRR1945435 *incomplete*
+Checking chloroplast gene recovery in contigs.
+Checking coverage of final assembly. Final assembly is the last afin iteration.
+71.6049382716049% of known angiosperm chloroplast genes were recovered in fp_SRR1945435_1.fastq_afin_iter2.fa.
+Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. Best contigs are in /home/s229502/Master_thesis/runs/SRR1945435/FP/fp_SRR1945435_1.fastq/Final_Assembly/fp_SRR1945435_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
+
+**** SRR1945436
+
+**** SRR1945437
+
+**** SRR1945438 *worked*
+     Checking chloroplast gene recovery in contigs.
+     80.2469135802469% of known angiosperm chloroplast genes were recovered in fp_SRR1945438_1.fastq_FULLCP.fsa.
+     Fri Feb 16 12:33:01 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+
+**** SRR1945439
+
+**** SRR1945440
+
+**** SRR1945441
+
+**** SRR1945442 
+
+**** SRR1945443
+
+**** SRR1945444 *Incomplete*
+ Checking chloroplast gene recovery in contigs.
+ Checking coverage of final assembly. Final assembly is the last afin iteration.
+ 65.4320987654321% of known angiosperm chloroplast genes were recovered in fp_SRR1945444_1.fastq_afin_iter2.fa.
+ Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. Best contigs are in /home/s229502/Master_thesis/runs/SRR1945444/FP/fp_SRR1945444_1.fastq/Final_Assembly/fp_SRR1945444_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
+
+**** SRR1945445 *INcomplete*
+     Checking chloroplast gene recovery in contigs.
+     Checking coverage of final assembly. Final assembly is the last afin iteration.
+     70.3703703703704% of known angiosperm chloroplast genes were recovered in fp_SRR1945445_1.fastq_afin_iter2.fa.
+     Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. Best contigs are in /home/s229502/Master_thesis/runs/SRR1945445/FP/fp_SRR1945445_1.fastq/Final_Assembly/fp_SRR1945445_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
+
+
+
+** DONE Fixing chloroExtractor bug (scale_reads)
+     - State "DONE"       from "PROGRESS"   [2018-02-15 Do 15:11]
+     - State "PROGRESS"   from "TODO"       [2018-02-15 Do 10:02]
+Reading seed kmers
+Reading total kmers
+Plotting seed and total kmers
+Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
+[18-02-13 16:06:10] [PipeWrap] scr exited:65280 
+[18-02-13 16:06:10] [PipeWrap] HASH(0x3e41f10) at /opt/chloroExtractor/bin/../lib/PipeWrap.pm line 153.
+
+--------------
+
+*** DONE $seqwithtlen is first of all not initialized
+*** DONE find bug and fix code 
+when none TLEN is above 0, the if condition is never executed, so $seqwithtlen and $tlen_sum are both 0, by trying to calculate the insert size with 
+int($tlen_sum/$seqwithtlen) you divide by 0 -> Crash
+
+**** Code  (fixed)  
+# my $c;
+# my $tlen_sum; 
+# my $seqwithtlen = 0;
+#
+#
+# while(my $aln = $sp->next_aln()){
+#    print BAM "$aln";
+#    print FQ "@",$aln->qname,"\n", $aln->seq, "\n+\n",$aln->qual,"\n";
+#    
+#    # closest ref
+#    my $id = $aln->rname();
+#    my ($ref_id) = $id =~ /(NC_\d+)/;
+#    $refs{$ref_id}++; # increment mapping on ref count
+#
+#    # insert size
+#    if (abs($aln->tlen) > 0){
+#        $tlen_sum+= abs($aln->tlen); # compute isize
+#        $seqwithtlen++;
+#    }
+#
+#    $c++;
+#    last if $c >= $opt{max_reads}
+# }       
+#
+#  print "coverage\t", $current_cov, "\n";
+# print "genome_size\t", $genome_size, "\n";
+# print "target_coverage\t", $opt{target_coverage}, "\n";
+# if ($seqwithtlen > 0){ print "insert_size\t", int($tlen_sum/$seqwithtlen), "\n";}
+# else {print "insert_size\tNA\n";}
+# print "closest_ref\t", $closest_ref || 'NA', "\n";
+
+
+
+
+
+
+** Table
+
+|                 | Demo | sim10         | sim100        | sim1000       | SRR194543 | SRR194543 | SRR1945437 | SRR1945438 | SRR1945439 | SRR1945440 | SRR1945441 | SRR1945442 | SRR1945443 | SRR1945444 | SRR1945445 |
+|-----------------+------+---------------+---------------+---------------+-----------+-----------+------------+------------+------------+------------+------------+------------+------------+------------+------------|
+| chloroExtractor | S    | F - coverage  | S             | S             |           |           |            |            |            |            |            |            |            |            |            |
+| NOVOPlasty      | S    | I - 3 contigs | I - 3 contigs | I - 3 contigs |           |           |            |            |            |            |            |            |            |            |            |
+| Fast-Plast      | S    |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
+| IOGA            | S    |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
+| GetOrganelle    | I -  |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
+| org.asm         | S    | S             | S             | S             |           |           |            |            |            |            |            |            |            |            |            |
+|                 |      |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
+
+E = Error
+F = Fail
+I = Incomplete
+S = Success
 
 
 
@@ -412,7 +1194,17 @@ ZeroDivisionError: float division by zero
 
 ** TODO All Docker in one Repo
 
-** TODO Error message for chloroExtractor, when no peak is found - scaling reads! Error deivision by 0
+** DONE Error message for chloroExtractor, when no peak is found - scaling reads! Error deivision by 0
+   - State "DONE"       from "CANCELED"   [2018-02-15 Do 16:00]
+   - State "CANCELED"   from ""           [2018-02-15 Do 10:08]
+     moved ( not less importend - VERY IMPORTEND)
+
+   DONE!
+
+
+** TODO IOGA fork and fix 
+   https://github.com/holmrenser/IOGA/blob/master/IOGA.py#L334
+   
    
 * Importend executables / shortcuts 
 ** exe 
