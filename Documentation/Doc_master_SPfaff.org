@@ -7,6 +7,9 @@ Start 05.02.18
 * DONE [#A] Week 1 05.02.18 - 09.02.18
   - State "DONE"       from "PROGRESS"   [2018-02-14 Mi 14:32]
   - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:41]
+** Meeting
+   https://github.com/chloroExtractorTeam/chloroplast_landscape/issues/7
+
 ** DONE Build Dockercontainer
    - State "DONE"       from "PROGRESS"   [2018-02-08 Do 15:10]
    - State "PROGRESS"   from "TODO"       [2018-02-06 Di 14:38]
@@ -92,6 +95,7 @@ Start 05.02.18
 
 *** CANCELED Write Wrapper
     - State "CANCELED"   from ""           [2018-02-14 Mi 14:32]
+      look at week 3
 
 
 ** DONE running SRAs over weekend 10.2 - 12.2 
@@ -105,10 +109,15 @@ Start 05.02.18
      none of them finished...
 
 
-* PROGRESS Week 2 12.02.18 - 16.02.18
+* DONE Week 2 12.02.18 - 16.02.18
+  - State "DONE"       from "PROGRESS"   [2018-02-20 Di 10:13]
   - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:12]
 
-** PROGRESS [#A] Evaluate the test runs, why none finished?
+** Meeting
+   https://github.com/chloroExtractorTeam/chloroplast_landscape/issues/8
+
+** DONE [#A] Evaluate the test runs, why none finished?
+   - State "DONE"       from "PROGRESS"   [2018-02-20 Di 10:13]
    - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:13]
 
      dir: /home/s229502/Master_thesis/FirstTest_9-2
@@ -224,7 +233,7 @@ OSError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/First
 **** SRRSRR5216995
     Fri Feb 16 11:03:17 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
                                     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
-
+				    
 *** GetOrganelle
 
 **** Testset SRR5216995 / slurm-31036.out *WORKED*
@@ -290,7 +299,7 @@ Traceback (most recent call last):
 FileNotFoundError: [Errno 2] No such file or directory: '/home/s229502/Master_thesis/FirstTest_9-2/data_9-2/SRR1945435_1.fastq_oa_test.chl.oas/assembling.oax'
 
 **** SRR1945436 / slurm-31049.out *ERROR*
-Traceback (most recent call last):
+     Traceback (most recent call last):
   File "/usr/bin/oa", line 64, in <module>
     config[root_config_name]['module'].run(config)
   File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 194, in run
@@ -304,7 +313,7 @@ Traceback (most recent call last):
 ZeroDivisionError: float division by zero
 
 **** SRR1945437 / slurm-31050.out *WORKED*
-     Finished w/o problems and got the circular path
+     Finished w/o problems and got the linear path
      
 
 *** NOVOPlasty
@@ -353,7 +362,7 @@ Thank you for using NOVOPlasty!
 
 
 
-
+     
 ** DONE Start new run with test-data SRR5216995_1M.fastq
    - State "DONE"       from "PROGRESS"   [2018-02-13 Di 10:18]
    - State "PROGRESS"   from "TODO"       [2018-02-12 Mo 10:14]
@@ -450,9 +459,10 @@ Thank you for using NOVOPlasty!
 
 
 
-** PROGRESS Run on Sim-Reads
+** DONE Run on Sim-Reads
+   - State "DONE"       from "PROGRESS"   [2018-02-19 Mo 11:31]
    - State "PROGRESS"   from "TODO"       [2018-02-13 Di 15:14]
-
+     
 *** Testmappings [Genom:Chloroplast]
 **** 1:10 *1.30% overall alignment rate*
      2000000 reads; of these:
@@ -532,7 +542,6 @@ Plotting seed and total kmers
 [18-02-14 14:38:59] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
 [18-02-14 14:39:00] [PipeWrap] ptx pipeline completed
 
-
 *** GO
 **** 1:10 *ERROR*
 2018-02-14 14:34:55,359 - INFO: Assembling with SPAdes ...
@@ -558,7 +567,6 @@ Plotting seed and total kmers
 
 2018-02-14 14:23:37,945 - ERROR: Assembling failed.
     
-
 *** IOGA
 **** 1:10 *ERROR*
      [IOGA] final assembly statistics are in /home/s229502/Master_thesis/test_sim/data_2M/sim_1_10_2M/sim_1_10_2M_1.fastq_IOGA_OUT.final/sim_1_10_2M_1.fastq_IOGA_OUT.statistics
@@ -668,14 +676,28 @@ Average organelle coverage : 3910
 ----------------------------------------------------------------------------------------------------
 
 
-
 *** FP
+**** 1:10 *worked*
+     Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+**** 1:100 terminated - mem limit 40G ->started again *worked*
+Mon Feb 19 09:58:54 2018        Checking chloroplast gene recovery in contigs.
+                                81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_sim_1_100_2M_1.fastq_FULLCP.fsa.
+Mon Feb 19 09:58:59 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+     
+**** 1:1000 terminated - mem limit 40G ->started again *worked*
+Mon Feb 19 10:07:01 2018        Checking chloroplast gene recovery in contigs.
+                                81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_sim_1_1000_2M_1.fastq_FULLCP.fsa.
+Mon Feb 19 10:07:05 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
 
-** PROGRESS Run on ~7 more SSR data sets from 1001 Genom Project
+** DONE Run on ~7 more SSR data sets from 1001 Genom Project
+   - State "DONE"       from "PROGRESS"   [2018-02-20 Di 10:12]
    - State "PROGRESS"   from "TODO"       [2018-02-13 Di 17:00]
 
      
-*** CE
+*** CE-befor_fix
 
 **** SRR1945438 *ERROR*
 Reading seed kmers
@@ -750,6 +772,94 @@ Use of uninitialized value $seqwithtlen in division (/) at /opt/chloroExtractor/
 Use of uninitialized value $tlen_sum in division (/) at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
 Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R> line 10.
 
+*** CE-fix
+
+**** SRR1945435 *incomplete - partial*
+     [18-02-20 06:41:21] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:42:08] [fcg] Found 5 partial chloroplast sequences
+     [18-02-20 06:42:09] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:42:09] [PipeWrap] ptx pipeline completed
+
+**** SRR1945436  *incomplete - partial*
+     [18-02-20 06:36:41] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:37:03] [fcg] Found 6 partial chloroplast sequences
+     [18-02-20 06:37:03] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:37:04] [PipeWrap] ptx pipeline completed
+     
+**** SRR1945437  *incomplete - partial* 
+     [18-02-20 06:36:43] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:37:27] [fcg] Found 5 partial chloroplast sequences
+     [18-02-20 06:37:27] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:37:27] [PipeWrap] ptx pipeline completed
+
+**** SRR1945438  *incomplete - partial*
+     [18-02-20 06:41:17] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:42:07] [fcg] Found 3 partial chloroplast sequences
+     [18-02-20 06:42:07] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:42:07] [PipeWrap] ptx pipeline completed
+
+      #+BEGIN_SRC sh :dir /home/s229502/Master_thesis/runs/SRR1945438/CE/SRR1945438_1.fastq_ce
+      SeqFilter fcg.fa
+
+      #+END_SRC 
+
+      #+RESULTS:
+      | #source | state | reads |  bases |    max |  min |    N50 |   N90 |
+      | fcg.fa  | RAW   |     3 | 127931 | 102250 | 7791 | 102250 | 17890 |
+
+**** SRR1945439  *incomplete - partial* 
+     [18-02-20 06:47:53] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:48:33] [fcg] Found 4 partial chloroplast sequences
+     [18-02-20 06:48:33] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:48:34] [PipeWrap] ptx pipeline completed
+
+**** SRR1945440  *incomplete - partial*
+     [18-02-20 06:49:55] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:50:35] [fcg] Found 4 partial chloroplast sequences
+     [18-02-20 06:50:35] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:50:36] [PipeWrap] ptx pipeline completed
+
+**** SRR1945441  *incomplete - partial*
+     [18-02-20 06:48:29] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:49:12] [fcg] Found 5 partial chloroplast sequences
+     [18-02-20 06:49:12] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:49:13] [PipeWrap] ptx pipeline completed
+
+**** SRR1945442  *incomplete - partial*
+     [18-02-20 06:50:42] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:51:18] [fcg] Found 4 partial chloroplast sequences
+     [18-02-20 06:51:18] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:51:19] [PipeWrap] ptx pipeline completed
+     
+**** SRR1945443 *Success*
+     [18-02-20 06:51:45] [fcg] Found 3 different nodes
+     [18-02-20 06:51:45] [fcg] The inverted repeat is node number: 21
+     [18-02-20 06:51:45] [fcg] The LSC is node number: 10 and the SSC is node number: 20
+     [18-02-20 06:51:45] [fcg] Single circular chloroplast seems to be found
+     [18-02-20 06:51:45] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:51:45] [PipeWrap] ptx pipeline completed
+
+ #+BEGIN_SRC sh :dir /home/s229502/Master_thesis/runs/SRR1945443/CE/SRR1945443_1.fastq_ce
+ SeqFilter fcg.fa
+
+ #+END_SRC  
+
+ #+RESULTS:
+ | #source | state | reads |  bases |    max |    min |    N50 |    N90 |
+ | fcg.fa  | RAW   |     1 | 154679 | 154679 | 154679 | 154679 | 154679 |
+
+**** SRR1945444  *incomplete - partial*
+     [18-02-20 06:50:16] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:50:43] [fcg] Found 4 partial chloroplast sequences
+     [18-02-20 06:50:43] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:50:43] [PipeWrap] ptx pipeline completed
+
+**** SRR1945445  *incomplete - partial*
+     [18-02-20 06:50:09] [fcg] No single circular chloroplast was found. Searching for partial hits...
+     [18-02-20 06:50:29] [fcg] Found 4 partial chloroplast sequences
+     [18-02-20 06:50:29] [PipeWrap] Running 'mre1': gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile=ptx.pdf scr-seeds.pdf kfr.pdf
+     [18-02-20 06:50:30] [PipeWrap] ptx pipeline completed
+
 
 *** GO
 **** SRR1945438 *ERROR*
@@ -777,8 +887,8 @@ Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R
 2018-02-14 10:09:51,962 - ERROR: Assembling failed.
 
 **** SRR1945441 *ERROR*
-2018-02-14 12:09:07,830 - ERROR: Error in SPAdes: 
-== Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945441/SRR1945441_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+     2018-02-14 12:09:07,830 - ERROR: Error in SPAdes: 
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945441/SRR1945441_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
 
 
 2018-02-14 12:09:07,832 - ERROR: Assembling failed.
@@ -814,41 +924,200 @@ Illegal division by zero at /opt/chloroExtractor/bin/scale_reads.pl line 392, <R
 
 2018-02-14 12:29:01,283 - ERROR: Assembling failed.
 
+*** GO_Rerun
+**** SRR1945435 *finished - F?*
+     2018-02-20 13:56:03,143 - INFO: Separating filtered fastq file ... 
+     2018-02-20 13:56:07,828 - INFO: Separating filtered fastq file finished!
+     2018-02-20 13:56:07,883 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:01:01,372 - INFO: Assembling finished.
+     
+     2018-02-20 14:01:03,231 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 809.17240715
+     Thanks you!
+**** SRR1945436 *finished*
+     2018-02-20 14:25:24,331 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:25:32,137 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:25:32,193 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:33:56,195 - INFO: Assembling finished.
+     
+     2018-02-20 14:33:58,579 - INFO: Processing assembly result finished!
+
+     Total Calc-cost 1037.79737711
+     Thanks you!
+**** SRR1945437 *finished* 
+     2018-02-20 14:25:47,834 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:25:55,800 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:25:55,898 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:34:16,099 - INFO: Assembling finished.
+     
+     2018-02-20 14:34:18,821 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 1044.55838513
+     Thanks you!
+
+**** SRR1945438 *finished* 
+     2018-02-20 14:26:12,765 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:26:18,611 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:26:18,667 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:34:26,286 - INFO: Assembling finished.
+     
+     2018-02-20 14:34:29,866 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 974.736760139
+     Thanks you!
+**** SRR1945439 *finished* 
+     2018-02-20 14:26:41,118 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:26:47,614 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:26:47,668 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:33:25,656 - INFO: Assembling finished.
+     
+     2018-02-20 14:33:27,286 - INFO: Processing assembly result finished!
+
+     Total Calc-cost 884.311291933
+     Thanks you!
+
+**** SRR1945440 *finished*
+     2018-02-20 14:27:44,111 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:27:48,091 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:27:48,134 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:34:32,126 - INFO: Assembling finished.
+     
+     2018-02-20 14:34:33,992 - INFO: Processing assembly result finished!
+
+     Total Calc-cost 924.914399147
+     Thanks you!
+
+**** SRR1945441 *finished*
+     2018-02-20 14:27:48,350 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:27:53,340 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:27:53,387 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:35:23,324 - INFO: Assembling finished.
+     
+     2018-02-20 14:35:25,157 - INFO: Processing assembly result finished!
+
+     Total Calc-cost 963.723965883
+     Thanks you!
+
+**** SRR1945442 *finished*
+     2018-02-20 14:27:57,905 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:28:02,568 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:28:02,636 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:34:43,336 - INFO: Assembling finished.
+     
+     2018-02-20 14:34:45,402 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 911.527772903
+     Thanks you!
+**** SRR1945443 *finished*
+     2018-02-20 14:28:39,985 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:28:43,729 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:28:43,784 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:35:16,253 - INFO: Assembling finished.
+     
+     2018-02-20 14:35:17,927 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 932.15546298
+     Thanks you!
+**** SRR1945444 *Finished*
+     2018-02-20 14:28:30,443 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:28:35,529 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:28:35,695 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:35:43,619 - INFO: Assembling finished.
+
+     2018-02-20 14:35:45,335 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 951.788398027
+     Thanks you!
+
+**** SRR1945445 *Finished*
+     2018-02-20 14:28:26,796 - INFO: Separating filtered fastq file ... 
+     2018-02-20 14:28:31,856 - INFO: Separating filtered fastq file finished!
+     2018-02-20 14:28:32,006 - INFO: Assembling with SPAdes ...
+     2018-02-20 14:36:02,592 - INFO: Assembling finished.
+     
+     2018-02-20 14:36:04,311 - INFO: Processing assembly result finished!
+     
+     Total Calc-cost 961.558608055
+     Thanks you!
+
 
 *** IOGA
-**** SRR1945438 *ERROR - again DIR*
-Traceback (most recent call last):
-  File "/IOGA/IOGA.py", line 432, in <module>
-    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
-  File "/IOGA/IOGA.py", line 377, in main
-    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
-  File "/IOGA/IOGA.py", line 322, in IOGA_loop
-    shutil.rmtree(name + '.' + str(iteration-2))
-  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
-    onerror(os.listdir, path, sys.exc_info())
-  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
-    names = os.listdir(path)
-OSError: [Errno 2] No such file or directory: '../SRR1945438_1.fastq_IOGA_OUT.1'
+**** SRR1945435 *worked - 6contigs*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/FirstTest_9-2/IOGA_9-2/SRR1945435/SRR1945435_1.fastq_IOGA_OUT.final/SRR1945435_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945435_1.fastq_IOGA_OUT.spades.k.55.77.95.contigs  -5688968.210842 6 129055 1 66884 has the highest ALE score
+     [IOGA] Started  09:21:03.204548
+     [IOGA] Finished 21:05:41.883040
+     
+**** SRR1945436 *worked - 8 contigs*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/FirstTest_9-2/IOGA_9-2/SRR1945436/SRR1945436_1.fastq_IOGA_OUT.final/SRR1945436_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945436_1.fastq_IOGA_OUT.spades.k.55.77.95.contigs  -5514558.659379 8 128290 1 79142 has the highest ALE score
+     [IOGA] Started  09:21:54.740627
+     [IOGA] Finished 21:38:45.747710
 
-**** SRR1945439 *Terminated - more than 16G -> Startet with 25G again*
-     slurmstepd: Job 31354 exceeded memory limit (18092360 > 16777216), being killed
-     slurmstepd: Exceeded job memory limit
-     slurmstepd: *** JOB 31354 ON uranus1 CANCELLED AT 2018-02-15T02:21:41 ***
-**** SRR1945440 *worked*
+**** SRR1945437 *Worked - 10 contigs*
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/FirstTest_9-2/IOGA_9-2/SRR1945437/SRR1945437_1.fastq_IOGA_OUT.final/SRR1945437_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945437_1.fastq_IOGA_OUT.spades.k.77.scaffolds  -5644781.995918 10 129141 2 22943 has the highest ALE score
+     [IOGA] Started  09:22:33.546328
+     [IOGA] Finished 22:26:27.535550
+
+**** SRR1945438 ERROR - again DIR -> *worked - 10 contigs*
+# Traceback (most recent call last):
+#  File "/IOGA/IOGA.py", line 432, in <module>
+#    main(args.reference, args.name, args.forward, args.reverse, args.threads, args.insertsize, args.maxrounds, args.verbose)
+#  File "/IOGA/IOGA.py", line 377, in main
+#    source,FP,RP,final_iteration = IOGA_loop(name,ref,forward,reverse,insertsize,threads,maxrounds)
+#  File "/IOGA/IOGA.py", line 322, in IOGA_loop
+#    shutil.rmtree(name + '.' + str(iteration-2))
+#  File "/usr/lib/python2.7/shutil.py", line 239, in rmtree
+#    onerror(os.listdir, path, sys.exc_info())
+#  File "/usr/lib/python2.7/shutil.py", line 237, in rmtree
+#    names = os.listdir(path)
+# OSError: [Errno 2] No such file or directory: '../SRR1945438_1.fastq_IOGA_OUT.1'
+
+
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945438/SRR1945438_1.fastq_IOGA_OUT.final/SRR1945438_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945438_1.fastq_IOGA_OUT.spades.k.55.77.95.scaffolds  -4552290.456234 10 113515 1 58487 has the highest ALE score
+     [IOGA] Started  09:08:21.709022
+     [IOGA] Finished 13:59:25.322277
+
+**** SRR1945439 Terminated - more than 16G -> Startet with 25G again -> with 30G again -> with 50G again *Worked - 10 contigs*
+   #  slurmstepd: Job 31354 exceeded memory limit (18092360 > 16777216), being killed
+   #  slurmstepd: Exceeded job memory limit
+   #  slurmstepd: *** JOB 31354 ON uranus1 CANCELLED AT 2018-02-15T02:21:41 ***
+
+    # Docker image path: index.docker.io/chloroextractorteam/ioga_docker:latest
+    # Cache folder set to /home/s229502/.singularity/docker
+    # Creating container runtime...
+    # slurmstepd: Job 31633 exceeded memory limit (32557380 > 31457280), being killed
+    # slurmstepd: Exceeded job memory limit
+    # slurmstepd: *** JOB 31633 ON jupiter CANCELLED AT 2018-02-17T12:03:02 ***
+      
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945439/IOGA/SRR1945439_1.fastq_IOGA_OUT.final/SRR1945439_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945439_1.fastq_IOGA_OUT.spades.k.77.scaffolds  -5414517.025604 10 106360 2 22912 has the highest ALE score
+     [IOGA] Started  08:49:31.209760
+     [IOGA] Finished 18:47:57.070384
+
+**** SRR1945440 *worked - 9 contigs*
      [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945440/SRR1945440_1.fastq_IOGA_OUT.final/SRR1945440_1.fastq_IOGA_OUT.statistics
      [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
      [IOGA] SRR1945440_1.fastq_IOGA_OUT.spades.k.77.scaffolds  -4582014.048077 9 108509 2 30328 has the highest ALE score
      [IOGA] Started  10:07:20.650823
      [IOGA] Finished 14:47:27.054108
 
-**** SRR1945441 *worked*
+**** SRR1945441 *worked - 6 contigs*
      [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945441/SRR1945441_1.fastq_IOGA_OUT.final/SRR1945441_1.fastq_IOGA_OUT.statistics
      [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
      [IOGA] SRR1945441_1.fastq_IOGA_OUT.spades.k.55.77.95.scaffolds  -5133410.247351 6 110704 1 76914 has the highest ALE score
      [IOGA] Started  12:08:02.628599
      [IOGA] Finished 21:09:33.686531
 **** SRR1945442
-**** SRR1945443 Terminated - memory -> startet with 25G again *worked*
+**** SRR1945443 Terminated - memory -> startet with 25G again *worked - 8 contis*
      
      # Creating container runtime...
      # slurmstepd: Job 31438 exceeded memory limit (18430644 > 16777216), being killed
@@ -861,7 +1130,7 @@ OSError: [Errno 2] No such file or directory: '../SRR1945438_1.fastq_IOGA_OUT.1'
      [IOGA] Started  09:26:02.588976
      [IOGA] Finished 03:46:16.606412
 
-**** SRR1945444 *Terminated - memory -> startet with 25G again *worked*
+**** SRR1945444 Terminated - memory -> startet with 25G again *worked - 8 contigs*
      # Creating container runtime...
      # slurmstepd: Job 31439 exceeded memory limit (16796576 > 16777216), being killed
      # slurmstepd: Exceeded job memory limit
@@ -873,10 +1142,17 @@ OSError: [Errno 2] No such file or directory: '../SRR1945438_1.fastq_IOGA_OUT.1'
      [IOGA] Started  09:26:02.588976
      [IOGA] Finished 03:46:16.606412
 
-**** SRR1945445 *Terminated - memory -> startet with 25G again*
-     slurmstepd: Job 31437 exceeded memory limit (18503268 > 16777216), being killed
-     slurmstepd: Exceeded job memory limit
-     slurmstepd: *** JOB 31437 ON uranus1 CANCELLED AT 2018-02-15T06:16:03 ***
+**** SRR1945445 Terminated - memory -> startet with 25G again *worked - 7 contigs*
+    # slurmstepd: Job 31437 exceeded memory limit (18503268 > 16777216), being killed
+    # slurmstepd: Exceeded job memory limit
+    # slurmstepd: *** JOB 31437 ON uranus1 CANCELLED AT 2018-02-15T06:16:03 ***
+
+
+     [IOGA] final assembly statistics are in /home/s229502/Master_thesis/runs/SRR1945445/IOGA/SRR1945445_1.fastq_IOGA_OUT.final/SRR1945445_1.fastq_IOGA_OUT.statistics
+     [IOGA] Filename ALE_score Contig_no Assembly_size N50_index N50
+     [IOGA] SRR1945445_1.fastq_IOGA_OUT.spades.k.55.77.95.contigs  -5161440.480749 7 110817 1 102352 has the highest ALE score
+     [IOGA] Started  12:25:28.043213
+     [IOGA] Finished 18:40:28.950049
 
 
 *** O.A
@@ -1012,11 +1288,103 @@ FileNotFoundError: [Errno 2] No such file or directory: '../SRR1945442_1.fastq_o
 2018-02-14 12:34:06,461 [INFO ]  No previous matches loaded
 2018-02-14 12:34:06,461 [INFO ]  No --seeds option specified and not previous matches stored
 
+*** O.A_Rerun
+**** SRR1945435 *ERROR*
+     2018-02-22 01:26:04,323 [INFO ]  44 -> 44 scaffolded by 530 pair ended links
+     2018-02-22 01:26:05,264 [INFO ]  -36 -> -20 scaffolded by 290 pair ended links
+     2018-02-22 01:26:05,827 [INFO ]  -36 -> -36 scaffolded by 43 pair ended links
+     2018-02-22 01:26:06,050 [INFO ]  -70 -> 48 scaffolded by 17 pair ended links
+     2018-02-22 01:26:06,544 [INFO ]  -70 -> -29 scaffolded by 131 pair ended links
+     2018-02-22 01:26:07,530 [INFO ]  -70 -> -70 scaffolded by 112 pair ended links
+     2018-02-22 01:26:08,157 [INFO ]  65 -> 18 scaffolded by 90 pair ended links
+     2018-02-22 01:26:08,810 [INFO ]  65 -> 65 scaffolded by 15 pair ended links
+     2018-02-22 01:26:10,346 [INFO ]  57 -> 21 overlap of 51bp supported by 520 pair ended links
+     2018-02-22 01:26:10,446 [INFO ]  57 -> 57 scaffolded by 228 pair ended links
+     2018-02-22 01:26:11,257 [INFO ]  67 -> 80 overlap of 51bp supported by 453 pair ended links
+     2018-02-22 01:26:12,471 [INFO ]  67 -> 67 scaffolded by 495 pair ended links
+     2018-02-22 01:26:13,792 [INFO ]  62 -> 62 scaffolded by 72 pair ended links
+     2018-02-22 01:26:13,879 [INFO ]  Select the good connected components
+Traceback (most recent call last):
+  File "/usr/bin/oa", line 64, in <module>
+    config[root_config_name]['module'].run(config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 194, in run
+    paths=buildPath(asm, cg, back, minlink, config)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/commands/unfold.py", line 113, in buildPath
+    back=int(back),minlink=minlink)
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1665, in pathConstraints
+    constraints = mergeConstraints(constraints,minisatDoubleConstraints(self,cg))
+  File "/org-asm/ORG.asm-1.0.00-alpha11/lib/python3.5/site-packages/orgasm/tango.py", line 1532, in minisatDoubleConstraints
+    r1 = round(middleFcov/float(inputcov))
+ZeroDivisionError: float division by zero
 
+**** SRR1945436 *Incomplete - linear*
+     2018-02-20 10:12:25,770 [INFO ]  Compacting graph  14.0 % remain : 00:00:08
+     2018-02-20 10:12:26,215 [INFO ]  Compacting graph  46.0 % remain : 00:00:02
+     2018-02-20 10:12:26,368 [INFO ]  Compacting graph  57.0 % remain : 00:00:01
+     2018-02-20 10:12:26,772 [INFO ]  Compacting graph  85.9 % remain : 00:00:00
+     2018-02-20 10:12:26,924 [INFO ]  Compacting graph  96.9 % remain : 00:00:00
+     2018-02-20 10:12:28,798 [INFO ]  Minimum stem coverage = 330
+     2018-02-20 10:12:34,757 [INFO ]  Path is linear
 
+**** SRR1945437 *Incomplete - linear*
+     2018-02-20 10:05:32,968 [INFO ]  Expanded path : (7,)
+     2018-02-20 10:05:34,313 [INFO ]  Compacting graph  12.6 % remain : 00:00:09
+     2018-02-20 10:05:34,471 [INFO ]  Compacting graph  24.3 % remain : 00:00:04
+     2018-02-20 10:05:34,768 [INFO ]  Compacting graph  46.4 % remain : 00:00:02
+     2018-02-20 10:05:34,991 [INFO ]  Compacting graph  62.7 % remain : 00:00:01
+     2018-02-20 10:05:35,264 [INFO ]  Compacting graph  83.0 % remain : 00:00:00
+     2018-02-20 10:05:37,221 [INFO ]  Minimum stem coverage = 47
+     2018-02-20 10:05:40,656 [INFO ]  Path is linear
 
+**** SRR1945438 *FAIL*
+     2018-02-20 09:15:19,709 [INFO ]  No new probe set specified
+     2018-02-20 09:15:19,710 [INFO ]  No new probe set specified
+     2018-02-20 09:15:19,710 [INFO ]  No previous matches loaded
+     2018-02-20 09:15:19,710 [INFO ]  No --seeds option specified and not previous matches stored
+     
+**** SRR1945439 *Incomplete - linear*
+     2018-02-20 11:24:33,766 [INFO ]  Minimum stem coverage = 91
+     2018-02-20 11:24:38,143 [INFO ]  Both segments 10 and 6 are disconnected
+     2018-02-20 11:24:38,144 [INFO ]     But overlap by 49bp supported by 8 pair ended links
+     2018-02-20 11:24:38,162 [INFO ]  Path is linea
+**** SRR1945440 *FAIL*
+     
+     2018-02-20 09:17:18,436 [INFO ]  No new probe set specified
+     2018-02-20 09:17:18,437 [INFO ]  No new probe set specified
+     2018-02-20 09:17:18,437 [INFO ]  No previous matches loaded
+     2018-02-20 09:17:18,437 [INFO ]  No --seeds option specified and not previous matches stored
+**** SRR1945441 *incomplete - linear*
+     2018-02-20 10:03:20,106 [INFO ]     But linked by 310 pair ended links (gap length=4.000000 sd=80.000000)
+     2018-02-20 10:03:20,125 [INFO ]  Both segments -6 and -4 are connected (paired-end=179 frg length=284.575419 sd=84.065442)
+     2018-02-20 10:03:20,140 [INFO ]  Both segments -4 and 6 are connected (paired-end=364 frg length=280.167582 sd=87.554891)
+     2018-02-20 10:03:20,147 [INFO ]  Both segments 6 and 2 are disconnected
+     2018-02-20 10:03:20,147 [INFO ]     But linked by 310 pair ended links (gap length=4.000000 sd=80.000000)
+     2018-02-20 10:03:20,161 [INFO ]  Path is linear
 
-*** NP
+**** SRR1945442      
+**** SRR1945443 *incomplete - linear*
+     2018-02-20 09:57:42,548 [INFO ]  Both segments 7 and 6 are connected (paired-end=133 frg length=267.766917 sd=76.915133)
+     2018-02-20 09:57:42,551 [INFO ]  Both segments 6 and -13 are disconnected
+     2018-02-20 09:57:42,551 [INFO ]     But overlap by 71bp supported by 24 pair ended links
+     2018-02-20 09:57:42,556 [INFO ]  Path is linear
+
+**** SRR1945444 *incomplete- linear*
+     2018-02-20 12:10:21,349 [INFO ]  Compacting graph  34.6 % remain : 00:00:03
+     2018-02-20 12:10:21,500 [INFO ]  Compacting graph  45.9 % remain : 00:00:02
+     2018-02-20 12:10:21,991 [INFO ]  Compacting graph  78.7 % remain : 00:00:00
+     2018-02-20 12:10:22,160 [INFO ]  Compacting graph  90.0 % remain : 00:00:00
+     2018-02-20 12:10:22,197 [INFO ]  Compacting graph  91.7 % remain : 00:00:00
+     2018-02-20 12:10:24,219 [INFO ]  Minimum stem coverage = 286
+     2018-02-20 12:10:28,640 [INFO ]  Path is linear
+
+**** SRR1945445 *FAIL*
+2018-02-20 09:19:35,846 [INFO ]  No new probe set specified
+2018-02-20 09:19:35,847 [INFO ]  No new probe set specified
+2018-02-20 09:19:35,848 [INFO ]  No previous matches loaded
+2018-02-20 09:19:35,848 [INFO ]  No --seeds option specified and not previous matches stored
+ 
+    
+*** NP_2.6.3
 **** SRR1945438 *ERROR - seed*
      Building Hash Table......OK
 
@@ -1059,6 +1427,273 @@ Retrieve Seed...
 
 INVALID SEED, PLEASE TRY AGAIN WITH A NEW ONE
 
+*** NP_2.6.4
+**** SRR1945435 *incomplete - 4 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+     Contig 01                  : 146094 bp
+     Contig 02                  : 407 bp
+     Estimated gap      : 0 bp to 0 bp
+     Contig 02                  : 8047 bp
+     Estimated gap      : 0 bp to 0 bp
+     Contig 02                  : 1012 bp
+     
+     Total contigs              : 4
+     Largest contig             : 146094 bp
+     Smallest contig            : 407 bp
+     Average insert size        : 252 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 624986
+     Assembled reads            : 208354
+     Organelle genome %         : 15.62 %
+     Average organelle coverage : 405
+     
+     ----------------------------------------------------------------------------------------------------
+     
+     
+     Thank you for using NOVOPlasty!
+**** SRR1945436 *incomplete - 3 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     Contig 01                  : 166043 bp
+     Estimated gap      : -17 bp to -17 bp (Check manually if the two contigs overlap to merge them together!)
+     Contig 01                  : 6077 bp
+     Estimated gap      : -20 bp to -20 bp (Check manually if the two contigs overlap to merge them together!)
+     Contig 01                  : 22149 bp
+     
+     Total contigs              : 3
+     Largest contig             : 166043 bp
+     Smallest contig            : 6077 bp
+     Average insert size        : 254 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+
+     Total reads                : 4000000
+     Aligned reads              : 831154
+     Assembled reads            : 255604
+     Average organelle coverage : 428
+     
+     ----------------------------------------------------------------------------------------------------
+
+
+     Thank you for using NOVOPlasty!
+     
+**** SRR1945437 *incomplete - 4 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     Contig 01                  : 118180 bp
+     Contig 02                  : 374 bp
+     Estimated gap      : 0 bp to 0 bp
+     Contig 02                  : 30191 bp
+     Estimated gap      : 0 bp to 0 bp
+     Contig 02                  : 6560 bp
+
+     Total contigs              : 4
+     Largest contig             : 118180 bp
+     Smallest contig            : 374 bp
+     Average insert size        : 247 bp
+     
+
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 875718
+     Assembled reads            : 259182
+     Organelle genome %         : 21.89 %
+     Average organelle coverage : 567
+
+     ----------------------------------------------------------------------------------------------------
+     
+     
+     Thank you for using NOVOPlasty!
+**** SRR1945438 *incomplete - 6 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+     Contig 01                  : 30860 bp
+     Contig 02                  : 254 bp
+     Estimated gap      : -11 bp to -11 bp (Check manually if the two contigs overlap to merge them together!)
+     Contig 02                  : 87305 bp
+     Contig 03                  : 8328 bp
+     Estimated gap      : -11 bp to -11 bp (Check manually if the two contigs overlap to merge them together!)
+     Contig 03                  : 28270 bp
+     Estimated gap      : -36 bp to -36 bp (Check manually if the two contigs overlap to merge them together!)
+     Contig 03                  : 1051 bp
+     
+     Total contigs              : 6
+     Largest contig             : 87305 bp
+     Smallest contig            : 254 bp
+     Average insert size        : 244 bp
+     
+
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 718126
+     Assembled reads            : 227078
+     Organelle genome %         : 17.95 %
+     Average organelle coverage : 461
+     
+     ----------------------------------------------------------------------------------------------------
+
+
+     Thank you for using NOVOPlasty!
+
+**** SRR1945439 *1 contig*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     Contig 01                  : 74084 bp
+     
+     Total contigs              : 1
+     Largest contig             : 74084 bp
+     Smallest contig            : 74084 bp
+     Average insert size        : 217 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 682198
+     Assembled reads            : 245142
+     Average organelle coverage : 921
+     
+     ----------------------------------------------------------------------------------------------------
+
+     
+     Thank you for using NOVOPlasty!
+**** SRR1945440 *FAIL - 0 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     
+     Total contigs              : 0
+     Largest contig             : 0 bp
+     Smallest contig            : 1000000000000000000000000000000000 bp
+     Average insert size        : 300 bp
+
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 300
+     Assembled reads            : 0
+     
+     ----------------------------------------------------------------------------------------------------
+
+     
+     Thank you for using NOVOPlasty!
+     
+**** SRR1945441 *Fail - 0 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     
+     Total contigs              : 0
+     Largest contig             : 0 bp
+     Smallest contig            : 1000000000000000000000000000000000 bp
+     Average insert size        : 300 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 404
+     Assembled reads            : 0
+     
+     ----------------------------------------------------------------------------------------------------
+     
+     
+     Thank you for using NOVOPlasty!
+
+**** SRR1945442 *1 contig*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     Contig 01                  : 200011 bp
+     
+     Total contigs              : 1
+     Largest contig             : 200011 bp
+     Smallest contig            : 200011 bp
+     Average insert size        : 244 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 738286
+     Assembled reads            : 242504
+     Average organelle coverage : 369
+
+     ----------------------------------------------------------------------------------------------------
+
+     
+     Thank you for using NOVOPlasty!
+**** SRR1945443 *incomplete - 2 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+     
+     Contig 01                  : 82349 bp
+     Contig 02                  : 72971 bp
+     
+     Total contigs              : 2
+     Largest contig             : 82349 bp
+     Smallest contig            : 72971 bp
+     Average insert size        : 292 bp
+
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 643478
+     Assembled reads            : 186282
+     Organelle genome %         : 16.09 %
+     Average organelle coverage : 417
+
+     ----------------------------------------------------------------------------------------------------
+     
+
+     Thank you for using NOVOPlasty!
+**** SRR1945444 *FAIL - 0 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+     
+     Total contigs              : 0
+     Largest contig             : 0 bp
+     Smallest contig            : 1000000000000000000000000000000000 bp
+     Average insert size        : 300 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 418
+     Assembled reads            : 0
+     
+     ----------------------------------------------------------------------------------------------------
+
+
+     Thank you for using NOVOPlasty!
+     
+**** SRR1945445 *Fail - 0 contigs*
+     ------------Assembly 1 finished: Contigs are automatically merged in Merged_contigs file------------
+
+     
+     Total contigs              : 0
+     Largest contig             : 0 bp
+     Smallest contig            : 1000000000000000000000000000000000 bp
+     Average insert size        : 300 bp
+     
+     
+     -----------------------------------------Input data metrics-----------------------------------------
+     
+     Total reads                : 4000000
+     Aligned reads              : 468
+     Assembled reads            : 6
+     
+     ----------------------------------------------------------------------------------------------------
+
+
+     Thank you for using NOVOPlasty!
 
 
 
@@ -1069,9 +1704,15 @@ Checking coverage of final assembly. Final assembly is the last afin iteration.
 71.6049382716049% of known angiosperm chloroplast genes were recovered in fp_SRR1945435_1.fastq_afin_iter2.fa.
 Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. Best contigs are in /home/s229502/Master_thesis/runs/SRR1945435/FP/fp_SRR1945435_1.fastq/Final_Assembly/fp_SRR1945435_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
 
-**** SRR1945436
-
-**** SRR1945437
+**** SRR1945436 Terminated - mem limit 35G -> started again -> *worked*
+     Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+**** SRR1945437 Terminated - mem limit 35G -> started again -> *incomplete*
+     Checking chloroplast gene recovery in contigs.
+     Checking coverage of final assembly. Final assembly is the last afin iteration.
+     56.7901234567901% of known angiosperm chloroplast genes were recovered in fp_SRR1945437_1.fastq_afin_iter2.fa.
+     Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. 
+     Best contigs are in /home/s229502/Master_thesis/runs/SRR1945437/FP/fp_SRR1945437_1.fastq/Final_Assembly/fp_SRR1945437_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
 
 **** SRR1945438 *worked*
      Checking chloroplast gene recovery in contigs.
@@ -1079,15 +1720,35 @@ Could not properly orientate the plastome. Either your plastome does not have an
      Fri Feb 16 12:33:01 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
      Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
 
-**** SRR1945439
+**** SRR1945439 Terminated - mem limit 35G -> started again *Worked*
+     Mon Feb 19 09:45:50 2018        Checking chloroplast gene recovery in contigs.
+                                      81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_SRR1945439_1.fastq_FULLCP.fsa.
+     Mon Feb 19 09:45:55 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+**** SRR1945440 Terminated - mem limit 35G -> started again *worked* 
+                                     81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_SRR1945440_1.fastq_FULLCP.fsa.
+     Mon Feb 19 09:47:27 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                     Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
 
-**** SRR1945440
+**** SRR1945441 Terminated - mem limit 35G -> started again *Worked*
+     Mon Feb 19 09:50:52 2018        Checking chloroplast gene recovery in contigs.
+                                81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_SRR1945441_1.fastq_FULLCP.fsa.
+     Mon Feb 19 09:50:56 2018        Assembly finished. Check Final_Assembly directory for chloroplast assembly and accessory files.
+                                Coverage analysis was not selected.  We highly recommend this option to verify the assembly.
+     
+**** SRR1945442 Terminated - mem limit 35G -> started again *Incomplete*
+     Mon Feb 19 09:57:36 2018        Checking chloroplast gene recovery in contigs.
+                                Checking coverage of final assembly. Final assembly is the last afin iteration.
+                                81.4814814814815% of known angiosperm chloroplast genes were recovered in fp_SRR1945442_1.fastq_afin_iter2.fa.
+                                Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. 
+				Best contigs are in /home/s229502/Master_thesis/runs/SRR1945442/FP/fp_SRR1945442_1.fastq/Final_Assembly/fp_SRR1945442_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
 
-**** SRR1945441
-
-**** SRR1945442 
-
-**** SRR1945443
+**** SRR1945443 Terminated - mem limit 35G -> started again *Incomplete*
+     Mon Feb 19 09:56:56 2018        Checking chloroplast gene recovery in contigs.
+                                Checking coverage of final assembly. Final assembly is the last afin iteration.
+                                77.7777777777778% of known angiosperm chloroplast genes were recovered in fp_SRR1945443_1.fastq_afin_iter2.fa.
+                                Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. 
+				Best contigs are in /home/s229502/Master_thesis/runs/SRR1945443/FP/fp_SRR1945443_1.fastq/Final_Assembly/fp_SRR1945443_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
 
 **** SRR1945444 *Incomplete*
  Checking chloroplast gene recovery in contigs.
@@ -1159,29 +1820,351 @@ int($tlen_sum/$seqwithtlen) you divide by 0 -> Crash
 
 
 
+* DONE Week 3 19.02 - 23.02
+  - State "DONE"       from "PROGRESS"   [2018-03-01 Do 10:23]
+  - State "PROGRESS"   from "TODO"       [2018-02-20 Di 10:14]
+
+** Meeting
+   https://github.com/chloroExtractorTeam/chloroplast_landscape/issues/9
+
 ** Table
 
-|                 | Demo | sim10         | sim100        | sim1000       | SRR194543 | SRR194543 | SRR1945437 | SRR1945438 | SRR1945439 | SRR1945440 | SRR1945441 | SRR1945442 | SRR1945443 | SRR1945444 | SRR1945445 |
-|-----------------+------+---------------+---------------+---------------+-----------+-----------+------------+------------+------------+------------+------------+------------+------------+------------+------------|
-| chloroExtractor | S    | F - coverage  | S             | S             |           |           |            |            |            |            |            |            |            |            |            |
-| NOVOPlasty      | S    | I - 3 contigs | I - 3 contigs | I - 3 contigs |           |           |            |            |            |            |            |            |            |            |            |
-| Fast-Plast      | S    |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
-| IOGA            | S    |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
-| GetOrganelle    | I -  |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
-| org.asm         | S    | S             | S             | S             |           |           |            |            |            |            |            |            |            |            |            |
-|                 |      |               |               |               |           |           |            |            |            |            |            |            |            |            |            |
+|                 | Demo          | sim10         | sim100        | sim1000       | SRR1945435 | SRR1945436 | SRR1945437 | SRR1945438 | SRR1945439 | SRR1945440 | SRR1945441 | SRR1945442 | SRR1945443 | SRR1945444 | SRR1945445 |   |                                                       |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+|-----------------+---------------+---------------+---------------+---------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+------------+---+-------------------------------------------------------|
+| chloroExtractor | S             | F - coverage  | S             | S             | I          | I          | I          | I          | I          | I          | I          | I          | S          | I          | I          |   | ~25min ~16G RAM                                       |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+| NOVOPlasty      | S             | I - 3 contigs | I - 3 contigs | I - 3 contigs | E / I      | E / I      | E /I       | F / I      | E  / IS    | F / F      | E  / F     | E / IS     | E /I       | E /F       | F /F       |   | ~15min                                                |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   | ~ 1h runtime ~50G RAM                                 |
+| Fast-plast      |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+| IOGA            | S - 3 contigs | F             | *R*           | *R*           | I          | I          | I          | I          | I          | I          | I          | *R*        | I          | I          | I          |   | ~ wow, runtime over 9000, so much RAM, very efficient |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+| GetOrganelle    | I             | E  / I        | E /I          | E / I         | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      | E / I      |   | ~ 30min ~16G RAM                                      |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+| org.asm         | S             | S             | S             | S             | E / E      | E / I      | I / I      | F / F      | E  / I     | F  / F     | I  / I     | E / *R*    | I  / I     | I  / I     | F  / F     |   |                                                       |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
+|                 |               |               |               |               |            |            |            |            |            |            |            |            |            |            |            |   |                                                       |
 
 E = Error
 F = Fail
 I = Incomplete
 S = Success
+R = still running
 
+** DONE Fix Error Problems
+   - State "DONE"       from "PROGRESS"   [2018-02-21 Mi 09:30]
+   - State "PROGRESS"   from "TODO"       [2018-02-20 Di 10:18]
+
+*** DONE Chloroextractor
+
+**** DONE divide by 0 bug
+
+     Fixed and new Release 1.03 from 20.02.
+
+     look at "Fixing chloroExtractor bug (scale reads) [week 2]
+
+*** DONE GetOrganelle
+    - State "DONE"       from "PROGRESS"   [2018-02-21 Mi 09:20]
+    - State "PROGRESS"   from "TODO"       [2018-02-21 Mi 09:20]
+
+**** err code 255
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945438/SRR1945438_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: 255
+
+     2018-02-13 16:08:21,913 - ERROR: Assembling failed.
+
+     -> cant detect phred offset.
+
+-> --spades-options "--careful --phred-offset 33"
+
+**** err code -6
+
+     2018-02-16 14:27:02,388 - ERROR: Error in SPAdes: 
+     == Error ==  system call for: "['/opt/spades/bin/hammer', '/home/s229502/Master_thesis/runs/SRR1945438/GO/SRR1945438_1.fastq_GO_out/filtered_spades/corrected/configs/config.info']" finished abnormally, err code: -6
+
+
+     2018-02-16 14:27:02,390 - ERROR: Assembling failed.
+
+     -> Test more set -> same error on 3 other sets (38 / 40 / 43)
+
+     -> try --assamble-only 
+
+---> -w (Word size) / read size was over 100 we only have 100-readlength reads
+
+*** DONE NOVOplasty
+
+**** Invaild Seed
+     -> BUG, fixed in version 2.6.4 from 20.Feb
+
+
+
+** TODO Wrapper Skripts
+   All skripts in /home/s229502/Master_thesis/skripts/
+
+*** 0. Concept: The Blackbox
+ (_1.fq)      |------------|
+       \      | 1-->2--v   |  -> chloro.fa
+ID /SRR ->    | v--4<--3   |  -> log_file
+       /      | 5-->6----> |  -> benchmark_file
+ (_2.fq)      |------------|  -> statisiks / evaluation
+
+
+*** DONE 1. Directory structure
+    - State "DONE"       from "PROGRESS"   [2018-02-22 Do 13:15]
+    - State "PROGRESS"   from "TODO"       [2018-02-22 Do 11:06]
+
+    SRR*******/  CE ----------------------> CE /  raw_data/ ---------------- raw data output dir from the prog
+                 FP                               chloro.fa
+		 GO                               log_file
+		 IOGA                             benchmark_file
+		 NP                               evaluation
+		 O.G
+
+   - Link runskripts / nessesary data / things like make_NP_conf.sh!
+   (- create benchmark file)
+--> change / improve cp_skript.sh!
+
+*** DONE 2. run commands
+    - State "DONE"       from "PROGRESS"   [2018-02-22 Do 13:49]
+    - State "PROGRESS"   from "TODO"       [2018-02-22 Do 13:15]
+
+    Change / improve run_*prog*.sh
+    -input now SRR***** not SRR***_1.fastq / SRR***_2.fastq
+    -Better_output
+    
+*** DONE 3. execute run.sh
+    - State "DONE"       from "PROGRESS"   [2018-02-22 Do 14:04]
+    - State "PROGRESS"   from "TODO"       [2018-02-22 Do 13:49]
+    
+
+    - make and start timer on benchmark_file
+    change / improve sbatch_run_all
+
+*** DONE 4. wait for programs to finish
+    - State "DONE"       from "PROGRESS"   [2018-02-22 Do 15:26]
+    - State "PROGRESS"   from "TODO"       [2018-02-22 Do 14:11]
+    
+    ????
+    grep on squeue with JobID?
+    
+    end timer for benchmark_file
+    
+*** DONE 5. Find importent files    
+    - State "DONE"       from "PROGRESS"   [2018-02-27 Di 08:43]
+    - State "PROGRESS"   from "TODO"       [2018-02-22 Do 14:11]
+
+    CE: -log = slurm
+        -fa  = *Out-dir*/fcg.fa
+
+    FP: -log = *out*_Fast-Plast_Progress.log
+               *out*_results_error.log
+               *out*_results.out.log
+        -fa  = *out-dir*/Final_Assembly/*out*_FULLCP.fsa || *out*_afin_iter*.fa
+
+    GO: -log = slurm || *out*/get_org.log.txt
+        -fa  = *out*/filtered_spades/contigs.fasta
+
+  IOGA: -log = slurm
+        -fa  = $VAR="$(grep 'highest ALE score' slurm* | grep -oP 'SRR.*contigs')"
+               *out*/$VAR.fasta
+
+    NP: -log = log_*out*.txt
+        -fa  = Option*_*out*.fasta   -> replace all * with " sed -r 's/\*/N/g' > chloro.fa"
+
+   O.G: -log = slurm
+        -fa  = *.fa
+
+
+copy them to folder
+
+*** DONE 6. Evaluate
+    - State "DONE"       from "PROGRESS"   [2018-02-27 Di 18:01]
+    - State "PROGRESS"   from "TODO"       [2018-02-27 Di 08:43]
+    
+    - Report success / Fail / ERROR
+    - SeqFilter ( bp count / amount contigs )
+    - AliTV (need ref Chloroplast genom)
+
+    ls */NOVOPlasty/NP_*.log | rev | cut -f1 -d_ | rev |cut -f1 -d. | sort | uniq -c
+**** Success
+     154Kb -+ 10% 
+     1 Seq
+**** Partial /   contigs
+     154 -+ 10% (bzw - 1 IR )
+     contigs egal
+     
+**** Incomplete - low
+     contigs egal
+     < 154 - 1IR -+ 10%
+**** Incomplete - high      
+     > 
+**** ERROR / FAIL
+     NO FASTA
+
+**** TABLE
+|     | CE | FP |
+|     |    |    |
+|-----+----+----|
+| SRR |    |    |
+| SRR |    |    |
+|     |    |    |
+#+BEGIN_SRC sh :dir /home/s229502/Master_thesis/Wrapper/test_auto/
+bash ev_stat.sh
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE         | FP             |  GO             | IOGA       | NP      | OA             |
+| SRR1945446: | ERROR_file | PARTIAL        | INCOMPLETE_high | PARTIAL    | PARTIAL | PARTIAL        |
+| SRR1945451: | SUCCESS    | SUCCESS        | INCOMPLETE_high | PARTIAL    | ERROR   | ERROR          |
+| SRR1945453: | PARTIAL    | PARTIAL        | INCOMPLETE_high | PARTIAL    | ERROR   | ERROR          |
+| SRR1945454: | SUCCESS    | SUCCESS        | INCOMPLETE_high | PARTIAL    | ERROR   | ERROR          |
+| SRR1945455: | PARTIAL    | INCOMPLETE_low | PARTIAL         | PARTIAL    | ERROR   | PARTIAL        |
+|             |            |                |                 |            |         |                |
+
+# | TEST:       | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     |
+# NO Paired reads
+# | SRR1945447: | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     |
+# | SRR1945448: | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     |
+# | SRR1945449: | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     |
+# | SRR1945450: | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     |
+# | SRR1945452: | ERROR_file | ERROR_file | ERROR_file      | ERROR_file | ERROR_file | ERROR_file     
+
+
+* DONE Week 4 26.02 - 02.03
+  - State "DONE"       from "PROGRESS"   [2018-03-13 Di 09:05]
+  - State "PROGRESS"   from "TODO"       [2018-03-01 Do 10:23]
+** CANCELED 26.02 - *Ill on 26.02*
+** Meeting 28.02
+*** Look into Novoplasty /write issue to devteam
+*** benchmark-tests : time
+    for each singularity one time - sum up
+    time in singularity
+    
+    - docker stats? singularity stats?
+*** chloroExtractor
+    - uni-cycler still in dev
+    - coverage? 200x  10% down each time
+    - 
+     
+*** Goal: start all 6 on 1001
+*** 300er reads (provided by markus)
+    
+** start 42 Data 
+*** ev all 
+
+* CANCELED Week 5 05.03 - 09.03
+  - State "CANCELED"   from ""           [2018-03-16 Fr 11:32]
+  *Retreat and ILL!*
+
+* DONE Week 6 12.03 - 16.03
+  - State "DONE"       from "PROGRESS"   [2018-03-26 Mo 10:20]
+  - State "PROGRESS"   from "TODO"       [2018-03-12 Mo 10:32]
+** DONE Rerun Chloro with re-run-cov feature
+*** DONE Build rerun in script
+** Mapping Data on ref to controll cov analysis
+  
+
+* DONE Week 7 19.03 - 23.03
+  Run all 6 on the 57 sets from the GO preprint
+
+  - Automating evalutation difficult... some fastg Graphes could be finished by hand.
+
+* Week 8 26.03 - 29.03 (30.03 Karfreitag)
+  Still several programs are running on the 57 form the GO preprint
+
+** Meeting
+
+    Contact:
+    GetOrganelle, Parameters for each SRR?
+    IOGA, runtime Issues
+
+    Try to formate Data for NOVOPlasty -> header Issue
+
+    AliTV for evaluating NOVOPlasty successes
+
+    start 1001 genom on CE and FP
+
+** Table
+#+BEGIN_SRC sh :dir ~/Master_thesis/runs/prepint_GO_5M
+bash ev_stat.sh|column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE             | FP             | GO             | IOGA           | NP             | OA             |
+|-------------+----------------+----------------+----------------+----------------+----------------+----------------|
+| ERR2144882: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| ERR268390:  | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | SUCCESS        | SUCCESS        |
+| ERR268421:  | INCOMPLETE_low | PARTIAL        | INCOMPLETE_low | INCOMPLETE_low | PARTIAL        | SUCCESS        |
+| ERR845262:  | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     |
+| ERR964904:  | ERROR          | INCOMPLETE_low | INCOMPLETE_low | ERROR          | Running        | ERROR          |
+| SRR072296:  | PARTIAL        | PARTIAL        | INCOMPLETE_low | PARTIAL        | SUCCESS        | ERROR          |
+| SRR1145775: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR1919543: | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     |
+| SRR1925329: | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | PARTIAL        | Running        | PARTIAL        |
+| SRR1946759: | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     | ERROR_file     |
+| SRR3089810: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | PARTIAL        | SUCCESS        |
+| SRR3656962: | SUCCESS        | SUCCESS        | Running        | PARTIAL        | PARTIAL        | INCOMPLETE_low |
+| SRR4099903: | PARTIAL        | SUCCESS        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR4099904: | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | ERROR          |
+| SRR4428742: | PARTIAL        | SUCCESS        | PARTIAL        | ERROR          | SUCCESS        | PARTIAL        |
+| SRR5028798: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | Running        | PARTIAL        |
+| SRR5152976: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602572: | SUCCESS        | PARTIAL        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602573: | PARTIAL        | PARTIAL        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602574: | ERROR          | SUCCESS        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602575: | INCOMPLETE_low | SUCCESS        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602576: | ERROR          | PARTIAL        | SUCCESS        | ERROR          | Running        | INCOMPLETE_low |
+| SRR5602577: | PARTIAL        | PARTIAL        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602578: | INCOMPLETE_low | SUCCESS        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR5602579: | ERROR          | PARTIAL        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602581: | INCOMPLETE_low | SUCCESS        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR5602582: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602583: | ERROR          | INCOMPLETE_low | PARTIAL        | INCOMPLETE_low | Running        | ERROR          |
+| SRR5602584: | SUCCESS        | SUCCESS        | PARTIAL        | ERROR          | Running        | SUCCESS        |
+| SRR5602585: | SUCCESS        | PARTIAL        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602586: | INCOMPLETE_low | PARTIAL        | SUCCESS        | ERROR          | Running        | PARTIAL        |
+| SRR5602587: | ERROR          | PARTIAL        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR5602588: | SUCCESS        | PARTIAL        | Running        | PARTIAL        | Running        | SUCCESS        |
+| SRR5602589: | SUCCESS        | SUCCESS        | Running        | ERROR          | Running        | SUCCESS        |
+| SRR5602590: | PARTIAL        | PARTIAL        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602591: | INCOMPLETE_low | SUCCESS        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602592: | SUCCESS        | SUCCESS        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602593: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602594: | INCOMPLETE_low | SUCCESS        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602595: | ERROR          | INCOMPLETE_low | PARTIAL        | ERROR          | Running        | Running        |
+| SRR5602596: | INCOMPLETE_low | PARTIAL        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602597: | PARTIAL        | SUCCESS        | Running        | ERROR          | Running        | ERROR          |
+| SRR5602598: | ERROR          | SUCCESS        | Running        | PARTIAL        | Running        | INCOMPLETE_low |
+| SRR5602599: | SUCCESS        | SUCCESS        | Running        | PARTIAL        | Running        | SUCCESS        |
+| SRR5602600: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602601: | PARTIAL        | PARTIAL        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR5602602: | SUCCESS        | SUCCESS        | Running        | PARTIAL        | Running        | SUCCESS        |
+| SRR5602603: | ERROR          | SUCCESS        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602604: | PARTIAL        | SUCCESS        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602605: | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | Running        | ERROR          |
+| SRR5602606: | INCOMPLETE_low | SUCCESS        | Running        | PARTIAL        | Running        | SUCCESS        |
+| SRR5602607: | INCOMPLETE_low | PARTIAL        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602608: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | Running        | ERROR          |
+| SRR5602609: | ERROR          | SUCCESS        | Running        | PARTIAL        | Running        | ERROR          |
+| SRR5602610: | ERROR          | PARTIAL        | PARTIAL        | INCOMPLETE_low | Running        | ERROR          |
+| SRR954512:  | PARTIAL        | PARTIAL        | PARTIAL        | ERROR          | Running        | SUCCESS        |
+| SRR955759:  | SUCCESS        | SUCCESS        | PARTIAL        | ERROR          | Running        | SUCCESS        |
+
+
+* Week 9 03.04 - 06.04 (02.04. Ostermontag)
+
+  restart several runs from CE and FP, memory issues and singularity fails 
+
+  AliTV on them to compare
+
+  start GO on those which cant finished by CE and FP, 
 
 
 
 * Less Importend stuff
 
-** TODO Fix Docker error for perl
+** DONE Fix Docker error for perl
+   - State "DONE"       from "PROGRESS"   [2018-04-03 Di 11:15]
+   - State "PROGRESS"   from "TODO"       [2018-04-03 Di 11:15]
 
    perl: warning: Setting locale failed.
    perl: warning: Please check that your locale settings:
@@ -1191,6 +2174,13 @@ S = Success
     are supported and installed on your system.
     perl: warning: Falling back to the standard locale ("C").
 
+    --> Needs sudo rights to "sudo dpkg-reconfigure locales 
+                              sudo locale-gen de_DE.UTF-8"
+
+
+			      
+  FIX: in singularity exec:       bash -c "export LC_ALL="C.UTF-8" && <command>"
+ 
 
 ** TODO All Docker in one Repo
 
@@ -1214,3 +2204,7 @@ S = Success
 
 ** shortcuts
    alt+F2 Anwendungsfilter... merks dir endlich ma -.-
+** orgmode code
+#+BEGIN_SRC sh :dir 
+
+#+END_SRC
