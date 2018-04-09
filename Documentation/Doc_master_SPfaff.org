@@ -2160,6 +2160,42 @@ bash ev_stat.sh|column -t
 
 
 
+** AliTV
+
+#+BEGIN_SRC sh :dir ~/Master_thesis/runs/Athaliana
+cat list_AliTV |column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE             | FP              | GO      | IOGA | NP | OA |
+| SRR1945451: | SUCCESS        | SUCCESS         | -       | -    | -  | -  |
+| SRR1945445: | INCOMPLETE_low | INCOMPLETE_low  | Running | -    | -  | -  |
+| SRR1945454: | SUCCESS        | SUCCESS         | -       | -    | -  | -  |
+| SRR1946223: | SUCCESS        | INCOMPLETE_high | Running | -    | -  | -  |
+| SRR1946425: | SUCCESS        | INCOMPLETE_high | Running | -    | -  | -  |
+| SRR1946405: | SUCCESS        | INCOMPLETE_low  | Running | -    | -  | -  |
+| SRR1945791: | INCOMPLETE_low | INCOMPLETE_low  | Running | -    | -  | -  |
+| SRR1946553: | SUCCESS        | SUCCESS         | -       | -    | -  | -  |
+| SRR1946316: | INCOMPLETE_low | SUCCESS         | -       | -    | -  | -  |
+| SRR1945624: | ERROR          | PARTIAL         | Running | -    | -  | -  |
+| SRR1945998: | ERROR          | INCOMPLETE_low  | Running | -    | -  | -  |
+
+** Stats
+#+BEGIN_SRC sh :dir ~/Master_thesis/runs/Athaliana                                                                                                                                                                 
+bash percent_stat.sh stat_AT_09-04.log |column -t                                                                                                                                                                                          
+#+END_SRC 
+
+#+RESULTS:
+| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      |     119 | ~16% |    45 |       2 |     596 |     184 |       0 |       |
+| FP      |     222 | ~29% |    28 |       8 |     504 |     184 |       0 |       |
+| GO      |       0 | ~0%  |   137 |       0 |     403 |       0 |       0 |       |
+| IOGA    |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| NP      |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| OA      |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| Summary |     255 | ~33% |     - |       - |       - |     184 |       - |   946 |
+
+
 * Less Importend stuff
 
 ** DONE Fix Docker error for perl
