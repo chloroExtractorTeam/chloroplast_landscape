@@ -1819,7 +1819,7 @@ int($tlen_sum/$seqwithtlen) you divide by 0 -> Crash
 
 
 
-
+     
 * DONE Week 3 19.02 - 23.02
   - State "DONE"       from "PROGRESS"   [2018-03-01 Do 10:23]
   - State "PROGRESS"   from "TODO"       [2018-02-20 Di 10:14]
@@ -2195,9 +2195,23 @@ bash percent_stat.sh stat_AT_09-04.log |column -t
 | OA      |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
 | Summary |     255 | ~33% |     - |       - |       - |     184 |       - |   946 |
 
+#+BEGIN_SRC sh :dir ~/Master_thesis/runs/Athaliana                                                                                                                                                                 
+bash percent_stat.sh stat_AT-25-04.log |column -t                                                                                                                                                                                          
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      |     136 | ~15% |    54 |       3 |     706 |      47 |       0 |       |
+| FP      |     266 | ~30% |    29 |      11 |     593 |      47 |       0 |       |
+| GO      |       0 | ~0%  |   137 |       0 |     403 |       0 |       0 |       |
+| IOGA    |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| NP      |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| OA      |       0 | ~0%  |     0 |       0 |       0 |       0 |       0 |       |
+| Summary |     303 | ~34% |     - |       - |       - |      47 |       - |   946 |
 
 * Week 10 09.04 - 13.04
-** Variance calling
+** PROGRESS Variance calling
+   - State "PROGRESS"   from "TODO"       [2018-04-10 Di 10:15]
 *** Between the Programs
 *** Within the Programs
     - Start every Success, which both had ( 86 ) , 10 more times. To see how they behave
@@ -2858,9 +2872,681 @@ bash percent_stat.sh stat_var05
 | NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
 | OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
 | Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+**** V6
+***** list
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_06/
+cat stat_var06|column -t
+#+END_SRC
 
-** Preprint-Go: start witch adjusted Parameters from Jing Jang-Jiung
+#+RESULTS:
+| SRR         | CE      | FP              | GO | IOGA | NP | OA |
+| SRR1945451: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945454: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945473: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945486: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945487: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945490: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945494: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945520: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945527: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945531: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945534: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945538: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945548: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945549: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945555: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945569: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945582: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945603: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945758: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945764: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945773: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945783: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945796: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945817: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945831: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945850: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1945864: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945898: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945940: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945990: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945991: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945999: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946010: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946053: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946054: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946105: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946136: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1946153: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946188: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946209: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946219: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946233: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946258: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946260: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946268: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946270: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946278: | SUCCESS | PARTIAL         | -  | -    | -  | -  |
+| SRR1946288: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946305: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946312: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946313: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946386: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946389: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946391: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946399: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946401: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946404: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946409: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946410: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946415: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946426: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946433: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946436: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946437: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946440: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946441: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946442: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946443: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946447: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946452: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946453: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946456: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946457: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946463: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946468: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946471: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946478: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946479: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946480: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946481: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946553: | SUCCESS | ERROR           | -  | -    | -  | -  |
+| SRR1946556: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946557: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946560: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+
+***** Table - percent
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_06/
+bash percent_stat.sh stat_var06
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 86 ~100%  |     0 |       0 |       0 |       0 |       0 |       |
+| FP      | 69 ~80%   |     9 |       1 |       7 |       0 |       0 |       |
+| GO      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| IOGA    | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+
+**** V7
+***** list
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_07/
+cat stat_var07|column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE      | FP              | GO | IOGA | NP | OA |
+| SRR1945451: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945454: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945473: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945486: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945487: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945490: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945494: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945520: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945527: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945531: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945534: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945538: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945548: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945549: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945555: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945569: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945582: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945603: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945758: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945764: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945773: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945783: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945796: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945817: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945831: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945850: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945864: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945898: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945940: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1945990: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945991: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945999: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946010: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946053: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946054: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946105: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946136: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946153: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946188: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946209: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946219: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946233: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946258: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946260: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946268: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946270: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946278: | SUCCESS | PARTIAL         | -  | -    | -  | -  |
+| SRR1946288: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946305: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946312: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946313: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946386: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946389: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946391: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946399: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946401: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946404: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946409: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946410: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946415: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946426: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946433: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946436: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946437: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946440: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946441: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946442: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946443: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946447: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946452: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946453: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946456: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946457: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946463: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946468: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946471: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946478: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946479: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946480: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946481: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946553: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946556: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946557: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946560: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+***** Table - percent
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_07/
+bash percent_stat.sh stat_var07
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 86 ~100%  |     0 |       0 |       0 |       0 |       0 |       |
+| FP      | 79 ~92%   |     0 |       1 |       6 |       0 |       0 |       |
+| GO      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| IOGA    | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+
+**** V8
+***** list
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_08/
+cat stat_var08|column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE      | FP              | GO | IOGA | NP | OA |
+| SRR1945451: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945454: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945473: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945486: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945487: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945490: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945494: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945520: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945527: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945531: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945534: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945538: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945548: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945549: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945555: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945569: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945582: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945603: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945758: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945764: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945773: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945783: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945796: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945817: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945831: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945850: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1945864: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945898: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945940: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945990: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945991: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945999: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946010: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946053: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946054: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946105: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946136: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946153: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946188: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946209: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946219: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946233: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946258: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946260: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946268: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946270: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946278: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946288: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946305: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946312: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946313: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946386: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946389: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946391: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946399: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946401: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946404: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946409: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946410: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946415: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946426: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946433: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946436: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946437: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946440: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1946441: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946442: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946443: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946447: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946452: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946453: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946456: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946457: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946463: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946468: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946471: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946478: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946479: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946480: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946481: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946553: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946556: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946557: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946560: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+***** Table - percent
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_08/
+bash percent_stat.sh stat_var08
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 86 ~100%  |     0 |       0 |       0 |       0 |       0 |       |
+| FP      | 79 ~92%   |     0 |       0 |       7 |       0 |       0 |       |
+| GO      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| IOGA    | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+
+**** V9 
+***** list
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_09/
+cat stat_var09|column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE      | FP              | GO | IOGA | NP | OA |
+| SRR1945451: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945454: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945473: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945486: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945487: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945490: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945494: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945520: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945527: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945531: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945534: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945538: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945548: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945549: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945555: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945569: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945582: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945603: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945758: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945764: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945773: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945783: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945796: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945817: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945831: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945850: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1945864: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945898: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945940: | SUCCESS | INCOMPLETE_high | -  | -    | -  | -  |
+| SRR1945990: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945991: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1945999: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946010: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946053: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946054: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946105: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946136: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946153: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946188: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946209: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946219: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946233: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946258: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946260: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946268: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946270: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946278: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946288: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946305: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946312: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946313: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946386: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946389: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946391: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946399: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946401: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946404: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946409: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946410: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946415: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946426: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946433: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946436: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946437: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946440: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946441: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946442: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946443: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946447: | SUCCESS | INCOMPLETE_low  | -  | -    | -  | -  |
+| SRR1946452: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946453: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946456: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946457: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946463: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946468: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946471: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946478: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946479: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946480: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946481: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946553: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946556: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946557: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946560: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+| SRR1946562: | SUCCESS | SUCCESS         | -  | -    | -  | -  |
+***** Table - percent
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_09/
+bash percent_stat.sh stat_var09
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 86 ~100%  |     0 |       0 |       0 |       0 |       0 |       |
+| FP      | 75 ~87%   |     0 |       0 |      11 |       0 |       0 |       |
+| GO      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| IOGA    | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+
+**** V10
+***** list
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_10/
+cat stat_var10|column -t
+#+END_SRC
+
+#+RESULTS:
+| SRR         | CE      | FP             | GO | IOGA | NP | OA |
+| SRR1945451: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945454: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945473: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945486: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945487: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945490: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945494: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945520: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945527: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945531: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945534: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945538: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945548: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945549: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945555: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945562: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945569: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945582: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945603: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945758: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945764: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945773: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945783: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945796: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945817: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945831: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945850: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945864: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945898: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945940: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945990: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945991: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1945999: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946010: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946053: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946054: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946105: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946136: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946153: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946188: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946209: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946219: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946233: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946258: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946260: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946268: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946270: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946278: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946288: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946305: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946312: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946313: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946386: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946389: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946391: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946399: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946401: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946404: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946409: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946410: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946415: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946426: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946433: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946436: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946437: | SUCCESS | INCOMPLETE_low | -  | -    | -  | -  |
+| SRR1946440: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946441: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946442: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946443: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946447: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946452: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946453: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946456: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946457: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946463: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946468: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946471: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946478: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946479: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946480: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946481: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946553: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946556: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946557: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946560: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+| SRR1946562: | SUCCESS | SUCCESS        | -  | -    | -  | -  |
+***** Table - percent
+#+BEGIN_SRC sh :dir  ~/Master_thesis/runs/Variance_AT_10/
+bash percent_stat.sh stat_var10
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 86 ~100%  |     0 |       0 |       0 |       0 |       0 |       |
+| FP      | 78 ~91%   |     0 |       0 |       8 |       0 |       0 |       |
+| GO      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| IOGA    | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| NP      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| OA      | 0 ~0%     |     0 |       0 |       0 |       0 |       0 |       |
+| Summary | 86 ~100%  |     - |       - |       - |       0 |       - |    86 |
+
+** DONE Preprint-Go: start witch adjusted Parameters from Jing Jang-Jiung
+   - State "DONE"       from "PROGRESS"   [2018-04-17 Di 14:59]
+   - State "PROGRESS"   from "TODO"       [2018-04-13 Fr 11:12]
    - Over the Weekend
+   - Not really more ....
+
+* Week 11 16.04 - 20.04 
+** Variance calling
+*** PROGRESS Aligments
+    - State "PROGRESS"   from "TODO"       [2018-04-17 Di 15:01]
+
+
+
+
+
+
+** Problems wioth gaias....
+* Week 12 23.04 - 27.04
+** Still Variance calling
+* Week 13 30.04 - 04.05
+** Bandage is a shitty Tool
+** SPAdes overlaps?!
+* CANCELED Week 14 07.05 - 11.05 (ILL)
+  - State "CANCELED"   from ""           [2018-05-14 Mo 08:58]
+* Week 15 14.05 - 18.05 
+** Variance Calling
+*** BWA mapping
+*** MiniMap Mapping
+*** Detect IR script
+*** SNPs Tab
+*** FCG.pl overlap SPAdes
+Bandage source code?
+diffrent kmer sized overlaps...
+-> Frank refinment fcg
+
+*** Structure Variations - easy or problem?
+Structure varianten etabliren (zur not mit der hand) und mappen um zu erkennen ob diese probleme machen? (1000 bp?)
+
+*** Convention reihenfolge?
+Fast-plast uses:
+
+Hi Simon,
+​
+LSC and SSC identity are assigned based on relative size of the SC regions.
+​
+Orientation is determined by looking at the relative orientation of the rpl and rps genes in the LSC, all genes in the SSC, and the rrn rRNAs in the IR. The code orientates the LSC so there are more "-" 
+strand rps and rpl genes than "+", more "-" strand than "+" strand genes in the SSC, and with rrn genes on the "-" strand for the IRA. This works for most lineages (that we know of) in angiosperms. 
+In reality, the SSC is probably in both directions across copies of the plastome in a plant. This is more for convention than anything else.
+​
+Things look like this:
+​
+<-------------LSC-------------><-------IRB-------><--------SSC--------><-------IRA------->
+<psbA(-)--------------rpl22(-)><------rrn23(+)---><ndhF(-)---ndhD(-)--><------rrn23(-)--->
+​
+This method doesn't work with plastomes that deviate from this common orientation. If there are major rearrangements, I do more of this step-wise using the scripts found in the bin directory of the Fast-Plast repository.
+​
+--Michael
+
+ 
+* Week 16 22.05 - 25.05 (21.05 Pfingstmontag)
+** bcftools / vcftools
+Variant calling (samtools things) 
+writing scripts...
+finally everything works, now waiting for fcg-fix...
+
+* Week 17 28.05 - 01.06
+** Struckturelle änderungen
+Not visable in the VC files, maybe CIGAR Strings?
+Visable in those but none idea how to evaluate or find...
+
+** Vergleichen SNPs indels mit 1001 Genom project
+there are diffrent SNPs,
+Tair10 right ref?
+
+** Verschiedene Varianten vorhanden?
+...maybe later
+
+* Week 18 04.06 - 08.06
+** Remapping - real SNPs?
+Just some diffrences at the start of the chloroplast - mapping problem?
+
+Assambler verschchiedene Varianten?
+wenn verschiedene Reads vorkommen -> homozygot?
+
+** Structure variations?
+Still no idea how to detect them, if there are some...
+CIGAR STRINGS: skript that evaluates all Cigar strings, and matches them to find pairs and maybe a inversion? #showerthoughts
+Programs to check: DELLY, breakdance, NMOPS, Control-FREEC
+*** DELLY
+Docker image available
+
+*** breakdancer
+bam2cfg.pl doesn't work....
+No Error massage at all...
+
+* Week 19 11.06 - 15.06 (Markus vacations)
+** Call with Frank monday or tuesday or wednesday....
+   - Puplikation lesen 1001 Genom -Arthur
+   - Phänotype, gwas. Jan Fragen.
+      - Korrelieren von "besonderheiten" von SNPS SV Indels, vorhersagen von Phänotyp
+      - Phänotypen in Chloroplasten sichtbar?
+      - Welche Daten benötigt?
+   - Remapping auf allen zum SNPs
+   - Neuen fastg parser testen! - still not all overlaps are removed... :( 
+   - 
+** Niklas Drosera Data durchlaufen lassen 
+
+   130314_I269_FCC1KFEACXX_L4_SZAXPI024351-16_1.fq.gz.clean.dup.clean bzw 
+   130314_I269_FCC1KFEACXX_L4_SZAXPI024351-16_2.fq.gz.clean.dup.clean
+   in /storage/compevolbiol/projects/carnivores/data/Drosera/Illumina/illumina_raw
+** Server auslasen LOL
+NCBI search term:
+
+((((((("green plants"[orgn]) AND "wgs"[Strategy]) AND "illumina"[Platform]) AND "biomol dna"[Properties]) AND "paired"[Layout]) AND "random"[Selection])) AND "public"[Access] 
+
+-> download SRA list
+-------
+
+perl -F"," -ane 'print if $F[6]>399 and $F[3]>999999' SraRunInfo_plants.csv | grep -vf species_cpbase.list | sort -u -t, -k29,29 | shuf
+
+
+-----
+
+#!/bin/bash
+​
+curl http://rocaplab.ocean.washington.edu/old_website/tools/cpbase/run | grep href | grep genome | grep td | cut -f3 -d ">" | cut -f1 -d"<" 
+
+* Week 20 18.06 - 22.06 (Markus vacations)
+
 * Less Importend stuff
 
 ** DONE Fix Docker error for perl
@@ -2896,6 +3582,16 @@ bash percent_stat.sh stat_var05
 ** TODO IOGA fork and fix 
    https://github.com/holmrenser/IOGA/blob/master/IOGA.py#L334
    
+
+** DONE Lin Tao - Problem, mitochondria data in chloroExtractor
+   - State "DONE"       from "PROGRESS"   
+   - State "PROGRESS"   from "TODO"      
+*** DONE Download all Data
+*** DONE Run all Data on CE
+*** blast to verify Mito seqs
+    yeah, the blast showed mitochondrial parts in some fraquments (>2,5 kb)
+    
+    Thoughts: It seems it is some part of rbcL large subunit - which could be in mitochondria....
    
 * Importend executables / shortcuts 
 ** exe 
@@ -2909,3 +3605,165 @@ bash percent_stat.sh stat_var05
 #+BEGIN_SRC sh :dir 
 
 #+END_SRC
+
+
+* Summary
+** Title
+Seperating the good from the bad...
+Exploring the genomic landscape of chloroplasts from genomic sequencing data
+** docker container for all programs (IOGA, NOVOplasty, GetOrganelle, OrgAsm, chloroExtractor, fast-plast)
+- We wanted an automatic version of all programs to be as reproducable as possible
+** What is "the best" program ( Time / efficency / Handling / fully automatic )
+- best one fast-plast and chloroExtractor ->
+  then used on all data sets
+** Data used
+*** Simulated Data (A.thaliana)
+*** Athaliana 1001 Genom 
+**** 303 / 1135
+*** GO preprint
+*** try to find new ones (nocpbase)
+**** 17 / 49
+*** Drosera
+*** TAIR10 as reference
+** Variance Calling ( CE / FP - Assambler influence? )
+*** CE consistent no influances at all
+*** FP not reproducable 
+** Structure Variance? ( CE / FP )
+*** TODO
+** Remapping / Backmapping ( Hetero / Homoplasty - Real SNPS? )
+*** no Heteroplasty
+** GWAS
+*** TODO
+** Programs used
+*** Main
+**** chloroExtractor*
+**** fast-plast*
+**** IOGA
+**** NOVOPlasty
+**** GetOrganelle
+**** OrgASM
+*** Second
+**** wrapper skripts (bash)
+**** bowtie2
+**** minimap2
+**** samtools
+**** Docker / singularity
+*** Evaluation
+**** Bandage
+**** AliTV
+**** several skripts (bash / perl)
+**** R (GWAS)
+**** Delly
+**** vcf / bcftools
+** Bugfixes
+*** mostly CE bugfixes
+
+* Story / intro
+** Title
+Seperating the good from the bad...
+Exploring the genomic landscape of chloroplasts from genomic sequencing datatreduction
+** Open Science? / Reproducable science?
+** Chloroplasts are cool!
+*** Because is so!
+**** very conserved in structure and and genome
+Chloroplasts are very importent for plants, they are make photosynthese. Because of this importense there is no much room for failure, this is one reason why chloroplasts are very conserved in genomic and structure.
+**** Pic chloroplast LSC - IRB - SSC - IRA / Bandage 
+A chloroplast genome contains, two single copies, the large and the small one *~size of each SC*, which are linked by two inverted repeats. *CHLOROG GENOM PIC* *BANDAGE PIC?* 
+
+/Chloroplast genomes of plants are known to be highly conserved in both gene order and gene content (Raubeson and Jansen 2005)./
+/They exhibit a substitution rate much lower than nuclear DNA, which is even significantly reduced in the inverted repeat regions (Wolfe et al. 1987)./
+
+
+**** some chloros without IRB
+**** differences/range in sizes 
+*** Very important for marker and phylogeny in Plants
+**** rbc / rubisco
+**** Maybe the whole chloroplast as marker, not just several genes
+
+/Recently comparative analyses of complete chloroplast sequences showed that the perception of low variation of chloroplasts within species is wrong when looking at the genomic scale/
+/(Whittall et al., 2010; Besnard et al., 2011; Kane et al., 2012). Kane et al. (2012) suggested that the whole chloroplast genome could be used as an ultra-barcode for identifying plant varieties./ 
+/Furthermore, using one or few regions of the chloroplast genome is not the appropriate approach to describe the level of variability of the chloroplast genome./
+
+** Data allready there, but not used many times ( Data in whole genome data ) / BIG DATA era
+*** 1. BIG DATA / High Throuput -> Automatisation -> Bioinformatics?
+We live in a time, in which you can get good amounts of genomic data for low money. This is possible because of better sequencing technologys in past past view years like Next Generation Sequencing and 3rd Generation Sequencing. 
+Mostly Illumina or Pacbio and the with this technology corresponding highthrougput. *LOOK UP PRIZES* *ILLUMINA VS. PAKBIO?*
+This is often refert as big data or big data era in a biological sense. In Biology there is overwhelmingly much data, espacialy genomic data, that some kind of automatisation in evaluation of data is needed. These automatisation
+can only be achieved with knowledge in both biology and informatics. So the request in bioinformaticians and their tools has grown a large in the past years.  
+*** 2. Data in genomic data -> nucleus / core extraction expensive and many more chloros then core
+Since open sience is also grown with the flood of data, most of this data and also the tools to process and evaluate it, is open for everyone* *LICENSES?*. Because of this much data, the answer to new biological questions may be
+anwseralbe just by using existing data. In genomic plant data for example. For plant squencing ofentimes tissues were used, which contains a lot of chloroplasts (e.g. Leafs). For the genomic questions chloroplasts are rather
+uninteresting* *REALLY?*, beacause they have their own genome. But a nucleus or cellcore extraction can be expensive so it is not used much. So lot of genomic plant data also contains chloroplast or mitochondrial data.  
+*** 3. Data in Data -> chloroExtractor
+To use this chloroplast data in genomic plant data we (github.com/chloroExtractorTeam) wrote a programm called chloroExtractor *CITATION ChloroExtractor*, which assambles chloroplasts deNovo from those datasets. So to anwser question on the chloroplast landscape
+across diffrent plants, there is no need for me to produce new raw data, because there is enough open source data which i can use. 
+*** Squencing (?) Illumina vs. PacBio (?) -> better SV calling?
+** Differences in species ~chloroplast landscape -> GWAS (phenotypes / SNPS )
+*** GWAS
+GWAS is short for Genome-wide association study *ARTHUR GWAS PAPER*. It trys to associate traits like flowering time in Arabidopsis thaliana with single nucleotide polymorphism (SNPs).  
+*** 1001 Genom project on whole genom, maybe also effects can also be seen only on chloros
+The 1001 Genom project, which squenced 1135 different Arabidosis thaliana *1001 GENOM PAPER* focused their GWAS on the whole genome. But maybe the chloroplast itself also contains SNPs which associate with certain 
+traits. The traits were used from *ARAPHENO*. 
+* Material / Methodes
+** Infrastructure used (?)
+** Introducing each tool
+I used different tools to accomblish the extraction of chloroplast DNA from whole genome data. For each tool there was build a docker container to ensure reproducabilaty.  
+
+pipeline
+which assambler?
+need ref?
+coding language
+automized?
+*** chloroExtractor
+The chloroExtractor *REF CHLORO* is the tool which was programmed by the chloroExtractorteam *GITHUB LINK*  from the CCTB *LINK*. ChloroExtractor uses a kmer based approach to detect the chloroplast
+genom in the data. With this approach the choloroExtractor is able to assamble the chloroplast DE NOVO, this means no reference chloroplast is needed. In order to get the kmers chloroExtractor uses
+Jellyfish *JELLYFISH LINK*. To assamble the kmers SPAdes is used. The main parts of the tool are programmed in perl. 
+ 
+** Comparison different tools to extract Chloroplasts out of genomic data
+*** Handling / installation 
+**** Docker container -> Docker in Intro (?)
+**** ( ref needed? -> in Tool introduction )
+*** Time / run time
+**** Time evaluation with `time` and $(date -Iseconds) 
+*** resources needed (?)
+**** Benchmark tests...?
+still no data...
+just estimated RAM values
+*** success rate
+**** SUCCESS
+one circular chloroplast in range
+**** PARTIAL
+more than one contig or non circular chloroplast in range
+**** INCOMPLETE_HIGH / _LOW
+more then one contig not in range
+**** ERROR
+no output / no chloroplasts found
+**** AliTV pictures
+*** standart parameters? 
+**** how good does these work?
+**** how easy to change?
+*** automatisation -> High throughput
+*** reproduceability
+** different input Data / different sizes | amounts of Data
+*** (Gold set ? )
+*** sim reads
+*** 1001 Genom paper
+*** New ones (nocpbase)
+*** GO preprint ( review...? / reproduceability...)
+** Variance Calling
+*** SNPs calling
+*** Differences in the program runs? reproducable? assambler differences? heteroplasty/variants?
+*** GWAS
+** Structure Variance
+* Results / Discussion 
+** fast-plast and chloroExtractor are the best one, cuz success rate
+*** AliTV pictures
+** reproducable of fast-plast meh..., randomnes?
+** 303 of 1135 (1001 Genom) chloroplasts
+** 17 new chloroplasts (nocpbase)
+** GO preprint.... meh GO is useless...
+** SNP calling
+** GWAS
+** SV 
+
+
