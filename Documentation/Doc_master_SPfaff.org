@@ -577,8 +577,7 @@ Plotting seed and total kmers
      File "/IOGA/IOGA.py", line 407, in main
      print '[IOGA] {} {} {} {} {} {} has the highest ALE score'.format(*ALE_score[0])
      IndexError: list index out of range
-**** 1:100
-     
+**** 1:100     
 **** 1:1000
 
 *** O.A
@@ -1762,7 +1761,7 @@ Could not properly orientate the plastome. Either your plastome does not have an
      70.3703703703704% of known angiosperm chloroplast genes were recovered in fp_SRR1945445_1.fastq_afin_iter2.fa.
      Could not properly orientate the plastome. Either your plastome does not have an IR or there was an issue with the assembly. Best contigs are in /home/s229502/Master_thesis/runs/SRR1945445/FP/fp_SRR1945445_1.fastq/Final_Assembly/fp_SRR1945445_1.fastq_afin_iter2.fa. A list of genes in each contig can be found in "Chloroplast_gene_composition_of_final_contigs.txt".
 
-
+     
 
 ** DONE Fixing chloroExtractor bug (scale_reads)
      - State "DONE"       from "PROGRESS"   [2018-02-15 Do 15:11]
@@ -3715,11 +3714,139 @@ need ref?
 coding language
 automized?
 *** chloroExtractor
-The chloroExtractor *REF CHLORO* is the tool which was programmed by the chloroExtractorteam *GITHUB LINK*  from the CCTB *LINK*. ChloroExtractor uses a kmer based approach to detect the chloroplast
+The chloroExtractor *REF CHLORO* is the tool which was programmed by the chloroExtractorteam *GITHUB LINK*  from the CCTB *LINK*. ChloroExtractor uses a kmer based and BLAST+ approach to detect the chloroplast
 genom in the data. With this approach the choloroExtractor is able to assamble the chloroplast DE NOVO, this means no reference chloroplast is needed. In order to get the kmers chloroExtractor uses
-Jellyfish *JELLYFISH LINK*. To assamble the kmers SPAdes is used. The main parts of the tool are programmed in perl. 
+Jellyfish *JELLYFISH LINK*. Kmers of a special region *KMER PLOT* are blasted to verifie that these are chloroplast reads.  To assamble the kmers SPAdes is used. To detect the correct chloroplast the De Brujin graph-based
+method form SPAdes is used. The main parts of the tool are programmed in perl. 
+
+*** fast-plast
+Fast-plast *GITHUBLINK* is another program to extract and find chloroplast genome sequences and mainly programmed in perl and C++. It uses also SPAdes but also Bowtie1, Bowtie2 *LINK BOWTIE* for mapping and also BLAST+ for 
+gene conntent checking. With this approach fast-plast assambles chloroplasts also DE NOVO. 
+
+*** Org.asm
+The ORGanelle ASeMbler (ORG.asm *LINK*) is mostly wirten in phyton and trys to assamble over-represented small sequences in shotgun squence datasets, these could be chloroplasts. 
+
+*** GetOrganelle
+GetOrganelle *GETORGANELLE PAPER* is the first program in this list, which uses a reference, but only to detect the reads using Bowtie2 and BLAST+. It still de novo assambles the contigs using SPAdes.  
+The last step of this one can not be automated. You have to open Bandange *BANDAGE LINK* to visualize the fastg-graph produced by SPAdes and put the chloroplast together per hand.
+
+*** NOVOPlasty
+NOVOPlasty *PAPER LINK* is only wirtten in PERL and has no dependencis at all. The NOVOPlasty uses one configuration file to handle all inputs, from inputfiles to options.   
  
 ** Comparison different tools to extract Chloroplasts out of genomic data
+To evaluate which of the programs perfom best, I compared the tools on different subjects. First, the program handling, so how easy to use is the tool and how well it is documentated.
+My goal was to automize all the tools, so i created for docker container for all of them which had none before *CHLOROEXTRACTORTEAM DOCKER LINKS*. Exept ORG.asm every tool was fairly
+easy to install and use, but the ORG.asm i was only able to use in a docker container at all. It also the only tool which uses more than one command to start the pipline for extracting.
+To automize NOVOPlasty which gets all its options and inputs from a single configuration file, i created a skript to build this.
+For testing i used diffrent Data sets. First i used simulated Data with different chloroplast genome to plant genom ratios (GENOME : CHLOROPLAST: 1:10 / 1:100 / 1:1000). *Link Material - Method SimDATA*. 
+For further tests I used different SRAs form the 1001 Genom Project (*SRA NUMBERS / Athaliana*). 
+| Sim(Genome:Chloroplast)                       | CE  | FP | NP  | GO | OA | IOGA |
+| SRA (1001 Genom / Athaliana                   |     |    |     |    |    |      |
+|                                               |     |    |     |    |    |      |
+|-----------------------------------------------+-----+----+-----+----+----+------|
+| 1:10                                          | S   | S  | S-3 | E  | S  | E    |
+| 1:100                                         | S   | S  | S-3 | E  | S  | -    |
+| 1:1000                                        | S   | S  | S-3 | E  | S  | -    |
+| SRR1945435                                    | I-5 | I  | I-4 | *  | E  | I-6  |
+| SRR1945436                                    | I-6 | S  | I-3 | *  | I  | I-8  |
+| SRR1945437                                    | I-5 | I  | I-4 | *  | I  | I-10 |
+| SRR1945438                                    | S-3 | S  | I-6 | *  | E  | I-10 |
+| SRR1945439                                    | I-4 | S  | I-1 | *  | I  | I-10 |
+| SRR1945440                                    | I-4 | S  | E   | *  | E  | I-9  |
+| SRR1945441                                    | I-5 | S  | E   | *  | I  | I-6  |
+| SRR1945442                                    | I-4 | I  | I-1 | *  | -  | -    |
+| SRR1945443                                    | S   | I  | I-2 | *  | I  | I-8  |
+| SRR1945444                                    | I-4 | I  | E   | *  | I  | I-8  |
+| SRR1945445                                    | I-4 | I  | E   | *  | E  | I_7  |
+|                                               |     |    |     |    |    |      |
+| * GetOrganelle finished but could             |     |    |     |    |    |      |
+|   not easily finished in Bandage per hand     |     |    |     |    |    |      |
+
+| SRR         | CE             | FP             | GO             | IOGA           | NP             | OA             |
+| ERR2144882: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| ERR268390:  | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | SUCCESS        | SUCCESS        |
+| ERR268421:  | INCOMPLETE_low | PARTIAL        | INCOMPLETE_low | INCOMPLETE_low | PARTIAL        | SUCCESS        |
+| ERR845262:  | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        |
+| ERR964904:  | ERROR          | INCOMPLETE_low | INCOMPLETE_low | ERROR          | PARTIAL        | ERROR          |
+| SRR072296:  | PARTIAL        | PARTIAL        | INCOMPLETE_low | PARTIAL        | SUCCESS        | ERROR          |
+| SRR1145775: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR1919543: | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        |
+| SRR1925329: | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | PARTIAL        | PARTIAL        | PARTIAL        |
+| SRR1946759: | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        | NO_PAIR        |
+| SRR3089810: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | PARTIAL        | SUCCESS        |
+| SRR3656962: | SUCCESS        | SUCCESS        | ERROR          | PARTIAL        | PARTIAL        | INCOMPLETE_low |
+| SRR4099903: | PARTIAL        | SUCCESS        | PARTIAL        | ERROR          | INCOMPLETE_low | ERROR          |
+| SRR4099904: | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | INCOMPLETE_low | ERROR          |
+| SRR4428742: | PARTIAL        | SUCCESS        | PARTIAL        | ERROR          | SUCCESS        | PARTIAL        |
+| SRR5028798: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | SUCCESS        | PARTIAL        |
+| SRR5152976: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602572: | SUCCESS        | PARTIAL        | ERROR          | ERROR          | PARTIAL        | ERROR          |
+| SRR5602573: | PARTIAL        | PARTIAL        | ERROR          | ERROR          | INCOMPLETE_low | ERROR          |
+| SRR5602574: | ERROR          | SUCCESS        | ERROR          | ERROR          | ERROR          | ERROR          |
+| SRR5602575: | INCOMPLETE_low | SUCCESS        | ERROR          | ERROR          | ERROR          | ERROR          |
+| SRR5602576: | ERROR          | PARTIAL        | SUCCESS        | ERROR          | ERROR          | INCOMPLETE_low |
+| SRR5602577: | PARTIAL        | PARTIAL        | ERROR          | ERROR          | INCOMPLETE_low | ERROR          |
+| SRR5602578: | INCOMPLETE_low | SUCCESS        | PARTIAL        | ERROR          | ERROR          | ERROR          |
+| SRR5602579: | ERROR          | PARTIAL        | ERROR          | ERROR          | ERROR          | ERROR          |
+| SRR5602581: | INCOMPLETE_low | SUCCESS        | PARTIAL        | ERROR          | ERROR          | ERROR          |
+| SRR5602582: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| SRR5602583: | ERROR          | INCOMPLETE_low | PARTIAL        | INCOMPLETE_low | ERROR          | ERROR          |
+| SRR5602584: | SUCCESS        | SUCCESS        | PARTIAL        | ERROR          | INCOMPLETE_low | SUCCESS        |
+| SRR5602585: | SUCCESS        | PARTIAL        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602586: | INCOMPLETE_low | PARTIAL        | SUCCESS        | ERROR          | INCOMPLETE_low | PARTIAL        |
+| SRR5602587: | ERROR          | PARTIAL        | PARTIAL        | ERROR          | ERROR          | ERROR          |
+| SRR5602588: | SUCCESS        | PARTIAL        | ERROR          | PARTIAL        | INCOMPLETE_low | SUCCESS        |
+| SRR5602589: | SUCCESS        | SUCCESS        | ERROR          | ERROR          | INCOMPLETE_low | SUCCESS        |
+| SRR5602590: | PARTIAL        | PARTIAL        | ERROR          | PARTIAL        | ERROR          | ERROR          |
+| SRR5602591: | INCOMPLETE_low | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602592: | SUCCESS        | SUCCESS        | ERROR          | PARTIAL        | PARTIAL        | ERROR          |
+| SRR5602593: | SUCCESS        | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| SRR5602594: | INCOMPLETE_low | SUCCESS        | ERROR          | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602595: | ERROR          | INCOMPLETE_low | PARTIAL        | ERROR          | INCOMPLETE_low | ERROR          |
+| SRR5602596: | INCOMPLETE_low | PARTIAL        | ERROR          | PARTIAL        | ERROR          | ERROR          |
+| SRR5602597: | PARTIAL        | SUCCESS        | ERROR          | ERROR          | INCOMPLETE_low | ERROR          |
+| SRR5602598: | ERROR          | SUCCESS        | ERROR          | PARTIAL        | ERROR          | INCOMPLETE_low |
+| SRR5602599: | SUCCESS        | SUCCESS        | ERROR          | PARTIAL        | SUCCESS        | SUCCESS        |
+| SRR5602600: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| SRR5602601: | PARTIAL        | PARTIAL        | PARTIAL        | ERROR          | ERROR          | ERROR          |
+| SRR5602602: | SUCCESS        | SUCCESS        | ERROR          | PARTIAL        | SUCCESS        | SUCCESS        |
+| SRR5602603: | ERROR          | SUCCESS        | ERROR          | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602604: | PARTIAL        | SUCCESS        | ERROR          | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602605: | SUCCESS        | PARTIAL        | PARTIAL        | ERROR          | PARTIAL        | ERROR          |
+| SRR5602606: | INCOMPLETE_low | SUCCESS        | ERROR          | PARTIAL        | INCOMPLETE_low | SUCCESS        |
+| SRR5602607: | INCOMPLETE_low | PARTIAL        | PARTIAL        | PARTIAL        | ERROR          | ERROR          |
+| SRR5602608: | PARTIAL        | SUCCESS        | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          |
+| SRR5602609: | ERROR          | SUCCESS        | ERROR          | PARTIAL        | ERROR          | ERROR          |
+| SRR5602610: | ERROR          | PARTIAL        | PARTIAL        | INCOMPLETE_low | ERROR          | ERROR          |
+| SRR954512:  | PARTIAL        | PARTIAL        | PARTIAL        | ERROR          | SUCCESS        | SUCCESS        |
+| SRR955759:  | SUCCESS        | SUCCESS        | PARTIAL        | ERROR          | INCOMPLETE_low | SUCCESS        |
+
+
+
+| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      |      14 | ~26% |    11 |      17 |      12 |       3 |       0 |       |
+| FP      |      31 | ~57% |     0 |      18 |       5 |       3 |       0 |       |
+| GO      |       2 | ~4%  |    21 |      26 |       5 |       3 |       0 |       |
+| IOGA    |       0 | ~0%  |    22 |      28 |       4 |       3 |       0 |       |
+| NP      |       7 | ~13% |    19 |       8 |      20 |       3 |       0 |       |
+| OA      |      11 | ~20% |    36 |       4 |       3 |       3 |       0 |       |
+| Summary |      40 | ~74% |     - |       - |       - |       3 |       - |    57 | 
+SUCCESS: one circular chloroplast in range
+PARTIAL: more than one contig or non circular chloroplast in range
+INCOMPLETE_HIGH / _LOW: more then one contig not in range
+ERROR: no output / no chloroplasts found
+
+After this first test runs, I used data from the GetOrganelle puplication (pre-print *CITATION*) to first further test the programs, and also to be able to reproduce the claimed success for the GetOrganelle.
+Like in the privious tests the fast-plast and the chloroExtractor had the highest success rate. Also this two had the lowest error rate. The GetOrganell puplication claimed that these are all SRAs which 
+the GetOrganelle would succed on, I was not able to reproduce this claim. But also the GetOrganelle is only tool which had an non automized step. They had to use Bandage to get their finished chloroplast.
+This was done per hand on every on this SRAs and on 900 more. I looked into a few finished runs from GetOrganelle with Bandage. There were some which could be easily done per hand but also some which,
+in my opinion could not be resolved per hand. So they may be tuned the GetOrganelle with different options for every single SRA, which is not the automized way I wanted to use. So I decided not to
+use the GetOrganelle on further data. I also decided not to use IOGA, NOVOPlasty and ORG.Asm on the further steps on this research. IOGA tend to need a large amount of time compared to 
+the other programs, for example the two simulated dataset (1:100, 1:1000) i canceled the runs after two whole weeks, also the the other simulated set could not be finished properly. It had the 
+lowest success rate overall on both, the 1001 Genom Data and the GetOrganell Preprint data. NOVOPlasty also like Org.ASM had a lower successrate and a higher error rate then chloroExtractor.
+  
+ 
+
 *** Handling / installation 
 **** Docker container -> Docker in Intro (?)
 **** ( ref needed? -> in Tool introduction )
@@ -3729,6 +3856,18 @@ Jellyfish *JELLYFISH LINK*. To assamble the kmers SPAdes is used. The main parts
 **** Benchmark tests...?
 still no data...
 just estimated RAM values
+
+We testet the several programs in successrate, RAM usage and time on our maschines. 
+RAM is estimated -> 2M reads per file (2 files paired end Illumina ~200bp per read)
+-FP ~60G RAM
+-CE ~20G RAM
+-GO ~50G
+-OG ~30G
+-NP ~30G
+time can variate on which maschine it was running, CPU time? Time command
+
+
+
 *** success rate
 **** SUCCESS
 one circular chloroplast in range
