@@ -1,119 +1,174 @@
+#+LaTeX_CLASS: scrartcl
+#+OPTIONS: H:4 num:nil toc:t \n:nil @:t ::t |:t ^:t -:t f:t *:t <:t
+#+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:nil pri:nil tags:nil title:nil 
+#+LATEX: \begin{center}
+#+LATEX: \thispagestyle{empty}
+#+LATEX: \textbf{\huge Seperating the good from the bad.. Exploring the genomic landscape of chloroplasts from genomic sequencing datatreductionMaster Thesis}\\[1cm]
+#+LATEX: \textbf{\LARGE }\\[1cm]
+#+LATEX: {\LARGE Simon Pfaff}\\[2mm]
+#+LATEX: \includegraphics[width=.7\linewidth]{/home/simon/BA-Thesis/neuSIEGEL.pdf}
+#+LATEX: {\large Julius-Maximilians-Universität Würzburg}\\[3mm]
+#+LATEX: {\large Fakultät für Biologie}
+#+LATEX: \end{center}
+#+LATEX: \cleardoublepage
+#+LATEX: \
+#+LATEX: \thispagestyle{empty}
+#+LATEX: \maketitle
+#+LATEX: \begin{center}
+#+LATEX: \includegraphics[width=.5\linewidth]{/home/simon/BA-Thesis/neuSIEGEL.pdf}\\[1cm]
+#+LATEX: {\large Julius-Maximilians-Universität Würzburg}\\
+#+LATEX: {\large Betreuer: Dr. Markus Ankenbrandt}\\
+#+LATEX: {\large Betreuer: Prof. Dr. Jörg Schulz}\\
+#+LATEX: {\large Lehrstuhl für Bioinformatik / CCTB}
+#+LATEX: \setcounter{page}{1}
+#+LATEX: \clearpage
+#+LATEX: \end{center}
+#+LATEX: \tableofcontents
+#+LATEX: \clearpage
 * Intro
+Seperating the good from the bad...
+Exploring the genomic landscape of chloroplasts from genomic sequencing datatreduction
+** Open Science
+** Chloroplasten
+Chloroplasten sind extrem wichtig, alle Pflanzen besitzen diese und nutzen sie um Energie in Form von ATP durch Photosynthese zu erzeugen.
+Sie gelten als hoch konserviert, sowohl in der Gen Orientierung als auch dem Gen Inhalt [1]. Chloroplasten zeigen
+eine auffällige Genom Struktur, das Genom ist ein einem Plasmid welches sich in drei Teile aufteilt. Dem Large Single Copy, dem 
+Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind. Chloroplasten zeigen eine viel geringere Substitutions raten
+als in Genomischer DNA, diese ist nocheinmal signifikant geringer in den Inverted repeat Regionen [2]. Dennoch zeigen sich
+Einzelnucleotid-Polymorphismen (SNPs). Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
+fallen kann, sodass solche Chloroplasten nur noch ein IR besitzen [3] *LINK PAPER*. Vor allem in gezüchteten Nutzpflanzen finden sich auch 
+Invertierungen des IR [4]. Durch ihre hohe Konservierung sind Chloroplasten und ihre Gene sehr gut für Metabarcoding geeignet. Mit diesem
+Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien zeigen, dass der komplette Chloroplast selbst als ein Art "Ultra-barcode"
+verwendet werden könnte, da die Variation in Chloroplasten in einer Spezies doch mehr variiert als angenommen [5]. 
+** Big Data
+
+   
 * Material / Methoden
-** Verwendete Progamme
+** Verwendete Programme
 *** chloroExtractor
+Der chloroExtractor *LINK* ist eines der verwendeten Programme zum extrahieren von Chloroplasten
+DNA aus Whole Genome Batches *ÜBERSETZUNG?*, es ist hauptsächlich in Perl5 *PERL LINK* geschrieben.
+Es wurde 2018 von chloroExtractorTeam veröffentlicht *PAPER LINK*. ChloroExtractor benutzt eine Kombination
+aus BLAST+ *LINK* und kmer-basierendem suchen, um die Chloroplasten reads zu detektieren und zu extrahieren.
+Für das erstellen der kmers wird Jellyfish *LINK* verwendet.
+Die gefunden reads werden mit SPAdes assembliert, dies geschieht de novo, d.h. es ist keine Referenz von Nöten.
+SPAdes verwendet eine De Brujin-Graphen Methode um die reads richtig zusammen zu fügen, und den Chloroplasten zu erzeugen. 
 *** fast-plast
+Fast-plast *LINK* ist ein weiteres Programm, welches verwendet wird um Chloroplasten DNA zu finden. Es ist in Perl und in C++ programmiert und verwendet auch SPAdes, 
+aber zusätzlich Bowtie1 sowie Bowtie2. Auch hier wird Blast+ verwendet um die richtigen reads zu finden. 
 *** NOVOPlasty
+Im Gegensatz zu den anderen verwendeten Programmen, benutzt NOVOPlasty *GITHUB LINK* keine dritt Anbieter Programme. Es benötigt somit keine Abhängigkeiten von deren Programmen
+und ist komplett in Perl programmiert. NOVOPlasty benutzt sogenannte seeds um Chloroplasten DNA zu finden, dies können einzelne Chloroplasten Gene sein, aber auch in kompletter
+Chloroplast. 
 *** Org.ASM
+Org.ASM *LINK* ist ein Programm hauptsächlich geschrieben in Python. Es versucht überrepräsentierte Sequenzen zu finden und diese zu assemblieren. Da Chloroplasten im Schnitt häufiger vorkommen
+als die Kern DNA wird diese somit gefunden.
 *** GetOrganelle
+GetOrganelle *Paper Link* verwendet zum lokieren der Chloroplasten reads ähnlich wie andere Programme Bowtie2 und Blast+, nur muss hier eine Referenz mitgegeben werden. Diese wird nur hierfür
+verwendet, das assemblieren hingegen geschieht de novo mit SPAdes. Wie auch beim chloroExtractor wird hier  der fastg-Graph verwendet um den Chloroplasten zu finden, aber dies muss in falle 
+des GetOrganelle per Hand, mit Hilfe des Programms Bandage vollzogen werden. 
 *** IOGA
+Der Iterative Organellar Genome Assambly, kurz IOGA *LINK* verwendet BBmap für das filtern und trimmen der reads, um anschließend mit SOAPdenovo2 und SPAdes die reads zu assemblieren. Auch dieses
+Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben. 
+
 ** Vergleichen der verwendeten Programme
 Um die oben genannten Programme zu vergleichen habe ich mir verschiedene Ansätze überlegt.
 Um zunächst zu testen wie genau die Programme funktionieren und ob diese überhaupt funktionieren,
-habe ich sie auf dem Testset SRR5216995 mit eine millionen reads getestet. Dieses Set war das erste
-auf dem wir den chloroExtractor in der betaphase getestet hatten und erfolgreich waren. Um eine 
-Automatisierung zu erhalten muss für jedes Programm ein Dockercontainer gebaut werden, fals nicht 
+habe ich sie auf dem Testset SRR5216995 mit eine Millionen reads getestet. Dieses Set war das erste
+auf dem wir den chloroExtractor in der Betaphase getestet hatten und erfolgreich waren. Um eine 
+Automatisierung zu erhalten muss für jedes Programm ein Dockercontainer gebaut werden, falls nicht 
 schon einer vorhanden ist, letzteres trifft nur für den chloroExtractor zu. Um das Ziel zu erreichen
-so viele Chloroplasten wie möglich zu extrahieren, musste eine Automatierungs Lösung für alle Programme
+so viele Chloroplasten wie möglich zu extrahieren, musste eine Automatisierungslösung für alle Programme
 erstellt werden, damit keine evtl. Manuelle Schritte oder Auswertungen der zeitbestimmende Schritt sind.
-Um dies zu erreichen musste ich zusätzlich einige bash skripte *ANHANG?* schrieben welche eine volle
+Um dies zu erreichen musste ich zusätzlich einige Bash Skripte *ANHANG?* schrieben welche eine volle
 Automatisierung ermöglichen.   
-*** Daten: Simmulierte Daten
-Um weitere Tests durchzuführen wurden drei verschiedene Testdatensätze aus simmulierten Daten mit 
-hilfe von ART *Art LINK* erstellt. Die verschiedenen Datensätze beeinhalten eine unterschiedliche 
-menge von Chloroplasten DNA im verhältniss zur restlichen Genomischen DNA (Genom : Chloroplast - 1:10, 1:100, 1:1000). 
-Um zunnächst keine Probleme mit Mitochondrien zu bekommen, ist deren DNA anteil nicht mit simmuliert worden. 
-Für die simmulation wurden Daten des TAIR10 (*link*) Arabidospsis Thaliana Datensatzes
+*** Daten: Simulierte Daten
+Um erste Tests durchzuführen wurden drei verschiedene Testdatensätze aus simulierten Daten mit 
+Hilfe von ART *Art LINK* erstellt. Diese Tests wurden vor allem durchgeführt um zu überprüfen wie gut die 
+verschiedenen Programme mit unterschiedlichen Anteilen an Chloroplasten klar kommen, oder ob diese evtl. 
+einen besonders hohen oder niedrigen Anteil an dessen brauchen. Die verschiedenen Datensätze beinhalten eine unterschiedliche 
+menge von Chloroplasten DNA im Verhältnis zur restlichen Genomischen DNA (Genom : Chloroplast - 1:10, 1:100, 1:1000). 
+Um zunächst keine Probleme mit Mitochondrien zu bekommen, ist deren DNA Anteil nicht mit simuliert worden. 
+Für die Simulation wurden Daten des TAIR10 (*link*) Arabidospsis Thaliana Datensatzes
 verwendet. Um die verschiedenen Datensätze zu erhalten wurden Chloroplasten DNA und Genomische DNA 
-zusammenkopiert und dann mit folgendem Aufruf von ART simmuliert:
+zusammenkopiert und dann mit folgendem Aufruf von ART simuliert:
 
 '1:10 : ./art_illumina -p -i sequence-arabidopsis-thaliana-kern-chl-1zu10.fa -l 150 -f 100 -o a_thaliana_1_10_sim -m 500 -s 150'
 
-Diese Tests wurden vor allem durchgeführt um zu überprüfen wie gut die verschiedenen Programme mit 
-unterschiedlichen Anteilen an Chloroplasten klar kommen, oder ob diese evtl. einen besonders hohen oder 
-niedrigen Anteil an dessen brauchen.
 *** Daten: 1001 Genom Projekt 
-Parallel zu den Tests mit simmulierten Daten, wurden die ersten Tests mit realen Datensätzen vorgenommen. 
-Hierzu wurden Daten aus dem 1001 Genom Project verwendet, dies sind alles Arabidopsis thaliana. Es wurden
-10 Datensätze ( SRR1945435 - SRR1945445 ) verwendet um einen ersten Eindruck über die Programme und deren 
-Erfolgsrate zu bekommen.
+Um einen ersten Eindruck über die Programme und deren Erfolgsrate zu bekommen wurden parallel zu den Tests mit simulierten Daten, die ersten Tests mit realen Datensätzen vorgenommen. 
+Hierzu wurden Daten aus dem 1001 Genom Projekt verwendet, dies sind alles Arabidopsis thaliana. Es wurden 11 Datensätze ( SRR1945435 - SRR1945445 ) verwendet. Diese sind alle
+frei verfügbar und wurden von NCBI heruntergeladen. 
 
 *** Daten: GetOrganelle-Paper preprint
-Noch wärend einige Testdaten rechneten, veröffentlichte das Program GetOrganelle ihre
+Noch während einige Testdaten rechneten, veröffentlichte das Team hinter dem GetOrganelle ihre
 Wissenschaftliche Arbeit zu diesem Programm. Hier wurden bei 47 Datensätze von 57 direkt mit
 dem GetOrganelle erfolgreich zirkuläre Chloroplasten extrahiert. Diese 57 Datensätze sind 
 auch öffentlich zugänglich und wurden auf allen sechs verschiedenen Programmen verwendet um 
-entgültig zu entscheiden welche Programme weiterverwendet werden sollen und welche nicht 
-den anforderungen genügen
+endgültig zu entscheiden welche Programme weiterverwendet werden sollen und welche nicht 
+den Anforderungen genügen
 
 *** Welche Programme werden weiter verwendet.     
 Um alle Daten aus dem 1001 Genom Projekt (1135 Datensätze) zu berechnen, mussten aufgrund 
-von Hardwaretechnischen limitierungen zwei Programme ausgewählt werden. Diese beiden Programme müssen in
+von Hardwaretechnischen Limitierungen die besten Programme ausgewählt werden. Diese Programme müssen in
 in Geschwindigkeit sowie in Erfolgs- und Fehlerrate überzeugen. Desweiteren müssen diese Programme gut automatisierbar sein, 
 d.h. am besten mit nur Befehl gestartet werden können, sodass kein weiterer Aufwand anfällt. Dies gilt
-vor allem auch bei der wahl der Parameter mit denen das Program gestartet wird. Diese können nicht 
-für jeden Datensatz angepasst werden, was bedeutet dass die Standartparameter verwendet werden.
+vor allem auch bei der Wahl der Parameter mit denen das Programm gestartet wird. Diese können nicht 
+für jeden Datensatz angepasst werden, was bedeutet dass die Standardparameter verwendet werden.
 Dies ist notwendig um einen hohen Durchsatz an Berechnungen zu ermöglichen.
 **** Automatisierung
-Alle Programme konnten mit Hilfe von einigen Scripts und dem erstellen eines Dockercontainers, so 
-automatisiert werden das sie einen hohen durchsatz erreichen können. Das Einzige Program welches
+Alle Programme konnten mit Hilfe von einigen Skripts und dem erstellen eines Dockercontainers, so 
+automatisiert werden das sie einen hohen Durchsatz erreichen können. Das Einzige Programm welches
 einen Händischen Schritt benötigt ist der GetOrganelle, hier muss die fastg Datei in Bandage
-geöffnet werden und der zirkuläre Chloroplast selbst heraus gesucht werden. Da Bandage eine 
-ehr schlechte Kommandozeilen anbindung hat und alles über das Grafische Interface gemacht werden muss
-fällt der GetOrganelle bereits hier aus dem rennen, da er die anforderung der Automatisierung nicht erfüllt. 
+geöffnet werden und der zirkuläre Chloroplast selbst heraus gesucht werden. 
 **** Erfolgsrate
 Nächster Kritikpunkt nachdem gefiltert wurde welche Programme verwendet werden, war die Erfolgsrate.
-Sowohl bei den Daten des 1001 Genom Projekts als auch bei den 57 des GetOrganelle-Preprints ist der klare 
-Sieger in der Erfolgsrate fast-plast (siehe Tab. 1, Tab. 2, Tab. 3). Der nächst beste ist der chloroExtractor.
-Um zu ermitteln ob ein Chloroplast komplett erstellt wurde, wurden zum einen die Outputs der Programme mit einem
-Skript *ANHANG ev_scripts* gescannt, als auch die ausgegebene fasta Datei überprüft ob diese eine Sequenz enthällt
-und in den Grenzen eines Chloroplasten Genomes liegt. 
+Sowohl bei den Daten des 1001 Genom Projekts als auch bei den 57 des GetOrganelle-Preprints).
+Um zu ermitteln ob ein Chloroplast komplett erstellt wurde, wurden zum einen die Ergebnisse der Programme mit einem
+Skript *ANHANG ev_scripts* gescannt, als auch die ausgegebene fasta Datei überprüft ob diese eine Sequenz enthält
+und in den Grenzen eines Chloroplasten Genoms liegt. 
 **** Geschwindigkeit
-Einer der weniger entscheidenten aber dennoch wichtigen Punkte nach dem gefiltert wurde ist die Geschwindigeit, 
-oder besser die Laufzeit der Programme. Zunächst wurde hier die durchschnitts zeit genommen die der Prozess zum rechnen benötigt,
-anschließend wurde mit dem time linux kommando die CPU als auch die Realzeit gemessen.
-Hier konnte mit knapp 30 minuten pro Datensatz der chloroExtractor übezeugen. Der fast-plast läuft im Schnitt eine Stunde.
-*LAUFZEIT ANDERE PROGRamME - nachgucken*
+Einer der weniger entscheidenden aber dennoch wichtigen Punkte nach dem gefiltert wurde ist die Geschwindigkeit, 
+oder besser die Laufzeit der Programme. Zunächst wurde hier die Durchschnitts zeit genommen die der Prozess zum rechnen benötigt,
+anschließend wurde mit dem time linux Kommando die CPU als auch die Realzeit gemessen.
 **** Benötigte Ressourcen
-Ein weiterer Punkt nachdem aussoritert wurde ist der benötigte RAM verbrauch. Hier konnten nur annäherungs und erfahrungswerte
-benutzt werden. Hier konnte vor allem der chloroExtractor mit nur knapp 20 GB RAM überzeugen. NOVOPlasty und Org.ASM benötigten beide 
-knapp 30GB, GetOrganelle knapp 50GB, und fast-plast bist zu 60GB. Alle diese Daten beruhen auf Durchläufen mit paired-end Dateien, 200 basen
-paare pro read mit zwei Millionen reads pro Datei. 
-**** Sieger 
-Die beiden Programme welche in diesen Punkte überzeugt haben sind der fast-plast und der chloroExtractor. Der fast-plast benötigt zwar die 
-meisten Resourcen und ist nicht der schnellste, aber hat mit Abstand die größte Erfolgschance. Zudem ist er voll automatisierbar und erreicht 
-dies mit den Vorgegebenen Parametern. Als zweites Program wird der chloroExtractor verwendet, dieser ist schnell resourcen arm und hat nach dem
-fast-plast die zweithöchste Erfolgsrate. Diese beiden Programme werden auf allen Daten des 1001 Genom Projekts laufen gelassen, um möglichst viele 
-Chloroplasten zu generieren. 
+Ein weiterer Punkt nachdem aussortiert wurde ist der benötigte RAM verbrauch. Hier konnten nur Annäherung und Erfahrungswerte
+benutzt werden.  
 
+  
+
+** Erzeugen von Chloroplasten aus genomischen Daten
+Um so viele Chloroplasten wie möglich aus den genomischen Daten des 1001 Genom Projekts raus zu holen, wurden der fast-plast und der chloroExtractor benutzt.
+Diese wurden mit Hilfe eines Dockercontainers und einigen Skripts (s. Anhang) voll automatisiert. Sodass nur ein Befehl nötig war um die komplette 
+Pipeline zu starten und auszuwerten. 
 
 * Ergebnisse
-** Daten: Simmulierte Daten 
-Die Ergebnisse aus den Simmulierten Daten sind in Tabelle 1 zu sehen. S steht für Success, E für Error, die Zahl dahinter gibt die Anzahl der einzelnen contigs an
-die vom Programm ausgegeben werden. Der GetOrganlle bricht bei allen drei Sets mit einem Fehler ab, der nicht behoben werden konnte. Auch der IOGA schafft es nicht 
-die drei Datensets zu berechnen. Das 1:10 set brach mit einem Fehler ab, und 1:100 als auch 1:1000 wurden nach 2 Wochen laufzeit abgebrochen.
-NOVOPlasty schafft es die richtigen Breiche des Chloroplasten auszugeben (IR, SSC, LSC) verbindet diese aber nicht zu einem zirkulären Chloroplasten.
-ChloroExtractor, fast-plast und Org.ASM schaffen alle einen zirkulären Chloroplasten auf jedem Datensatz zu erzeugen.
+** Daten: Simulierte Daten 
+Die Simulierten Daten, welche erzeugt wurden um das verhalten der Programme bei verschiedenen Verhältnissen zu testen, konnten von drei Programmen, dem chloroExtractor, fast-plast und Org.ASM 
+bei allen drei Datensätzen geschafft werden. Diese bauen einen vollständigen zirkulären zu bauen. NOVOPlasty baut zwar auch einen kompletten Chloroplasten doch gibt dieser 
+nur die drei verschieden contigs aus (IR, SSC, LSC), und schafft es nicht diese in einen zirkulären Chloroplasten zu vereinen. GetOrganelle wie auch der IOGA schaffen es nicht die
+simulierten Datensetz zusammen zu bauen da sie mit einem Fehler abbrechen oder wie im falle des IOGA nach zwei Wochen laufzeit abgebrochen werden. (s. Tabelle 1) 
 
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrrrrrr
+#+LATEX: \caption[Test Datensatz: Simmulierte Daten]{\textbf{Test Datensatz: Simmulierte Daten} S steht für Success, E für Error, die angegebene Zahl steht für die anzahl der Contigs }
 |     Sim(Genome:Chloroplast) | CE | FP | NP  | GO | OA | IOGA |
 |                             |    |    |     |    |    |      |
 |-----------------------------+----+----+-----+----+----+------|
 |                        1:10 | S  | S  | S-3 | E  | S  | E    |
 |                       1:100 | S  | S  | S-3 | E  | S  | -    |
 |                      1:1000 | S  | S  | S-3 | E  | S  | -    |
-Tab.1
+#+LATEX: \end{table}
 
+** Daten: 1001 Genom Projekt, 11 Testdatensätze
+Von den elf Testdatensätzen des 1001 Genom Projekts konnten sechs verschiedene vollständige zirkuläre Chloroplasten zusammengebaut werden. Von diesen
+sechs bringt der fast-plast fünf ein und der chloroExtractor einen. Keines der anderen Programme konnte einen weiteren 
+zirkulären Chloroplasten erzeugen (s. Tab.2). Da GetOrgranelle einen händischen Schritt in der Auswertung beinhaltet wurden diese
+nicht erzeugt, da eine Automatisierung aller Schritte essenziell für eine hochdurchsatz Methode ist.
 
-** Daten: 1001 Genom Projekt, 10 Testdatensätze
-In Tabelle 2 zeigen sich die Ergebnisse aus den zehn Datensätze die angefertigt wurden um die Programme zu testen. Wieder steht 
-S für Success, I für Incomplete und E für Error. Die zahl dahinter steht für die anzahl der contigs, überschreitet diese drei so kann sicher sein
-dass IR, SSC und LSC nicht korrekt identifiziert worden sind und sommit kein Chloroplast vorhanden ist. Sind es genau drei so ist der Chloroplast
-zwar genau identifiziert worden, aber dennoch nicht zirkulär. Die Daten des GetOrganelle wurden nicht weiter ausgewertet, da dies einen Händischen
-Schritt mit hilfe von Bandage benötigt. Da dies gegen den Kritikpunkt der Automatisierung spricht wurde es nicht vorgenommen.
-Zu sehen ist, dass fast-plast die höchste Erfolgsrate hat mit fünf von zehn, danach mit zwei von zehn der chloroExtractor. Datensätze die mit Incomplete
-versehen wurden haben entweder zu viele Contigs, oder unter- bzw. überschreiten die Grenzen eines Chloroplastgenomes. So hatt NOVOPlasty z.b. bei SRR1945442
-ein Contig, aber dieses hat nur knapp 70 kbp., was viel zu klein ist für einen kompletten chloroplasten.
-
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrrrrrr
+#+LATEX: \caption[Test Datensatz: 1001 Genom Project, 11 Datensätze]{\textbf{Test Datensatz: 1001 Genom Project} S steht für Success, E für Error, I für Incomplete, die angegebene Zahl steht für die Anzahl der Contigs }
 
 | SRA        | CE  | FP | NP  | GO | OA | IOGA |   |
 |            |     |    |     |    |    |      |   |
@@ -129,14 +184,16 @@ ein Contig, aber dieses hat nur knapp 70 kbp., was viel zu klein ist für einen 
 | SRR1945443 | S   | I  | I-2 | *  | I  | I-8  |   |
 | SRR1945444 | I-4 | I  | E   | *  | I  | I-8  |   |
 | SRR1945445 | I-4 | I  | E   | *  | E  | I_7  |   |
-Tab. 2
+#+LATEX: \end{table}
 
 ** Daten: GO-Preprint
-Von 57 Datensätzen, welche im GetOrganelle Paper verwendet wurden, konnten 40 mit allen Programmen fertig gestellt werden.
-Alleine der fast-plast hat dabei 31 stück zu einem zirkulären Chloroplasten zusammengebaut. Zusammen mit den 14 des chloroExtractors
+Von 57 Datensätzen, welche im GetOrganelle Paper verwendet wurden, konnten 40 mit allen Programmen fertig gestellt werden (s. Tab. 3).
+Alleine der fast-plast hat dabei 31 Stück zu einem zirkulären Chloroplasten zusammengebaut. Zusammen mit den 14 des chloroExtractors
 konnten die 40 geschafften Chloroplasten komplett abgedeckt werden. *Komplette Tabelle im Anhang*
 
-
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrrrrrrrr
+#+LATEX: \caption[Test Datensatz: GetOrganelle Preprint, 11 Datensätze]{\textbf{Test Datensatz: GetOrganelle Preprint} 40 von 57 Datensätze konnten komplett gelöst werden.}
 | Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
 | CE      |      14 | ~26% |    11 |      17 |      12 |       3 |       0 |       |
 | FP      |      31 | ~57% |     0 |      18 |       5 |       3 |       0 |       |
@@ -145,4 +202,73 @@ konnten die 40 geschafften Chloroplasten komplett abgedeckt werden. *Komplette T
 | NP      |       7 | ~13% |    19 |       8 |      20 |       3 |       0 |       |
 | OA      |      11 | ~20% |    36 |       4 |       3 |       3 |       0 |       |
 | Summary |      40 | ~74% |     - |       - |       - |       3 |       - |    57 |
-Tab. 3
+#+LATEX: \end{table}
+
+
+** Die Sieger *besser überschrifft finden...?*
+Da aus Hardware Technischen gründen nicht alle Programme weiterverwendet wurden, wurde nach Erfolgsrate, Geschwindigkeit und benötigten Ressourcen
+gefiltert, am wichtigsten ist aber die Automatisierbarkeit der Programme. Bis auf der GetOrganelle konnte für jedes Programm eine Automatisierbarkeit
+erwirkt werden. Der GetOrganelle benötigt das öffnen der fastg Datei in einem Visualisierungs Programm für fastg-Graphen, hier wird Bandage empfohlen.
+Bandage hat allerdings eine schlechte Kommandozeilen Anbindung wodurch auch keine Automatisierbarkeit durch Skripts erfolgen kann, wie bei anderen 
+Auswertungen. Die Laufzeiten der Programme unterscheiden sich sehr, von 30 Minuten bis über eine Stunde, auch die RAM werte sind sehr unterschiedlich, diese
+reichen von wenigen 20 Gigabyte bis zu 60 Gigabyte. All diese Werte sind Durchschnittswerte, die verwendeten Sets beinhalteten zwei Millionen reads, mit ~150 Basen Paaren pro read. 
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrr
+#+LATEX: \caption[Laufzeit und Ressourcenverbrauch]{\textbf{Laufzeit und Ressourcenverbauch} Alle Laufzeiten sind Durchschnittsdaten, RAM werte sind Erfahrungswerte, und geben den höchstverbrauch an.}
+| Tool | Laufzeit  | RAM     |
+|------+-----------+---------|
+| CE   | ~  30 min | ~ 20 GB |
+| FP   | ~  60 min | ~ 60 GB |
+| GO   | ~  40 min | ~ 50 GB |
+| IOGA | ~ 100 min | ~ 40 GB |
+| NP   | ~  30 min | ~ 30 GB |
+| OA   | ~  60 min | ~ 30 GB |
+|      |           |         |
+#+LATEX: \end{table}    
+Die Programme welche in oben genannten Punkte überzeugt haben sind der fast-plast und der chloroExtractor. Der fast-plast benötigt zwar die 
+meisten Ressourcen und ist nicht der schnellste, aber hat mit Abstand die größte Erfolgschance. Zudem ist er voll automatisierbar und erreicht 
+dies mit den vorgegebenen Standard Parametern. Als zweites Programm wird der chloroExtractor verwendet, dieser ist schnell Ressourcen arm und hat nach dem
+fast-plast die zweithöchste Erfolgsrate. Mit beiden Programmen konnten alle 40 von 57 Chloroplasten der GetOrganelle-Preprint Daten berechnet werden.
+Auch die anderen Daten zeigen dass es keinen Vorteil bringt ein drittes Programm mit zu verwenden, da keines der anderen Programme einen
+Chloroplasten finden konnte welche nicht schon durch den fast-plast oder den chloroExtractor gefunden wurde.
+Diese beiden Programme wurden auf allen Daten des 1001 Genom Projekts laufen gelassen, um möglichst viele Chloroplasten zu generieren. 
+** 1001 Genom Projekt
+Ziel so viele Chloroplasten wie möglich vollautomatisch aus kompletten Genom Datensätze zu erzeugen, wofür zwei Programme ausgewählt worden sind, wurde zunächst auf Datensätzen 
+des 1001 Genom Projekt versucht.
+Von den 1135 Datensätzen welche im 1001 Genom Projekt gesammelt wurden, konnten 946 verwendet werden. Die restlichen 189 konnten entweder nicht richtig heruntergeladen werden oder waren keine
+paired end Datensätze. Von diesen 946 Datensätzen konnten mit dem fast-plast und dem chloroExtractor 303 komplette zirkuläre Chloroplasten vollautomatisch gebaut werden, dies entspricht
+etwa 34%. (Tab. 4) 
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrrrrrr
+#+LATEX: \caption[Datensatz: 1001 Genom Project]{\textbf{Datensatz: 1001 Genom Project} SUCCESS, echte zirkuläre Chloroplasten. Error, Fehler oder Abbrüche im Programm. Partial, keine zirkulären Chloroplasten aber contigs richtig identifiziert. Incomplete, Nicht richtig identifizierte Chloroplasten.}
+
+| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPLETE | Total |
+| CE      |     136 | ~15% |    54 |       3 |        706 |       |
+| FP      |     266 | ~30% |    29 |      11 |        593 |       |
+| Summary |     303 | ~34% |     - |       - |          - |   946 |
+#+LATEX: \end{table}
+
+** Varianz Analyse 
+
+* Referenzen
+
+[1] (Raubeson and Jansen 2005)
+[2] Wolfe et al. 1987
+[3] NUR EIN IR
+[4] Palmer et al. 1988
+[5]  Kane et al. (2012)
+* Abbildungs- und Tabellenverzeichnis
+\listoffigures
+
+\listoftables
+* Anhang
+#+LATEX: \section*{Eigenständigkeitserklärung}
+ERKLÄRUNG gemäß ASPO § 21 Abs. 10\\[10mm]
+Hiermit versichere ich, dass ich vorliegende Arbeit selbstständig verfasst, keine anderen als
+die angegebenen Quellen und Hilfsmittel benutzt und die Arbeit bisher oder gleichzeitig
+keiner anderen Prüfungsbehörde unter Erlangung eines akademischen Grades
+vorgelegt habe.\\[20mm]
+Würzburg, \today \hfill Simon Pfaff
+#+LATEX: \clearpage
+
+#  LocalWords:  Bash Skripte
