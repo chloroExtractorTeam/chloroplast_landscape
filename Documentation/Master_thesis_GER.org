@@ -63,7 +63,9 @@ Org.ASM [16]und NOVOPlasty[14][15] verglichen werden und herausgefunden werden w
 möglich. Hier soll vor allem darauf geachtet werden dass die Programme Automatisierbar sind um einen hohen Durchsatz zu haben, und auf die Ressourcen, da der Verbrauch von Rechenleistung
 andere Arbeiten am CCTB nicht stören soll. Der zweite Teil ist das Produzieren von Chloroplasten Genomen, hierzu werden die Pflanzen Genome des 1001 Genom Projektes verwendet. Auf den so
 Produzierten Chloroplasten sollen verschiedene wissenschaftliche Arbeiten durchgeführt werden, so zum Beispiel eine Varianz Analyse sowie eine Genomweite Assoziationsstudie, kurz GWAS [31].
-Zudem könnten diese Daten benutzt werden um Chloroplasten besser als Genetische Marker zu benutzen.
+Eine GWAS versucht bestimmte Traits, also Eigenschaften mit Genomischen Varianten zu assoziieren, um anschließend eine Aussage darüber treffen zu können ob diese Variante einen Einfluss auf diese 
+Eigenschaft hat oder nicht. Hierzu werden die einzelnen Chromosomen einzeln oder als komplettes Genom angesehen, je nach Ansatz oder Fragestellung.
+Auch sollte eine Struktur Varianz Analyse durchgeführt werden. Zudem könnten diese Daten benutzt werden um Chloroplasten besser als Genetische Marker zu benutzen. 
 
 
 
@@ -178,11 +180,32 @@ um in Erfahrung zu bringen wie sich dies auf Ressourcen und Laufzeit auswirkt. Z
 Singularity [28] verwendet, welches die benötigte Laufzeit und die benötigten Ressourcen beeinflusst.
 
   
-
 ** Erzeugen von Chloroplasten aus genomischen Daten
 Um so viele Chloroplasten wie möglich aus den genomischen Daten des 1001 Genom Projekts raus zu holen, wurden der fast-plast und der chloroExtractor benutzt.
 Diese wurden mit Hilfe eines Dockercontainers und einigen Skripts (s. Anhang) voll automatisiert. Sodass nur ein Befehl nötig war um die komplette 
 Pipeline zu starten und auszuwerten. 
+
+** Varianz Analyse
+Um mehr über die Chloroplasten und deren Verbreitung, sowie Mutationsrate und somit Varianz zu erfahren wurden zwei verschiedene Varianzanalysen durchgeführt. 
+Zunächst sollte überprüft werden welche Einflüsse die Programme und ihre Strategien den Chloroplasten zu assemblieren, speziell deren Assambler auf die Varianz der 
+entstehenden Chloroplasten hat. Hierzu wurden die assamblierten Chloroplasten, welche beide verwendeten Programme gemeinsam hatten verwendet. Diese Läufe wurden zunächst
+zehn fach wiederholt, auch um einen Eindruck über die Reproduzierbarkeit der Ergebnisse zu bekommen. Diese Chloroplasten wurden anschließend mit minimap2 [32] auf das 
+Referenzgenom ( TAIR10 chloroplast [33] ) kartiert(*DEUTSCHE ÜBERSETZUNG GEMAPT?*). Hiernach wurde eine Varianzanalyse mit Samtools[34] durchgeführt, hierzu wurde der Befehl
+'mpileup/bcftools call' [35] verwendet. Dieser führt eine Varianzanalyse bzw. ein SNP calling durch. Die zweite Varianzanalyse wurde auf allen Chloroplasten welche aus dem
+1001 Genom Projekt gebaut wurden erstellt. Auch diese wurden auf den Referenzchloroplasten mit minimap2 kartiert und anschließend mit samtools' 'mpileup' Funktion einem
+SNP calling unterzogen. 
+
+** GWAS
+Häufig wird eine GWAS über das komplette Genom berechnet. Doch können auch einzelne Chromosomen oder Organellen bereits signifikante Varianten besitzen. 
+So soll mit dieser GWAS der Einfluss von Chloroplasten Varianten auf Eigenschaften der A.Thaliana getestet werden. Hierzu wurden die SNP callings aus der Varianzanalyse verwendet.
+Verschiedene Trait-Tabellen wurden von Arapheno[37], einer Trait Datenbank für A.Thaliana, heruntergeladen und zusammen mit den Varianzanalyse Daten in ein R[36] Skript gegeben.
+Dieses R Skript nutzt zunächst vcfR[38], ein R Paket, um die verschiedenen VCF (Variance Calling File) Daten einzulesen. Anschließend ruft es ein weiteres R Skript auf welches
+freundlicher weiße von Korte et. al[31] zur Verfügung gestellt wurde und eine GWAS Analyse durchführt.
+
+** Struktur Varianz Analyse
+Wie bereits erwähnt können Chloroplasten auch verschiedene Strukturelle Änderungen evolvieren. Diese sind durch die Rohdaten, welche meist short-reads sind, nicht aufzudecken.
+Da diese zu kurz sind um komplette Struktur Varianten zu überspannen.[39]
+Hierzu könnten nun die komplett de novo Assemblierten Chloroplasten verwendet werden. 
 
 * Ergebnisse
 ** Daten: Simulierte Daten 
@@ -250,7 +273,7 @@ konnten die 40 geschafften Chloroplasten komplett abgedeckt werden. *Komplette T
 #+LATEX: \end{table}
 
 
-** Die Sieger *besser überschrifft finden...?*
+** Die Sieger *besser Überschrift finden...?*
 Da aus Zeitlichen und Hardware Technischen gründen nicht alle Programme weiterverwendet werden konnten, wurde nach Erfolgsrate, Geschwindigkeit und benötigten Ressourcen
 gefiltert, am wichtigsten war aber die Automatisierbarkeit der Programme. Bis auf der GetOrganelle konnte für jedes Programm eine Automatisierbarkeit
 erwirkt werden. Der GetOrganelle benötigt das öffnen der fastg Datei in einem Visualisierungs Programm für fastg-Graphen, hier wird Bandage empfohlen.
@@ -283,20 +306,21 @@ Diese beiden Programme wurden auf allen Daten des 1001 Genom Projekts laufen gel
 ** 1001 Genom Projekt
 Ziel so viele Chloroplasten wie möglich vollautomatisch aus kompletten Genom Datensätze zu erzeugen, wofür zwei Programme ausgewählt worden sind, wurde zunächst auf Datensätzen 
 des 1001 Genom Projekt versucht.
-Von den 1135 Datensätzen welche im 1001 Genom Projekt gesammelt wurden, konnten 946 verwendet werden. Die restlichen 189 konnten entweder nicht richtig heruntergeladen werden oder waren keine
-paired end Datensätze. Von diesen 946 Datensätzen konnten mit dem fast-plast und dem chloroExtractor 303 komplette zirkuläre Chloroplasten vollautomatisch gebaut werden, dies entspricht
-etwa 34%. (Tab. 4) 
+Von den 1135 Datensätzen welche im 1001 Genom Projekt gesammelt wurden, konnten 946 verwendet werden. Die restlichen 189 konnten entweder nicht richtig heruntergeladen werden. Zudem waren 47 Datensätze keine
+paired end Datensätze, und konnten deshalb nicht verwendet werden. Von diesen 899 restlichen Datensätzen konnten mit dem fast-plast und dem chloroExtractor 303 komplette zirkuläre Chloroplasten 
+vollautomatisch gebaut werden, dies entspricht etwa 34%. (Tab. 4). 
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrrrrrr
 #+LATEX: \caption[Datensatz: 1001 Genom Project]{\textbf{Datensatz: 1001 Genom Project} SUCCESS, echte zirkuläre Chloroplasten. Error, Fehler oder Abbrüche im Programm. Partial, keine zirkulären Chloroplasten aber contigs richtig identifiziert. Incomplete, Nicht richtig identifizierte Chloroplasten.}
 
-| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPLETE | Total |
-| CE      |     136 | ~15% |    54 |       3 |        706 |       |
-| FP      |     266 | ~30% |    29 |      11 |        593 |       |
-| Summary |     303 | ~34% |     - |       - |          - |   946 |
+| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPLETE | NO_PAIR | Total |
+| CE      |     136 | ~15% |    54 |       3 |        706 |         |       |
+| FP      |     266 | ~30% |    29 |      11 |        593 |         |       |
+| Summary |     303 | ~34% |     - |       - |          - |     47  | 946   |
 #+LATEX: \end{table}
 
 ** Varianz Analyse 
+
 
 * Referenzen
 
@@ -331,7 +355,16 @@ etwa 34%. (Tab. 4)
 [29] https://www.pacb.com/ 
 [30] https://www.illumina.com/
 [31] Korte A, Farlow A. The advantages and limitations of trait analysis with GWAS: a review. Plant Methods. 2013;9:29. doi:10.1186/1746-4811-9-29.
-[32]
+[32] Li, H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics. doi:10.1093/bioinformatics/bty191
+[33] https://www.ncbi.nlm.nih.gov/nuccore/NC_000932.1
+[34] Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943]
+[35] Li H, A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data, Bioinformatics (2011) 27(21) 2987-93. [21903627]
+[36] https://www.r-project.org/
+[37] https://arapheno.1001genomes.org/
+[38] https://cran.r-project.org/web/packages/vcfR/index.html
+[39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in Arabidopsis thaliana. Cell. 2016;166:481–491. [PubMed]
+[40]
+[41]
 * Abbildungs- und Tabellenverzeichnis
 \listoffigures
 
