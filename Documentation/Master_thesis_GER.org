@@ -35,7 +35,7 @@ eine auffällige Genom Struktur, das Genom ist ein einem Plasmid welches sich in
 Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind. Chloroplasten zeigen eine viel geringere Substitutions raten
 als in Genomischer DNA, diese ist noch einmal signifikant geringer in den Inverted repeat Regionen [2]. Dennoch zeigen sich
 Einzelnucleotid-Polymorphismen (SNPs). Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
-fallen kann, sodass solche Chloroplasten nur noch ein IR besitzen [3] *LINK PAPER*. Vor allem in gezüchteten Nutzpflanzen finden sich auch 
+fallen kann, sodass solche Chloroplasten nur noch ein IR besitzen [3] . Vor allem in gezüchteten Nutzpflanzen finden sich auch 
 Invertierungen des IR [4]. Durch ihre hohe Konservierung sind Chloroplasten und ihre Gene sehr gut für Metabarcoding geeignet. Mit diesem
 Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien zeigen, dass der komplette Chloroplast selbst als ein Art "Ultra-barcode"
 verwendet werden könnte, da die Variation in Chloroplasten in einer Spezies doch mehr variiert als angenommen [5]. 
@@ -90,14 +90,14 @@ Chloroplast.
 *** Org.ASM
 Org.ASM ( Version 1.0.00-alpha11) [16] ist ein Programm hauptsächlich geschrieben in Python. Es versucht überrepräsentierte Sequenzen zu finden und diese zu assemblieren[17]. 
 Mit Hilfe eines Seeds versucht er diese Sequenzen zu finden. Da Chloroplasten und andere Organellen wie Mitochondrien in Zellen überrepräsentiert sind, vor allem
-wenn man eine geringe Coverage über das Pflanzen Genom hat, sind diese detektierbar[27].
+wenn man eine geringe Coverage über das Pflanzen Genom hat, sind diese somit detektierbar[27].
 *** GetOrganelle
 GetOrganelle (Version 1.0.1 - 1.0.3 )[18][19] verwendet zum lokieren der Chloroplasten reads ähnlich wie andere Programme Bowtie2 [20] und Blast+, nur muss hier eine Referenz mitgegeben werden. Diese wird nur hierfür
 verwendet, das assemblieren hingegen geschieht de novo mit SPAdes. Wie auch beim chloroExtractor wird hier  der fastg-Graph verwendet um den Chloroplasten zu finden, aber dies muss in falle 
 des GetOrganelle per Hand, mit Hilfe des Programms Bandage vollzogen werden. 
 *** IOGA
-Der Iterative Organellar Genome Assambly, kurz IOGA (Keine Versionsnummer vergeben)[21][22] verwendet BBmap [23] für das filtern und trimmen der reads, um anschließend mit SOAPdenovo2 [25] und SPAdes [24] die reads zu assemblieren. Auch dieses
-Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben. 
+Der Iterative Organellar Genome Assambly, kurz IOGA (Keine Versionsnummer vergeben)[21][22] verwendet BBmap [23] für das filtern und trimmen der reads, um anschließend mit SOAPdenovo2 [25] und SPAdes [24] die reads zu assemblieren. 
+Auch dieses Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben. 
 
 ** Evaluation der Programme
 Um die oben genannten Programme zu vergleichen habe ich mir verschiedene Ansätze überlegt.
@@ -207,7 +207,23 @@ Wie bereits erwähnt können Chloroplasten auch verschiedene Strukturelle Änder
 Da diese zu kurz sind um komplette Struktur Varianten zu überspannen.[39]
 Hierzu könnten nun die komplett de novo Assemblierten Chloroplasten verwendet werden. 
 
+** Neue Chloroplasten
+Um neue Chloroplasten zu finden, welche noch nicht in der CP-Base [40][41] Datenbank sind, wurde eine Liste von Möglichen Daten von NCBI mit CP-Base verglichen. Nur 49 Datensätze waren ohne 
+Eintrag in CP-base und hatten somit noch keinen Dokumentierten Chloroplasten. Auf diese 49 Datensätze wurden sowohl der chloroExtractor als auch der fast-plast angewendet. 
+Um die NCBI liste von Interessanten Daten zu erhalten wurde mit folgendem Befehl gesucht: 
+' ((((((("green plants"[orgn]) AND "wgs"[Strategy]) AND "illumina"[Platform]) AND "biomol dna"[Properties]) AND "paired"[Layout]) AND "random"[Selection])) AND "public"[Access]'
+Mit einem Skript (s. Anhang, cpbase.sh) wurden alle Spezies Einträge von CP-base geladen welche einen Chloroplasten besitzen. Anschließend wurde mit einem folgendem Perl-Einzeiler
+die Datensätze herausgegeben welche noch keinen Eintrag in CP-base haben.
+'perl -F"," -ane 'print if $F[6]>399 and $F[3]>999999' SraRunInfo_plants.csv | grep -vf species_cpbase.list | sort -u -t, -k29,29 | shuf'
+
+
 * Ergebnisse
+** Automatisierung
+Um eine Automatisierung aller Programme zu erreichen wurde für jedes Programm ein Dockercontainer gebaut welcher mit Singularity verwendet wird. Zudem wird die komplette Auswertung von Skripts 
+übernommen. Um dies zu Bewerkstelligen wurden mehrere Skripte geschrieben welche sich gegenseitig aufrufen um den kompletten Ablauf sicherzustellen.
+
+*TODO: DIAGRAMM ABLAUF*
+
 ** Daten: Simulierte Daten 
 Die Simulierten Daten, welche mit ART[6][7] erzeugt wurden um das verhalten der Programme bei verschiedenen Verhältnissen zu testen, konnten von drei Programmen, dem chloroExtractor, fast-plast und Org.ASM 
 bei allen drei Datensätzen geschafft werden. Diese bauen einen vollständigen zirkulären zu bauen. NOVOPlasty baut zwar auch einen kompletten Chloroplasten doch gibt dieser 
@@ -298,15 +314,20 @@ der Dockercontainer Singularity [28] verwendet wurde.
 #+LATEX: \end{table}    
 Die Programme welche in oben genannten Punkte überzeugt haben sind der fast-plast und der chloroExtractor. Der fast-plast benötigt zwar die 
 meisten Ressourcen und ist nicht der schnellste, aber hat mit Abstand die größte Erfolgschance. Zudem ist er voll automatisierbar und erreicht 
-dies mit den vorgegebenen Standard Parametern. Als zweites Programm wird der chloroExtractor verwendet, dieser ist schnell Ressourcen arm und hat nach dem
+dies mit den vorgegebenen Standard Parametern. Als zweites Programm wird der chloroExtractor verwendet, dieser ist schnell, Ressourcen arm und hat nach dem
 fast-plast die zweithöchste Erfolgsrate. Mit beiden Programmen konnten alle 40 von 57 Chloroplasten der GetOrganelle-Preprint Daten berechnet werden.
 Auch die anderen Daten zeigen dass es keinen Vorteil bringt ein drittes Programm mit zu verwenden, da keines der anderen Programme einen
-Chloroplasten finden konnte welche nicht schon durch den fast-plast oder den chloroExtractor gefunden wurde.
+Chloroplasten finden konnte welche nicht schon durch den fast-plast oder den chloroExtractor gefunden wurde. Zudem haben diese beiden Programme die wenigsten
+Probleme bei der Handhabung wie auch bei der Installation zu beginn gemacht. Sie sind durch die gegebenen Parameter einfach zu verwenden und zu Automatisieren.
+Die von den Programmen geschriebenen Log Dateien sind einfach gehalten um dem Ablauf zu folgen und klar verständlich, der fast-plast gibt sogar drei dieser
+Dateien aus, da er unterscheidet zwischen Warn- und Fehlermeldungen und Standard Meldungen, und eine Datei für den Output der eingebundenen Programme. 
+Der chloroExtractor gibt seine Kompletten Meldungen über ein übergeordnetes Programm aus, welche den Ablauf steuert. Dieses Programm gibt alles auf STDERROR aus und 
+kann damit einfach mit gelogt werden, oder wie in diesem Fall über die slurm Datei, welche von dem verwendeten queueing System ausgegeben wird. 
 Diese beiden Programme wurden auf allen Daten des 1001 Genom Projekts laufen gelassen, um möglichst viele Chloroplasten zu generieren. 
 ** 1001 Genom Projekt
 Ziel so viele Chloroplasten wie möglich vollautomatisch aus kompletten Genom Datensätze zu erzeugen, wofür zwei Programme ausgewählt worden sind, wurde zunächst auf Datensätzen 
 des 1001 Genom Projekt versucht.
-Von den 1135 Datensätzen welche im 1001 Genom Projekt gesammelt wurden, konnten 946 verwendet werden. Die restlichen 189 konnten entweder nicht richtig heruntergeladen werden. Zudem waren 47 Datensätze keine
+Von den 1135 Datensätzen welche im 1001 Genom Projekt gesammelt wurden, konnten 946 verwendet werden. Die restlichen 189 konnten nicht richtig heruntergeladen werden. Zudem waren 47 Datensätze keine
 paired end Datensätze, und konnten deshalb nicht verwendet werden. Von diesen 899 restlichen Datensätzen konnten mit dem fast-plast und dem chloroExtractor 303 komplette zirkuläre Chloroplasten 
 vollautomatisch gebaut werden, dies entspricht etwa 34%. (Tab. 4). 
 #+LATEX: \begin{table}[!h]
@@ -320,13 +341,19 @@ vollautomatisch gebaut werden, dies entspricht etwa 34%. (Tab. 4).
 #+LATEX: \end{table}
 
 ** Varianz Analyse 
+Die zunächst durchgeführte Varianz Analyse, welchen Einfluss die verschiedenen Assambler bzw. das Komplette Programm hat, ergab dass der chloroExtractor und somit auch SPAdes keinen Einfluss hierauf hat. Alle zehn
+Durchläufe auf den 89 Datensätzen waren identisch. Der chloroExtractor hat somit keine zufälligen Effekte welche evtl durch zufälliges Auswählen der Daten hervorgerufen wird. Der fast-plast hingegeben hat solche 
+Effekte, hier kam es bei den zehn Durchläufen dazu dass bis zu neun verschiedene Datensätze nicht mehr Erfolgreich beendet werden konnten. Hier waren die Chloroplasten entweder zu groß oder zu klein. Interessanter weiße
+waren aber nicht immer die gleichen Datensätze betroffen, was eindeutig auf einen Zufalls Effekt hindeutet. Somit ist nicht auszuschließen das der fast-plast auch einen Effekt auf das SNP calling hat. 
+Die Analyse auf den 303 Chloroplasten ergab, dass 2128 verschiedene SNPs gefunden wurde.
+** GWAS
 
 
 * Referenzen
 
 [1] (Raubeson and Jansen 2005)
 [2] Wolfe et al. 1987
-[3] NUR EIN IR
+[3] Jansen RK, Wojciechowski MF, Sanniyasi E, Lee S-B, Daniell H. Complete plastid genome sequence of the chickpea (Cicer arietinum) and the phylogenetic distribution of rps12 and clpP intron losses among legumes (Leguminosae). Molecular phylogenetics and evolution. 2008;48(3):1204-1217. doi:10.1016/j.ympev.2008.06.013.
 [4] Palmer et al. 1988
 [5]  Kane et al. (2012)
 [6] Weichun Huang, Leping Li, Jason R. Myers, Gabor T. Marth; ART: a next-generation sequencing read simulator, Bioinformatics, Volume 28, Issue 4, 15 February 2012, Pages 593–594, https://doi.org/10.1093/bioinformatics/btr708
@@ -363,8 +390,12 @@ vollautomatisch gebaut werden, dies entspricht etwa 34%. (Tab. 4).
 [37] https://arapheno.1001genomes.org/
 [38] https://cran.r-project.org/web/packages/vcfR/index.html
 [39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in Arabidopsis thaliana. Cell. 2016;166:481–491. [PubMed]
-[40]
-[41]
+[40] http://rocaplab.ocean.washington.edu/old_website/tools/cpbase
+[41] http://rocaplab.ocean.washington.edu/tools/cpbase_test/
+[42]
+[43]
+[44]
+[45]
 * Abbildungs- und Tabellenverzeichnis
 \listoffigures
 
