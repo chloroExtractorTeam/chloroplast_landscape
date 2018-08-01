@@ -3,7 +3,7 @@
 #+OPTIONS: TeX:t LaTeX:t skip:nil d:nil todo:nil pri:nil tags:nil title:nil 
 #+LATEX: \begin{center}
 #+LATEX: \thispagestyle{empty}
-#+LATEX: \textbf{\huge Seperating the good from the bad.. Exploring the genomic landscape of chloroplasts from genomic sequencing datatreductionMaster Thesis}\\[1cm]
+#+LATEX: \textbf{\huge Seperating the good from the bad... Exploring the genomic landscape of chloroplasts from genomic sequencing datatreduction Master Thesis}\\[1cm]
 #+LATEX: \textbf{\LARGE }\\[1cm]
 #+LATEX: {\LARGE Simon Pfaff}\\[2mm]
 #+LATEX: \includegraphics[width=.7\linewidth]{/home/simon/BA-Thesis/neuSIEGEL.pdf}
@@ -19,6 +19,7 @@
 #+LATEX: {\large Julius-Maximilians-Universität Würzburg}\\
 #+LATEX: {\large Betreuer: Dr. Markus Ankenbrandt}\\
 #+LATEX: {\large Betreuer: Prof. Dr. Jörg Schulz}\\
+#+LATEX: {\large Betreuer: Dr. Frank Förster}\\
 #+LATEX: {\large Lehrstuhl für Bioinformatik / CCTB}
 #+LATEX: \setcounter{page}{1}
 #+LATEX: \clearpage
@@ -30,7 +31,7 @@ Seperating the good from the bad...
 Exploring the genomic landscape of chloroplasts from genomic sequencing datatreduction
 ** Chloroplasten
 Chloroplasten sind extrem wichtig, alle Pflanzen besitzen diese und nutzen sie um Energie in Form von ATP durch Photosynthese zu erzeugen.
-Sie gelten als hoch konserviert, sowohl in der Gen Orientierung als auch dem Gen Inhalt [1]. Chloroplasten zeigen
+Ihr Genom gilt als hoch konserviert, sowohl in der Gen Orientierung als auch dem Gen Inhalt [1]. Chloroplasten zeigen
 eine auffällige Genom Struktur, das Genom ist ein einem Plasmid welches sich in drei Teile aufteilt. Dem Large Single Copy, dem 
 Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind. Chloroplasten zeigen eine viel geringere Substitutions raten
 als in Genomischer DNA, diese ist noch einmal signifikant geringer in den Inverted repeat Regionen [2]. Dennoch zeigen sich
@@ -46,10 +47,17 @@ sie verwenden können sehr viele genomische Daten in kurzer Zeit für vergleichs
 Programme die diese Daten auswerten wichtig. Die Anforderung an diese Programme sind unter anderem eine hohe Geschwindigkeit und vor allem eine hohe 
 Automatisierbarkeit. Um solche Programme zu entwickeln sind vor allem Kenntnisse in Informatik und in Biologie notwendig. 
 ** Open Science
-"Open Science" bezeichnet eine Bewegung welche Fordert das Wissenschaft und alles was dazugehört, Daten, Programme, Ergebnisse öffentlich und für jedermann 
-zugänglich sein soll. Diese Bewegung ist in den letzten Jahren sehr gewachsen und es gehört mittlerweile fast schon zum Guten Ton unter Wissenschaftlern, dass
-alles veröffentlicht wird auch frei zugänglich ist, hierzu gibt es unter anderem extra Lizenzen welche vergeben werden können um diese offene Wissenschaft zu 
-Unterstützen.
+Mit der Flut der ansteigenden Daten wächst in den letzten Jahren auch immer mehr die Akzeptanz zur "Open Science".
+"Open Science" bezeichnet eine Bewegung welche fordert dass Wissenschaft und alles was dazugehört, Daten, Programme, Ergebnisse öffentlich und für jedermann 
+zugänglich sein soll. Befürworter dieser Bewegung argumentieren damit, dass Wissen für jedermann zugänglich sein sollte, und nicht nur für Ausgewählte oder gar
+gegen Bezahlung. So steigere sich unter anderem die Akzeptanz der Wissenschaft als auch deren Glaubwürdigkeit. Da die Ergebnisse von jedem nachvollziehbar 
+veröffentlicht werden müssen mit allen Rohdaten und Vorgehensweisen. Dies sei der eigentliche Gedanke hinter der Wissenschaft, sie solle jedem zugänglich sein!
+Diese Bewegung findet vor allem bei jung Wissenschaftler aber auch bei älteren immer mehr Anklang. Mittlerweile gibt es mehrere Lizenz Modelle die unter
+Open Science laufen welche Regeln wie die Daten verwendet werden dürfen oder müssen. Dies reicht von Freigeben der Daten und jeglichem Verwendungszweck bis hin
+zum Zwang, dass alles was mit diesen Daten oder auch Programmen veröffentlicht wird wieder unter der gleichen Open Science Lizenz zu publizieren ist.
+Alle hier verwendeten Programme und Daten sind unter Open Science Lizenzen veröffentlicht und alle Ergebnisse werden wiederum öffentlich verwendbar sein. 
+Denn so sollte Wissenschaft sein!  
+
 ** Daten in Daten 
 Bei den heutzutage geringen Kosten Daten, vor allem genomische Daten, zu erzeugen ist es nicht verwunderlich dass immer neue Daten generiert werden.
 Dennoch steckt in bereits erhobenen Daten meist mehr Information als zunächst verwendet. In genomischen Daten zum Beispiel, hier findet sich meistens Daten 
@@ -57,29 +65,37 @@ von Organellen, wie Mitochondrien oder Chloroplasten, welche ihre eigene DNA bes
 Kern Extraktion durchgeführt wird, da diese mehr Zeit und Geld kosten würde. Diese Organellen DNA können mit bestimmten Programmen gefiltert werden, hierfür 
 wurde unter anderem der chloroExtractor programmiert. Dieser kann in genomischen Pflanzen Daten Chloroplasten DNA finden und diese verwenden um einen vollständigen
 Chloroplasten bauen. Hiermit müssen somit keine neuen Sequenzierungen für Chloroplasten mehr durchgeführt werden, wenn man an Chloroplasten forschen möchte.
-** Aufgaben in der Master Thesis 
-Die Aufgaben dieser Thesis ist grob in drei Teile eingeteilt. Zunächst sollen die verschiedenen Programme, der chloroExtractor [9][10], fast-plast[13], IOGA[21][22], GetOrganelle[18][19],
-Org.ASM [16]und NOVOPlasty[14][15] verglichen werden und herausgefunden werden welche das oder die besten Programme sind um damit so viele Chloroplasten Genome zu erzeugen wie 
-möglich. Hier soll vor allem darauf geachtet werden dass die Programme Automatisierbar sind um einen hohen Durchsatz zu haben, und auf die Ressourcen, da der Verbrauch von Rechenleistung
-andere Arbeiten am CCTB nicht stören soll. Der zweite Teil ist das Produzieren von Chloroplasten Genomen, hierzu werden die Pflanzen Genome des 1001 Genom Projektes verwendet. Auf den so
-Produzierten Chloroplasten sollen verschiedene wissenschaftliche Arbeiten durchgeführt werden, so zum Beispiel eine Varianz Analyse sowie eine Genomweite Assoziationsstudie, kurz GWAS [31].
-Eine GWAS versucht bestimmte Traits, also Eigenschaften mit Genomischen Varianten zu assoziieren, um anschließend eine Aussage darüber treffen zu können ob diese Variante einen Einfluss auf diese 
-Eigenschaft hat oder nicht. Hierzu werden die einzelnen Chromosomen einzeln oder als komplettes Genom angesehen, je nach Ansatz oder Fragestellung.
-Auch sollte eine Struktur Varianz Analyse durchgeführt werden. Zudem könnten diese Daten benutzt werden um Chloroplasten besser als Genetische Marker zu benutzen. 
-
-
-
-   
-* Material / Methoden
-** Verwendete Programme
+** Verwendete Programme und ihre Ansätze
+Es gibt verschiedene Ansätze um Chloroplasten Genome bzw. ihre DNA aus genomischen Pflanzen Daten zu extrahieren. Die wohl einfachste Möglichkeit ist ein Referenz basiertes
+Mapping der Daten auf einen Referenz Chloroplasten. Hierzu muss lediglich ein nah verwandter Chloroplast als Referenz benutzt werden. So können die Reads, welche auf diese Referenz
+passen genommen werden und assembliert werden, mit der gleichen Referenz. Dies funktioniert allerdings nur wenn man eine passende Referenz benutzt, diese sollte von der gleichen Spezies oder
+zumindest einer Nah verwandten Spezies stammen. Ein anderer Ansatz besteht darin den Chloroplasten de novo zu assemblieren, also ohne Referenz. Um diesen Ansatz zu benutzen müssen
+aber zunächst die Reads mit Chloroplasten Genom aus den Daten gezogen werden. Hier gibt es wiederum verschiedene Möglichkeiten. Eine Möglichkeit ist es die Reads gegen eine Datenbank
+von Chloroplasten Genen zu blasten, hierzu muss entweder eine Datenbank von Chloroplasten Genen gestellt werden oder der Benutzer muss eine Pseudo-Referenz einen sogenannten Seed angeben.
+Ein Seed, was von einigen Basenpaaren bis zu einem kompletten Chloroplasten reichen kann, kann auch eingesetzt werden um durch ein reines Mapping Reads zu finden. Bei kleinen Seeds wird dieser
+häufig durch gefundene Reads erweitert und eine Liste von Seed erstellt. Auch hier muss aber sichergestellt werden, dass der Seed in den Chloroplasten Daten vorhanden ist.
+Von diesen Methoden gibt es auch Abwandlungen, wie z.b. das scannen der Daten durch Kmers, hier werden die Daten in verschiedene Kmers zerteilt, durch plotten dieser Kmers können
+an spezifischen Stellen überrepräsentierte Kmers gefunden werden, diese überrepräsentierten Kmer spiegeln häufig Plasteome wieder. Diese sind unter anderem Chloroplasten aber auch
+Mitochondrien, sie besitzen ihre eigene DNA und kommen im Schnitt häufiger vor als DNA welche im Zellkern zu finden ist. 
+Abgesehen von den Ansätzen der Programme gibt es zwei verschiedene Arten von Programmen, die einen benutzen bereits vorhandene Programme wie Assambler, Mapper oder Kmer-counter. Diese 
+Bauen eine Pipeline um diese Programme, sodass diese in der richtigen Reihenfolge mit den richtigen Parametern mit nur einem Befehl gesteuert werden können. Der Vorteil ist, solche Programme
+sind einfacher zu warten da sie meist kleiner sind als Programme die dies nicht tun und einfacher zu Programmieren, allerdings sind sie von diesen drittanbieter Programmen abhängig und es können Probleme 
+auftreten wenn diese Änderungen bzw. Updates ausgeben, weswegen meist die kompatiblen Versionen angegeben werden. Ein weiterer Nachteil, der Benutzer muss häufig weitere Programme, sogenannte Abhängigkeiten installieren
+bevor er das eigentliche Programm nutzen kann. Die andere Möglichkeit ist es die komplette Maschinerie selbst zu Programmieren, dies ist sehr aufwendig und bedeutet viel Wartungsarbeit. Vorteil hier
+ist das keine anderen Abhängigkeiten benötigt werden außer ein System welches das Programm verwenden kann. In dieser Arbeit wurden verschiedene Typen von Programmen verwendet.
 *** chloroExtractor
-Der chloroExtractor (Version 1.0 - 1.0.5) [9][10] ist eines der verwendeten Programme zum extrahieren von Chloroplasten
+Der chloroExtractor (Version 1.0.0 - 1.0.5) [9][10] ist eines der verwendeten Programme zum extrahieren von Chloroplasten
 DNA aus Whole Genome Batches *ÜBERSETZUNG?*, es ist hauptsächlich in Perl5 geschrieben.
 Es wurde 2018 von chloroExtractorTeam veröffentlicht [9]. ChloroExtractor benutzt eine Kombination
-aus BLAST+ [11] und kmer-basierendem suchen, um die Chloroplasten reads zu detektieren und zu extrahieren.
-Für das erstellen der kmers wird Jellyfish [12] verwendet.
+aus mappen mit Bowtie2 und kmer-basierendem suchen, um die Chloroplasten reads zu detektieren und zu extrahieren. Für das erstellen der kmers wird Jellyfish [12] verwendet.
 Die gefunden reads werden mit SPAdes [24] assembliert, dies geschieht de novo, d.h. es ist keine Referenz von Nöten.
-SPAdes verwendet eine De Brujin-Graphen Methode um die reads richtig zusammen zu fügen, und den Chloroplasten zu erzeugen. 
+SPAdes verwendet eine De Brujin-Graphen Methode um die reads richtig zusammen zu fügen, und den Chloroplasten zu erzeugen. Des weiteren wird BLAST+[11] verwendet um
+die einzeln Graphen Teile zu testen ob diese wirklich zu einem Chloroplasten gehören.  
+#+LATEX: \begin{figure}
+*ChloroExtractorAblauf.jpg  #TODO
+#+LATEX: \caption[]{\textbf{} }
+#+LATEX: \end{figure}
+
 *** fast-plast
 Fast-plast  (Version 1.2.8) [13] ist ein weiteres Programm, welches verwendet wird um Chloroplasten DNA zu finden. Es ist in Perl und in C++ programmiert und verwendet auch SPAdes, 
 aber zusätzlich Bowtie1 sowie Bowtie2. Auch hier wird Blast+ verwendet um die richtigen reads zu finden. 
@@ -97,8 +113,31 @@ verwendet, das assemblieren hingegen geschieht de novo mit SPAdes. Wie auch beim
 des GetOrganelle per Hand, mit Hilfe des Programms Bandage vollzogen werden. 
 *** IOGA
 Der Iterative Organellar Genome Assambly, kurz IOGA (Keine Versionsnummer vergeben)[21][22] verwendet BBmap [23] für das filtern und trimmen der reads, um anschließend mit SOAPdenovo2 [25] und SPAdes [24] die reads zu assemblieren. 
-Auch dieses Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben. 
+Auch dieses Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben.
 
+** Interesse an Chloroplasten, was tun damit mit diesen Daten?
+Mit der steigenden Anzahl an frei erhältlichen Chloroplasten Genomen, welche gegen ende 2016 erstmals die 1000 Genome überschritten hat[42], können immer mehr Versuche mit vielen Chloroplasten durchgeführt werden.
+So ist immer nicht geklärt wie genau die Replikation von Plastiden Genomen wie Chloroplasten wirklich funktioniert. Wie werden Mutationen im Inverted Repeat repariert oder bei der Replikation auf beide IRs übernommen.
+Da SNPs im IR immer auf beiden gefunden werden. Welche Mutationen treten am häufigsten auf und wie sind diese evtl. an die Struktur des Genoms gekoppelt [43]. Auch ist immer noch nicht exakt verstanden wie Chloroplasten
+vererbt werden, es wird zwar angenommen das diese ähnlich wie Mitochondrien maternal vererbt werden doch gibt es bei Pflanzen auch viele Arten die biparental oder uniparental Chloroplasten vererben[44]. Die in den letzten 
+Jahren stark steigende Anzahl an Chloroplasten Genomen gibt diesen Fragestellungen neue Rohdaten die diese Probleme evtl. lösen können. Auch Probleme die nur mit kleinen Änderungen im Chloroplasten Genom zu tun haben (wie SNPs)
+können so auf den Grund gegangen werden, z.B. die Adaption von verschiedenen Chloroplasten Genen in das Pflanzengenom und der daraus folgenden Änderung im Photosynthese Systems[45]. Auch kann ohne große Änderung an der
+kodierenden Sequenz, alleine durch Änderung an Transkriptionsfaktoren oder deren Level viel Einfluss auf solche Systeme genommen werden, welche natürlich auch mit dem Chloroplasten zusammenhängen.
+
+** Aufgaben in der Master Thesis 
+Die Aufgaben dieser Thesis ist grob in drei Teile eingeteilt. Zunächst sollen die verschiedenen Programme, der chloroExtractor [9][10], fast-plast[13], IOGA[21][22], GetOrganelle[18][19],
+Org.ASM [16]und NOVOPlasty[14][15] verglichen werden und herausgefunden werden welche das oder die besten Programme sind um damit so viele Chloroplasten Genome zu erzeugen wie 
+möglich. Hier soll vor allem darauf geachtet werden dass die Programme Automatisierbar sind um einen hohen Durchsatz zu haben, und auf die Ressourcen, da der Verbrauch von Rechenleistung
+andere Arbeiten am CCTB nicht stören soll. Der zweite Teil ist das Produzieren von Chloroplasten Genomen, hierzu werden die Pflanzen Genome des 1001 Genom Projektes verwendet. Auf den so
+Produzierten Chloroplasten sollen verschiedene wissenschaftliche Arbeiten durchgeführt werden, so zum Beispiel eine Varianz Analyse sowie eine Genomweite Assoziationsstudie, kurz GWAS [31].
+Eine GWAS versucht bestimmte Traits, also Eigenschaften mit Genomischen Varianten zu assoziieren, um anschließend eine Aussage darüber treffen zu können ob diese Variante einen Einfluss auf diese 
+Eigenschaft hat oder nicht. Hierzu werden die einzelnen Chromosomen einzeln oder als komplettes Genom angesehen, je nach Ansatz oder Fragestellung.
+Auch sollte eine Struktur Varianz Analyse durchgeführt werden. Zudem könnten diese Daten benutzt werden um Chloroplasten besser als Genetische Marker zu benutzen. 
+
+
+
+   
+* Material / Methoden
 ** Evaluation der Programme
 Um die oben genannten Programme zu vergleichen habe ich mir verschiedene Ansätze überlegt.
 Um zunächst zu testen wie genau die Programme funktionieren und ob diese überhaupt funktionieren,
@@ -190,7 +229,7 @@ Um mehr über die Chloroplasten und deren Verbreitung, sowie Mutationsrate und s
 Zunächst sollte überprüft werden welche Einflüsse die Programme und ihre Strategien den Chloroplasten zu assemblieren, speziell deren Assambler auf die Varianz der 
 entstehenden Chloroplasten hat. Hierzu wurden die assamblierten Chloroplasten, welche beide verwendeten Programme gemeinsam hatten verwendet. Diese Läufe wurden zunächst
 zehn fach wiederholt, auch um einen Eindruck über die Reproduzierbarkeit der Ergebnisse zu bekommen. Diese Chloroplasten wurden anschließend mit minimap2 [32] auf das 
-Referenzgenom ( TAIR10 chloroplast [33] ) kartiert(*DEUTSCHE ÜBERSETZUNG GEMAPT?*). Hiernach wurde eine Varianzanalyse mit Samtools[34] durchgeführt, hierzu wurde der Befehl
+Referenzgenom ( TAIR10 chloroplast [33] ) gemapt. Hiernach wurde eine Varianzanalyse mit Samtools[34] durchgeführt, hierzu wurde der Befehl
 'mpileup/bcftools call' [35] verwendet. Dieser führt eine Varianzanalyse bzw. ein SNP calling durch. Die zweite Varianzanalyse wurde auf allen Chloroplasten welche aus dem
 1001 Genom Projekt gebaut wurden erstellt. Auch diese wurden auf den Referenzchloroplasten mit minimap2 kartiert und anschließend mit samtools' 'mpileup' Funktion einem
 SNP calling unterzogen. 
@@ -392,10 +431,15 @@ Die Analyse auf den 303 Chloroplasten ergab, dass 2128 verschiedene SNPs gefunde
 [39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in Arabidopsis thaliana. Cell. 2016;166:481–491. [PubMed]
 [40] http://rocaplab.ocean.washington.edu/old_website/tools/cpbase
 [41] http://rocaplab.ocean.washington.edu/tools/cpbase_test/
-[42]
-[43]
-[44]
-[45]
+[42] Tonti‐Filippini, J. , Nevill, P. G., Dixon, K. and Small, I. (2017), What can we do with 1000 plastid genomes?. Plant J, 90: 808-818. doi:10.1111/tpj.13491
+[43] Massouh A, Schubert J, Yaneva-Roder L, et al. Spontaneous Chloroplast Mutants Mostly Occur by Replication Slippage and Show a Biased Pattern in the Plastome of Oenothera. The Plant Cell. 2016;28(4):911-929. doi:10.1105/tpc.15.00879.
+[44] Greiner S, Sobanski J, Bock R. Why are most organelle genomes transmitted maternally? Bioessays. 2015;37(1):80-94. doi:10.1002/bies.201400110.
+[45] Wicke S, Schneeweiss GM, dePamphilis CW, Müller KF, Quandt D. The evolution of the plastid chromosome in land plants: gene content, gene order, gene function. Plant Molecular Biology. 2011;76(3-5):273-297. doi:10.1007/s11103-011-9762-4.
+[46]
+[47]
+[48]
+[49]
+
 * Abbildungs- und Tabellenverzeichnis
 \listoffigures
 
