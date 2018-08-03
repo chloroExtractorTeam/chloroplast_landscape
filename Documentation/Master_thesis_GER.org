@@ -244,13 +244,13 @@ Skript eine Entscheidung getroffen ob es sich um einen kompletten Chloroplasten 
 Kategorien eingeführt(s. Tab. 1). Diese Auswertung wurde für dann für alle Testdaten sowie die GetOrganelle PrePrint Daten verwendet.
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrr
-#+LATEX: \caption[Erfolgsraten Einteilung]{\textbf{Erfolgsraten Einteilung} Das Skript ev_stat.sh scannt die Output Dateien und teilt diese je nach Größe und Anzahl der Contigs in verschiedene Kategorien ein. }
+#+LATEX: \caption[Erfolgsraten Einteilung]{\textbf{Erfolgsraten Einteilung} Das Skript ev\_stat.sh scannt die Output Dateien und teilt diese je nach Größe und Anzahl der Contigs in verschiedene Kategorien ein. }
 | Kategorie   | Contigs | Basenpaare        |
 |-------------+---------+-------------------|
-| Success     | 1       | 110 kbp  180 kbp  |
-| Partial     | 1       | 110 kbp  180 kbp  |
-| Incomp:high | 1       | 180 kbp           |
-| Incom:low   | 1       | 110 kbp           |
+| Success     | 1       | 110 kbp - 180 kbp  |
+| Partial     | > 1     | 110 kbp - 180 kbp |
+| Incomp:high | > 1     | > 180 kbp         |
+| Incom:low   | > 1     | > 110 kbp         |
 |             |         |                   |
 #+LATEX: \end{table}
 
@@ -294,13 +294,15 @@ Da diese zu kurz sind um komplette Struktur Varianten zu überspannen.[39]
 Hierzu könnten nun die komplett de novo Assemblierten Chloroplasten verwendet werden. 
 
 ** Neue Chloroplasten
-Um neue Chloroplasten zu finden, welche noch nicht in der CP-Base [40][41] Datenbank sind, wurde eine Liste von Möglichen Daten von NCBI mit CP-Base verglichen. Nur 49 Datensätze waren ohne 
-Eintrag in CP-base und hatten somit noch keinen Dokumentierten Chloroplasten. Auf diese 49 Datensätze wurden sowohl der chloroExtractor als auch der fast-plast angewendet. 
+Um neue Chloroplasten von Spezien zu finden, welche noch nicht in der CP-Base [40][41] Datenbank sind, wurde eine Liste von Möglichen Daten von NCBI mit CP-Base verglichen. Nur 49 Datensätze waren ohne 
+Eintrag in CP-base und hatten somit noch keinen Dokumentierten Chloroplasten für diese Spezies. Auf diese 49 Datensätze wurden sowohl der chloroExtractor als auch der fast-plast angewendet. 
 Um die NCBI liste von Interessanten Daten zu erhalten wurde mit folgendem Befehl gesucht: 
 ' ((((((("green plants"[orgn]) AND "wgs"[Strategy]) AND "illumina"[Platform]) AND "biomol dna"[Properties]) AND "paired"[Layout]) AND "random"[Selection])) AND "public"[Access]'
 Mit einem Skript (s. Anhang, cpbase.sh) wurden alle Spezies Einträge von CP-base geladen welche einen Chloroplasten besitzen. Anschließend wurde mit einem folgendem Perl-Einzeiler
-die Datensätze herausgegeben welche noch keinen Eintrag in CP-base haben.
+die Datensätze herausgegeben welche noch keinen Eintrag in CP-base haben. Zudem musste der Datensatz mindestens zwei Millionen Reads haben und mindestens 200 Basenpaare pro Read
+aufweisen.
 'perl -F"," -ane 'print if $F[6]>399 and $F[3]>999999' SraRunInfo_plants.csv | grep -vf species_cpbase.list | sort -u -t, -k29,29 | shuf'
+
 
 
 * Ergebnisse
@@ -388,7 +390,6 @@ konnten die 40 geschafften Chloroplasten komplett abgedeckt werden.
 
 #+LATEX: \end{table}
 
-
 ** Die besten Programme: fast-plast und chloroExtractor
 Da aus Zeitlichen und Hardware Technischen gründen nicht alle Programme weiterverwendet werden konnten, wurde nach Erfolgsrate, Geschwindigkeit und benötigten Ressourcen
 gefiltert, am wichtigsten war aber die Automatisierbarkeit der Programme. Bis auf der GetOrganelle konnte für jedes Programm eine Automatisierbarkeit
@@ -461,8 +462,60 @@ keine Berechnungen erstellt werden da die Datenmenge nicht für eine GWAS ausrei
 Für die Struktur Varianz Analyse konnten keine Ergebnisse erzielt werden, Grund hierfür war unter anderem fehlende Zeit. Aber auch konnten keine guten Programme gefunden werden welche mit kompletten Chloroplasten
 umgehen konnten, die meisten nutzten direkt Illumina short reads. 
 
+
+** Neue Chloroplasten
+Aus NCBI wurden 79657 Datensätze heruntergeladen, dies sind alles Pflanzengenome. Diese liste wurde mit den Einträgen von CPbase verglichen. Es blieben die Übrig welche keinen Eintrag in CPbase haben. 
+Von diesen 79657 blieben nur 49 Datensätze. Diese wurden auf fast-plast und chloroExtractor benutzt, und es wurden 17 zirkuläre Chloroplasten erfolgreich zusammengebaut. Somit wurden 17 neue Chloroplasten von Spezien
+welche zuvor noch keinen genomisch bekannten Chloroplasten hatten erfolgreich erstellt.
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lrrrrrr
+#+LATEX: \caption[Neue Chloroplasten]{\textbf{Neue Chloroplasten} Von den 49 Spezien welche bisher noch keinen Eintrag in CPbase hatte konnten mit Hilfe des fast-plasts und des chloroExtractors 17 neue bisher nicht bekannte Chloroplasten Genome gebaut werden}
+| Tool    | SUCCESS | ERROR | PARTIAL | INCOMPl | NO_PAIR | Total |
+| CE      |       4 |    20 |      16 |       9 |       0 |       |
+| FP      |      15 |     7 |      22 |       5 |       0 |       |
+| Summary |      17 |     - |       - |       - |       0 |    49 |
+#+LATEX: \end{table}
+
+#+LATEX: \begin{table}[!h]
+#+ATTR_latex: :align lr
+#+LATEX: \caption[Liste neue Chloroplasten]{\textbf{Liste neue Chloroplasten} Liste von 17 Spezien welche mit Hilfe des fast-plast und des chloroExtractors nun ein bekanntes Chloroplasten Genom besitzen.}
+| SRA        | Spezies              |
+|------------+----------------------|
+| DRR057122  | Momordica charantia  |
+| DRR089517  | Betula chichibuensis |
+| ERR1462646 | Hippophae rhamnoides |
+| ERR2001942 | Betula pendula       |
+| ERR2003066 | Potentilla micrantha |
+| ERR2174632 | Solanum pennellii    |
+| ERR2187925 | Geum urbanum         |
+| SRR1503730 | Agave tequilana      |
+| SRR2847417 | Manihot glaziovii    |
+| SRR3194007 | Artocarpus altilis   |
+| SRR3724930 | Taraxacum S3         |
+| SRR4457832 | Pityopsis pinifolia  |
+| SRR5046394 | Ephedra gerardiana   |
+| SRR5464169 | Trema orientalis     |
+| SRR5590327 | Lagenaria siceraria  |
+| SRR5799057 | Fragaria vesca       |
+| SRR5838021 | Populus deltoides    |
+#+LATEX: \end{table}
+
 * Diskussion
-** 
+** Definition von Success, Einteilung der Erfolge über Genom Länge.
+Jegliche Einteilung in die Erfolgs Kategorien: Success, Partial, Incomplete_high und Incomplete_low werden von einem Skript übernommen welches zunächst den SeqFilter benutzt um Informationen über diese Datei zu erhalten. 
+Der SeqFilter zählt die Sequenzen sowie deren Größe. Das Evaluations Skript des jeweiligen Programms teilt aufgrund dieser Daten in die Kategorien ein (s. Tab. 1). Diese Variante ist zwar voll Automatisiert
+doch nicht Fehlerlos, so können Falsch Positive Sequenzen vorkommen. Diese könnte eine Sequenz aus 150 kbp Adenin sein, und das Skript würde es als einen Success ansehen. Die Daten wurden Stichprobenartig überprüft und dies 
+kam in diesen Stichproben nicht vor, doch ist es nicht auszuschließen. Um sicher zu gehen müsste jeder erstellter Chloroplast auf eine Referenz gemapt werden oder sogar durch Sequenzierung bestätigt werden. Erste Möglichkeit
+wäre nur Rechenaufwand, könnte aber bei Chloroplasten die noch nicht veröffentlicht wurden oder keine Referenz besitzen schwer werden, zweite Möglichkeit ist sehr Kosten intensiv würde aber letzte Zweifel beseitigen. 
+Eine Verbesserung des Skripts könnte auch eine strengere Beurteilung sein, zumindest wenn man mehr Grundinformationen hat. So könnten bei den Versuchen mit den A.thaliana des 1001 Genom Projekts die Grenzen Strenger gewählt werden, 
+da es sich hier immer um die gleiche Spezies handelt. Doch könnten somit die Anzahl der Falsch Negativen erhöht werden, z.B. wenn eine A.thaliana Art eine Struktur Variante besitzt mit Verlust eines IR. Die Grenzen wurden 
+bewusst großzügiger Gewählt, da dies den größten Teil der Chloroplasten abdecken dürfte. Gerade bei Chloroplasten welche bisher nicht veröffentlicht oder bekannt sind ist eine Abschätzung schwer, da die Größen von Chloroplasten
+doch sehr Variieren können.
+** Die Entscheidung für fast-plast und chloroExtractor
+Es wurde im Ergebnis Teil erklärt warum gerade der fast-plast und der chloroExtractor weiter verwendet wurden. Doch gibt es auch gründe warum sich speziell gegen andere Programme entschieden wurden. 
+So wurde sich gegen den IOGA entschieden, nicht nur weil er extrem langsam ist sondern auch weil er keinerlei Log File wärend des Prozesses schreibt, erst wenn dieser Komplett beendet ist, so war vor allem zu beginn 
+extrem schwer nachzuvollziehen ob der IOGA nun wirklich noch Arbeitet oder evtl in irgendeinem Loop fest hängt oder sogar aufgehört hat zu arbeiten aber den Prozess nicht beendet. Auch wurde der IOGA zum letzten mal 
+vor zwei Jahren geupdated, es scheint also keine Regelmäßige Wartung oder Verbesserung statt zu finden.    
 
 
 * Referenzen
@@ -500,8 +553,8 @@ umgehen konnten, die meisten nutzten direkt Illumina short reads.
 [31] Korte A, Farlow A. The advantages and limitations of trait analysis with GWAS: a review. Plant Methods. 2013;9:29. doi:10.1186/1746-4811-9-29.
 [32] Li, H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics. doi:10.1093/bioinformatics/bty191
 [33] https://www.ncbi.nlm.nih.gov/nuccore/NC_000932.1
-[34] Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 [19505943]
-[35] Li H, A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data, Bioinformatics (2011) 27(21) 2987-93. [21903627]
+[34] Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 19505943
+[35] Li H, A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data, Bioinformatics (2011) 27(21) 2987-93. 21903627
 [36] https://www.r-project.org/
 [37] https://arapheno.1001genomes.org/
 [38] https://cran.r-project.org/web/packages/vcfR/index.html

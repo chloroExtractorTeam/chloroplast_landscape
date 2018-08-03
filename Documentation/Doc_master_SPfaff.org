@@ -3545,6 +3545,17 @@ perl -F"," -ane 'print if $F[6]>399 and $F[3]>999999' SraRunInfo_plants.csv | gr
 curl http://rocaplab.ocean.washington.edu/old_website/tools/cpbase/run | grep href | grep genome | grep td | cut -f3 -d ">" | cut -f1 -d"<" 
 
 * Week 20 18.06 - 22.06 (Markus vacations)
+* New Chloro
+#+BEGIN_SRC sh :dir ~/Master_thesis/runs/cpbase/nocpbase
+bash percent_stat.sh ev.txt
+
+#+END_SRC
+
+#+RESULTS:
+| Tool    | SUCCESS % | ERROR | PARTIAL | INCOMPl | NO_PAIR | Running | Total |
+| CE      | 4 ~8%     |    20 |      16 |       9 |       0 |       0 |       |
+| FP      | 15 ~31%   |     7 |      22 |       5 |       0 |       0 |       |
+| Summary | 17 ~35%   |     - |       - |       - |       0 |       - |    49 |
 
 * Less Importend stuff
 
