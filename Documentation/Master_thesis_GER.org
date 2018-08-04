@@ -45,21 +45,28 @@ a fully automatic pipeline for chloroplast genome extraction from genomic sequen
 
 * Einleitung
 ** Chloroplasten
-Chloroplasten sind extrem wichtig, alle Pflanzen besitzen diese und nutzen sie um Energie in Form von ATP durch Photosynthese zu erzeugen.
-Ihr Genom gilt als hoch konserviert, sowohl in der Gen Orientierung als auch dem Gen Inhalt [1]. Chloroplasten zeigen
+Chloroplasten sind extrem wichtig, alle Pflanzen besitzen diese und nutzen sie um Energie in Form von ATP durch Photosynthese zu erzeugen[56].
+Ihr Genom gilt als hoch konserviert, sowohl in der Gen Orientierung als auch dem Gen Inhalt [1], dieser besteht zwischen 100 und 200 Genen[57]. 
+Das Genom ist in etwa 30 bis 60 mikrometer lang und besitzt eine Masse von ungefähr 80 - 130 Millionen daltons[58].
+Chloroplasten zeigen
 eine auffällige Genom Struktur, das Genom ist ein einem Plasmid welches sich in drei Teile aufteilt. Dem Large Single Copy, dem 
-Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind (Fig. 1). Chloroplasten zeigen eine viel geringere Substitutions raten
+Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind (Fig. 1)[59]. Chloroplasten zeigen eine viel geringere Substitutions raten
 als in Genomischer DNA, diese ist noch einmal signifikant geringer in den Inverted repeat Regionen [2]. Dennoch zeigen sich
-Einzelnucleotid-Polymorphismen (SNPs). Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
+Einzelnucleotid-Polymorphismen (SNPs)[48]. Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
 fallen kann, sodass solche Chloroplasten nur noch ein IR besitzen [3] . Vor allem in gezüchteten Nutzpflanzen finden sich auch 
-Invertierungen des IR [4]. Durch ihre hohe Konservierung sind Chloroplasten und ihre Gene sehr gut für Barcoding geeignet. Mit diesem
+Invertierungen des IR [4]. Durch ihre hohe Konservierung sincd Chloroplasten und ihre Gene sehr gut für Barcoding geeignet[60]. Mit diesem
 Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien zeigen, dass der komplette Chloroplast selbst als ein Art "Ultra-barcode"
 verwendet werden könnte, da die Variation in Chloroplasten in einer Spezies doch mehr variiert als angenommen [5]. 
 #+LATEX: \begin{figure}
-[[./703px-CtDNA.png]]
-#+LATEX: \caption[Aufbau Chloroplast Genom]{\textbf{Aufbau Chloroplast Genom} Das Chloroplast Genom der Tabakpflanze, die innere Beschrifftung zeigt den B-Strang, die Äußere den A-Strang der DNA. Die Kerben visualisieren Introns}
+[[./Chloroplast.png]]
+#+LATEX: \caption[Chloroplast Genom Einteilung]{\textbf{Chloroplast Genom Einteilung} Der Chloroplast ist unterteilt in LSC, SSC sowie IR. LSC und SSC werden jeweils von den IR_A und IR_B unterbrochen.}
 #+LATEX: \end{figure}
-Die Gene auf einem Chloroplasten lassen sich in verschiedene Klassen einteilen. Zunächst gibt es die Gene welche für die Photosynthese wichtig sind,
+
+#+LATEX: \begin{figure}
+[[./703px-CtDNA.png]]
+#+LATEX: \caption[Chloroplast Genom: Gen Klassen]{\textbf{Chloroplast Genom: Einteilung Gen Klassen} Das Chloroplast Genom der Tabakpflanze, die innere Beschrifftung zeigt den B-Strang, die Äußere den A-Strang der DNA. Die Kerben visualisieren Introns. \footnote{Quelle: Wikipedia unter Wikimedia Commonsen Liszenz \url{https://en.wikipedia.org/wiki/File:CtDNA.svg}} }
+#+LATEX: \end{figure}
+Die Gene auf einem Chloroplasten lassen sich in verschiedene Klassen einteilen(Fig. 2). Zunächst gibt es die Gene welche für die Photosynthese wichtig sind,
 hier unterteilt man nochmal in Photosystem I (psaA, psaB, etc.), Photosystem II (psbA, psbB, etc.), Cytochrome b6f (petA, petB,etc.), 
 ATP Synthese (atpA, atpB, etc.), RuBisCo(rbcL) und NAD(P)H dehydrogenase Gene(ndhA, ndhB, etc.)[47]. Die zweite Klasse beinhaltet Gene welche für den
 Genetischen Apparat, also Transkription, Translation und Replikation nötig sind, sowie RNA Gene. Hierzu zählen Transfer RNA (trnH,trnK, etc.), ribosomale RNA (rrn16, rrn5, etc.), 
@@ -262,7 +269,7 @@ Kategorien eingeführt(s. Tab. 1). Diese Auswertung wurde für dann für alle Te
 #+LATEX: \caption[Erfolgsraten Einteilung]{\textbf{Erfolgsraten Einteilung} Das Skript ev\_stat.sh scannt die Output Dateien und teilt diese je nach Größe und Anzahl der Contigs in verschiedene Kategorien ein. }
 | Kategorie   | Contigs | Basenpaare        |
 |-------------+---------+-------------------|
-| Success     | 1       | 110 kbp - 180 kbp  |
+| Success     | 1       | 110 kbp - 180 kbp |
 | Partial     | > 1     | 110 kbp - 180 kbp |
 | Incomp:high | > 1     | > 180 kbp         |
 | Incom:low   | > 1     | > 110 kbp         |
@@ -334,8 +341,11 @@ Skript dienen. Sobald der Slurm Job fertig ist, startet das Evaluierungs Skript 
 schiebt es alle Dateien welche keine Log Dateien oder Finale Output Dateien sind in einen raw_Programm Ordner, damit dieser mit dem clear_skript.sh gelöscht werden kann, falls diese Daten nicht mehr benötigt werden.
 Sobald alle Datensätze fertig sind wird mit dem ev_stat.sh Skript eine Datei mit einer Erfolgstabelle mit jedem Programm. Percent_stat.sh kann dann genutzt werden um eine Zusammenfassung über alle Datensätze zu erhalten.
   
+#+LATEX: \begin{figure}
+[[./Diagram_Master.png]]
+#+LATEX: \caption[Automatisierungs Skripts]{\textbf{Automatisierungs Skripts} Ablauf der verwendeten Skripte um eine Automatisierung zu erwirken, hier wird nur das run_SRRchl.sh Skript ausgeführt und alle anderen skripte werden automatisch bis zur Auswertung ausgeführt}
+#+LATEX: \end{figure}
 
-*TODO: DIAGRAMM ABLAUF*
 
 ** Daten: Simulierte Daten 
 Die Simulierten Daten, welche mit ART[6][7] erzeugt wurden um das verhalten der Programme bei verschiedenen Verhältnissen zu testen, konnten von drei Programmen, dem chloroExtractor, fast-plast und Org.ASM 
@@ -622,8 +632,14 @@ Dies zeigt lediglich dass noch mehr Daten benötigen werden um diese GWAS Studie
 [53] https://www.docker.com/
 [54] https://hub.docker.com/
 [55] https://hub.docker.com/u/chloroextractorteam/
-[56]
-[57]
+[56] Purves Biologie, Sadava D, Hillis D.M, Heller H.C, Berenbaum M.R, (9. Auflage S. 14)
+[57] Howe, C. J. (2016). Chloroplast Genome. In eLS, John Wiley & Sons, Ltd (Ed.). doi:10.1002/9780470015902.a0002016.pub3
+[58] Burgess, Jeremy (1989). An introduction to plant cell development. Cambridge: Cambridge university press. p. 62. ISBN 0-521-31611-1.
+[59] Shaw, J.; Lickey, E. B.; Schilling, E. E.; Small, R. L. (2007). "Comparison of whole chloroplast genome sequences to choose noncoding regions for phylogenetic studies in angiosperms: The tortoise and the hare III". American Journal of Botany. doi:10.3732/ajb.94.3.275.
+[60] Song, Y.; Wang, S.; Ding, Y.; Xu, J.; Li, M.F.; Zhu, S.; Chen, N. Chloroplast genomic resource of Paris for species discrimination. Sci. Rep. 2017, 7, 3427–3434
+[61]
+[62]
+[63]
 #+LATEX: \clearpage
 * Abbildungs- und Tabellenverzeichnis
 \listoffigures
