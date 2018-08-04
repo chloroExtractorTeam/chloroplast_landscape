@@ -59,12 +59,12 @@ Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien
 verwendet werden könnte, da die Variation in Chloroplasten in einer Spezies doch mehr variiert als angenommen [5]. 
 #+LATEX: \begin{figure}
 [[./Chloroplast.png]]
-#+LATEX: \caption[Chloroplast Genom Einteilung]{\textbf{Chloroplast Genom Einteilung} Der Chloroplast ist unterteilt in LSC, SSC sowie IR. LSC und SSC werden jeweils von den IR_A und IR_B unterbrochen.}
+#+LATEX: \caption[Chloroplast Genom Einteilung]{\textbf{Chloroplast Genom Einteilung} Der Chloroplast ist unterteilt in LSC, SSC sowie IR. LSC und SSC werden jeweils von den IRa und IRb unterbrochen.}
 #+LATEX: \end{figure}
 
 #+LATEX: \begin{figure}
 [[./703px-CtDNA.png]]
-#+LATEX: \caption[Chloroplast Genom: Gen Klassen]{\textbf{Chloroplast Genom: Einteilung Gen Klassen} Das Chloroplast Genom der Tabakpflanze, die innere Beschrifftung zeigt den B-Strang, die Äußere den A-Strang der DNA. Die Kerben visualisieren Introns. \footnote{Quelle: Wikipedia unter Wikimedia Commonsen Liszenz \url{https://en.wikipedia.org/wiki/File:CtDNA.svg}} }
+#+LATEX: \caption[Chloroplast Genom: Gen Klassen]{\textbf{Chloroplast Genom: Einteilung Gen Klassen} Das Chloroplast Genom der Tabakpflanze, die innere Beschrifftung zeigt den B-Strang, die Äußere den A-Strang der DNA. Die Kerben visualisieren Introns.Wikipedia unter Wikimedia Commonsen Liszenz\url{https://en.wikipedia.org/wiki/File:CtDNA.svg}}
 #+LATEX: \end{figure}
 Die Gene auf einem Chloroplasten lassen sich in verschiedene Klassen einteilen(Fig. 2). Zunächst gibt es die Gene welche für die Photosynthese wichtig sind,
 hier unterteilt man nochmal in Photosystem I (psaA, psaB, etc.), Photosystem II (psbA, psbB, etc.), Cytochrome b6f (petA, petB,etc.), 
@@ -133,7 +133,7 @@ Programm zum Absturz brachten. Aber auch Verbesserungen am fcg.pl Skript.
  
 #+LATEX: \begin{figure}
 [[./workflow.png]]
-#+LATEX: \caption[Ablauf des chloroExtractors]{\textbf{Ablauf des chloroExtractors} Eine kombination aus kmer Analyse und mapping auf bekannte Chloroplasten rekrutieren Chloroplasten reads um diese anschließend zu Assemblieren um anschließend einen Ringschluss herbeizuführen}
+#+LATEX: \caption[Ablauf des chloroExtractors]{\textbf{Ablauf des chloroExtractors} Eine kombination aus kmer Analyse und mapping auf bekannte Chloroplasten rekrutieren Chloroplasten reads um diese anschließend zu Assemblieren um anschließend einen Ringschluss herbeizuführen. (Ankenbrand et al., (2018).)}
 #+LATEX: \end{figure}
 
 *** fast-plast
@@ -343,7 +343,7 @@ Sobald alle Datensätze fertig sind wird mit dem ev_stat.sh Skript eine Datei mi
   
 #+LATEX: \begin{figure}
 [[./Diagram_Master.png]]
-#+LATEX: \caption[Automatisierungs Skripts]{\textbf{Automatisierungs Skripts} Ablauf der verwendeten Skripte um eine Automatisierung zu erwirken, hier wird nur das run_SRRchl.sh Skript ausgeführt und alle anderen skripte werden automatisch bis zur Auswertung ausgeführt}
+#+LATEX: \caption[Automatisierungs Skripts]{\textbf{Automatisierungs Skripts} Ablauf der verwendeten Skripte um eine Automatisierung zu erwirken, hier wird nur das run\_SRRchl.sh Skript ausgeführt und alle anderen skripte werden automatisch bis zur Auswertung ausgeführt}
 #+LATEX: \end{figure}
 
 
@@ -398,8 +398,14 @@ zu verbessern, dies führt dazu dass das fcg.pl Skript nicht mehr funktioniert. 
 zwei Datensätze als zirkuläre Chloroplasten. Auf Nachfrage beim GetOrganelle Team, hieß es dass wenn es notwendig war alle Parameter angepasst wurden und dass alle 
 Chloroplasten per Hand aus Bandage geholt wurden. 
 Von 57 Datensätzen, welche im GetOrganelle Paper verwendet wurden, konnten 40 mit allen Programmen fertig gestellt werden (s. Tab. 4).
-Alleine der fast-plast hat dabei 31 Stück zu einem zirkulären Chloroplasten zusammengebaut. Zusammen mit den 14 des chloroExtractors
-konnten die 40 geschafften Chloroplasten komplett abgedeckt werden.
+So konnten 35 von 40 Erfolgreichen Datensätzen durch den fast-plast und den chloroExtractor erreicht werden.  Der fast-plast schafft es 31 Chloroplasten Genome komplett
+zu bauen, davon sind 17 nur von ihm geschafft worden. Der chloroExtractor schafft 14 Chloroplasten, wo von drei nur von ihm geschafft werden. Die zwei Erfolge des GetOrganelles,
+mit Hilfe des fcg.pl scripts des chloroExtractors werden auch nur vom GetOrganelle geschafft. Von den sieben des NOVOPlasty ist einer dabei welcher nur von diesem geschafft wird.
+Von den elf des Org.ASM ist auch einer nur von diesem Geschafft worden. Doch wurden einige auch mehrfach geschafft. So sind vier stück nur von fast-plast und chloroExtractor geschafft worden.
+Zwei stück von fast-plast und Org.ASM, sowie jeweils einer von Org.ASM und NOVOPlasty; chloroExtractor und Org.ASM; fast-plast und NOVOPlasty.
+Drei Erfolge teilen sich fast-plast, chloroExtractor und Org.ASM. Sowie jeweils ein Erfolg teilen sich fast-plast, Org.ASM, NOVOPlasty, als auch einer von fast-plast, chloroExtractor und NOVOPlasty.
+Zwei Chloroplasten konnten von allen Programmen bis auf GetOrganelle und IOGA gelöst werden (u.a. Abb. 6 SRR5602602 - Laurus nobilis), wobei letzteres Programm nicht einen Erfolg hat(Abb. 5). So können bereits 35 von 40 Chloroplasten
+alleine durch fast-plast und chloroExtractor geschafft werden.
 
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrrrrrrrr
@@ -414,6 +420,16 @@ konnten die 40 geschafften Chloroplasten komplett abgedeckt werden.
 | Summary |      40 | ~74% |     - |       - |       - |       3 |    57 |
 
 #+LATEX: \end{table}
+
+#+LATEX: \begin{figure}
+[[./upset.png]]
+#+LATEX: \caption[Upset Diagramm GO-Preprint]{\textbf{Upset Diagramm GO-Preprint} Hier wird gezeigt wie sich die einzelnen Erfolge auf die 40 stück aufteilen. So schafft der fast-plast 17 Chloroplasten welches kein anderes Tool schafft. Fast-plast und chloroExtractor haben vier Erfolge gemeinsam, der chloroExtractor schafft drei Chloroplasten welche kein anderes Programm schafft. usw. So werden 35 der geschafften 40 durch fast-plast und chloroExtractor abgedeckt.}
+#+LATEX: \end{figure}
+
+#+LATEX: \begin{figure}
+[[./SRR5602602.png]]
+#+LATEX: \caption[AliTV SRR5602602 - Laurus nobilis]{\textbf{AliTV SRR5602602 - Laurus nobilis} SRR5602602 - Laurus nobilis, SRR5602602 - Laurus nobilis, Daten des GO-Preprints, geschafft von ChloroExtractor, NOVOPlasty, fast-plast und Org.ASM. Orientierung von LSC sowie von SSC und IRs können nicht perfekt aufgelöst werden und können durchaus Verdreht sein.}
+#+LATEX: \end{figure}
 
 ** Die besten Programme: fast-plast und chloroExtractor
 Da aus Zeitlichen und Hardware Technischen gründen nicht alle Programme weiterverwendet werden konnten, wurde nach Erfolgsrate, Geschwindigkeit und benötigten Ressourcen
@@ -446,9 +462,8 @@ der Dockercontainer Singularity [28] verwendet wurde.
 Die Programme welche in oben genannten Punkte überzeugt haben sind der fast-plast und der chloroExtractor. Der fast-plast benötigt zwar die 
 meisten Ressourcen und ist nicht der schnellste, aber hat mit Abstand die größte Erfolgschance. Zudem ist er voll automatisierbar und erreicht 
 dies mit den vorgegebenen Standard Parametern. Als zweites Programm wird der chloroExtractor verwendet, dieser ist schnell, Ressourcen arm und hat nach dem
-fast-plast die zweithöchste Erfolgsrate. Mit beiden Programmen konnten alle 40 von 57 Chloroplasten der GetOrganelle-Preprint Daten berechnet werden.
-Auch die anderen Daten zeigen dass es keinen Vorteil bringt ein drittes Programm mit zu verwenden, da keines der anderen Programme einen
-Chloroplasten finden konnte welche nicht schon durch den fast-plast oder den chloroExtractor gefunden wurde. Zudem haben diese beiden Programme die wenigsten
+fast-plast die zweithöchste Erfolgsrate. Mit beiden Programmen konnten 35 von den 40 Erfolgen von 57 Chloroplasten der GetOrganelle-Preprint Daten berechnet werden.
+Zudem haben diese beiden Programme die wenigsten
 Probleme bei der Handhabung wie auch bei der Installation zu beginn gemacht. Sie sind durch die gegebenen Parameter einfach zu verwenden und zu Automatisieren.
 Die von den Programmen geschriebenen Log Dateien sind einfach gehalten um dem Ablauf zu folgen und klar verständlich, der fast-plast gibt sogar drei dieser
 Dateien aus, da er unterscheidet zwischen Warn- und Fehlermeldungen und Standard Meldungen, und eine Datei für den Output der eingebundenen Programme. 
@@ -474,11 +489,19 @@ vollautomatisch gebaut werden, dies entspricht etwa 34%. (Tab. 4).
 Um die Varianz Analyse durchzuführen und vor allem zu überprüfen ob die Assambler bzw. die Programme an sich einen Einfluss darauf haben, indem sie z.B. zufällige Seeds verwenden oder zufällige Daten bevorzugen, wurden 89 Datensätze
 der 1001 Genom Projektes verwendet. Diese 89 Datensätze zeichnen sich dadurch aus, dass sowohl der chloroExtractor als auch der fast-plast diese zu vollständigen Chloroplasten zusammengebaut haben. Diese Datensätze
 wurden noch zehn weitere Male berechnet. So wurden auf elf mal 89 Datensätzen überprüft welche Einflüsse die Programme auf die Varianz haben. Der chloroExtractor und somit der Assambler SPAdes brachte bei allen elf
-Durchläufen die exakt gleichen Sequenzen heraus. Dieses Programm arbeitet also 100% Reproduzierbar. Im Gegensatz dazu der fast-plast, dieser schaffte es nicht einmal bei allen elf Durchläufen alle Chloroplasten wieder
-korrekt zusammen zubauen, bei bis zu neun verschiedenen Datensätzen konnte kein Erfolgreiches Ergebnis erzielt werden. Interessanter weiße waren nicht immer die selben Datensätze betroffen, so konnten bei einigen Durchläufen
+Durchläufen die exakt gleichen Sequenzen heraus. Dieses Programm arbeitet also 100% Reproduzierbar (s. Abb. 8). Im Gegensatz dazu der fast-plast, dieser schaffte es nicht einmal bei allen elf Durchläufen alle Chloroplasten wieder
+korrekt zusammen zubauen, bei bis zu neun verschiedenen Datensätzen konnte kein Erfolgreiches Ergebnis erzielt werden(s. Abb. 7). Interessanter weiße waren nicht immer die selben Datensätze betroffen, so konnten bei einigen Durchläufen
 ein Erfolg erreicht werden, bei dem nächsten aber nicht. Ob dies ein Zufalls Effekt des Programms oder der verwendeten Rechner-Infrastruktur ist, konnte nicht überprüft werden.
 Die zweite Varianz Analyse bzw. SNP calling wurde auf allen Erfolgreich zusammengebauten Chloroplasten durchgeführt. Das SNP calling ergab das auf allen 303 Chloroplasten insgesamt 2128 SNPs gefunden wurden. 
 Diese Ergebnisse werden für die GWAS Analyse verwendet.
+#+LATEX: \begin{figure}
+[[./SRR1946153_FP.png]]
+#+LATEX: \caption[fast-plast SRR1946153]{\textbf{fast-plast SRR1946153} Zwei verschiedene Läufe auf den selben Daten, der fast-plast schafft einen davon, den anderen nicht. Hier fehlt ein Teil des IR, wodurch auch nicht als Erfolg gewertet wird. }
+#+LATEX: \end{figure}
+#+LATEX: \begin{figure}
+[[./SRR1946153_CE.png]]
+#+LATEX: \caption[chloroExtractor SRR1946153]{\textbf{chloroExtractor SRR1946153} Zwei verschiedene Läufe auf den selben Daten, der chloroExtractor bringt das gleiche Ergebniss für beide Durchläufe.}
+#+LATEX: \end{figure}
 ** GWAS
 Die GWAS Analyse, welche mit den 303 kompletten Chloroplasten aus den Daten des 1001 Genom Projekts und den 2128 gefunden SNPs durchgeführt wurde, konnte nur auf zwei verschieden Traits berechnet werden. Dies waren 
 die Eigenschaften Flowering Time bei 16°C sowie bei 10°C. Dies sind die beiden Traits am besten untersucht sind und deswegen auch die meisten Daten beinhalten. Für alle anderen Traits konnten
@@ -647,6 +670,11 @@ Dies zeigt lediglich dass noch mehr Daten benötigen werden um diese GWAS Studie
 \listoftables
 #+LATEX: \clearpage
 * Anhang
+** Tabellen
+Alle Ergebniss Tabellen können eingesehen werden unter:
+https://github.com/chloroExtractorTeam/chloroplast_landscape/tree/Documentation_SPfaff
+
+
 #+LATEX: \section*{Eigenständigkeitserklärung}
 ERKLÄRUNG gemäß ASPO vom 5.8.2009 § 23 Abs. 10\\[10mm]
 Hiermit versichere ich, dass ich vorliegende Arbeit selbstständig verfasst, keine anderen als
