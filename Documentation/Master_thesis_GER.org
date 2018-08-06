@@ -54,7 +54,7 @@ Chloroplasten zeigen
 eine auffällige Genom Struktur, das Genom ist ein einem Plasmid welches sich in drei Teile aufteilt. Dem Large Single Copy, dem 
 Small Singles Copy, welche beide durch zwei Inverted repeats unterbrochen sind (Fig. 1)[59]. Chloroplasten zeigen eine viel geringere Substitutionsrate
 als in genomischer DNA, diese ist noch einmal signifikant geringer in den Inverted repeat Regionen [2]. Dennoch zeigen sich
-Einzelnucleotid-Polymorphismen (SNPs)[48]. Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
+Einzelnucleotid-Polymorphismen (SNPs)[39]. Zudem gibt es ein seltenen Fällen eine Genwanderung von Genen auf dem IR zum SSC, wodurch ein IR weg
 fallen kann, sodass solche Chloroplasten nur noch ein IR besitzen [3] . Vor allem in gezüchteten Nutzpflanzen finden sich auch 
 Invertierungen des IR [4]. Durch ihre hohe Konservierung sind Chloroplasten und ihre Gene sehr gut für Barcoding geeignet[60]. Mit diesem
 Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien zeigen, dass der komplette Chloroplast selbst als ein Art "Ultra-barcode"
@@ -188,7 +188,7 @@ können so auf den Grund gegangen werden, oder auch die Adaption von verschieden
 kodierenden Sequenz, alleine durch Änderung an Transkriptionsfaktoren oder deren Level viel Einfluss auf solche Systeme genommen werden, welche natürlich auch mit dem Chloroplasten zusammenhängen[42]. Wie bereits erwähnt 
 eigenen sich Chloroplasten gut als Barcode Marker. Auch hier können Fortschritte mit mehr Daten erlangt werden. Zudem können mit vielen Chloroplasten Daten sehr gut Phylogenetische Bäume berechnet werden[46].
 Dies sind alles Beispiele wie zwischen vielen Spezies mit Hilfe von Chloroplasten Forschung betrieben werden kann. Aber auch innerhalb einer Spezies tauchen Variabilitäten auf, und dies konnte nur mit vielen verschiedenen
-Chloroplasten der gleichen Spezies herausgefunden werden. So wurden beim 1001 Genom Projekt mehrere Tausend SNPs auf /A.thaliana/ Chloroplasten gecalled[26][48]. 
+Chloroplasten der gleichen Spezies herausgefunden werden. So wurden beim 1001 Genom Projekt mehrere Tausend SNPs auf /A.thaliana/ Chloroplasten gecalled[26][39]. 
 Doch können nicht nur viele Chloroplasten Probleme lösen, schon einzelne neue Chloroplasten können sehr aufschlussreich und informativ sein. So wurde die Idee des chloroExtractors z.B. nur aus dem Grund
 entworfen einen Chloroplasten aus dem Dionaea muscipula ( Venusfliegenfalle ) Genom zu extrahieren, um diesen separat zu haben, um das Genom leichter zu assemblieren und annotieren. Denn es kann durchaus vorkommen
 dass bei neuen Genomen, welche de novo assembliert werden müssen, Verunreinigungen durch Chloroplasten auftreten können. Denn ~5 - 20% der kompletten DNA wird von Plastiden-DNA ausgemacht, je nach Spezies und Gewebe[42].
@@ -401,7 +401,7 @@ simulierten Datensätze zusammen zu bauen da sie mit einem Fehler abbrechen oder
 #+LATEX: \end{table}
 
 ** Daten: 1001 Genom Projekt, 11 Testdatensätze
-Aus den Daten des 1001 Genom Projekts [26][48] wurden zunächst elf Testdatensätze verwendet um auch reale Daten auf allen Programmen zu testen.
+Aus den Daten des 1001 Genom Projekts [26][39] wurden zunächst elf Testdatensätze verwendet um auch reale Daten auf allen Programmen zu testen.
 Von den elf Testdatensätzen des 1001 Genom Projekts konnten sechs verschiedene vollständige zirkuläre Chloroplasten zusammengebaut werden. Von diesen
 sechs bringt der fast-plast fünf ein und der chloroExtractor einen. Keines der anderen Programme konnte einen weiteren 
 zirkulären Chloroplasten erzeugen (s. Tab.3). Diese elf Datensätze des GetOrganelles wurden per Hand ausgewertet, keiner dieser elf Datensätze konnte einwandfrei mit Bandage
@@ -660,67 +660,65 @@ Diese Arbeit zeigt vor allem eines, es ist durch Automatisierung möglich Chloro
 noch viel mehr Chloroplasten Genome erzeugt werden.
 
 # * Referenzen
-
-[1] Raubeson and Jansen 2005
-[2] Wolfe et al. 1987
-[3] Jansen RK, Wojciechowski MF, Sanniyasi E, Lee S-B, Daniell H. Complete plastid genome sequence of the chickpea (Cicer arietinum) and the phylogenetic distribution of rps12 and clpP intron losses among legumes (Leguminosae). Molecular phylogenetics and evolution. 2008;48(3):1204-1217. doi:10.1016/j.ympev.2008.06.013.
-[4] Palmer et al. 1988
-[5]  Kane et al. (2012)
-[6] Weichun Huang, Leping Li, Jason R. Myers, Gabor T. Marth; ART: a next-generation sequencing read simulator, Bioinformatics, Volume 28, Issue 4, 15 February 2012, Pages 593–594, https://doi.org/10.1093/bioinformatics/btr708
+[1] Raubeson L, Jansen R. (2005). Chloroplast genomes of plants, Plant diversity and evolution: genotypic and phenotypic variation in higher plants. Diversity and Evolution of Plants-Genotypic and Phenotypic Variation in Higher Plants. 3. doi:10.1079/9780851999043.0045. 
+[2] Wolfe KH, Li WH, Sharp PM. (1988). Rates of nucleotide substitution vary greatly among plant mitochondrial, chloroplast and nuclear DNA. Proc Natl Acad Sci USA doi:10.1073/pnas.84.24.9054.
+[3] Jansen RK, Wojciechowski MF, Sanniyasi E, et al. Complete plastid genome sequence of the chickpea (Cicer arietinum) and the phylogenetic distribution of rps12 and clpP intron losses among legumes (Leguminosae). Molecular phylogenetics and evolution. doi:10.1016/j.ympev.2008.06.013.
+[4] Palmer JD, Jansen RK, Michaels HJ, et al. (1988).  Chloroplast DNA Variation and Plant Phylogeny. Annals of the Missouri Botanical Garden,  doi:10.2307/2399279
+[5] Kane N, Sveinsson S, Dempewolf H, et al.(2012), Ultra-barcoding in cacao (Theobroma spp.; Malvaceae) using whole chloroplast genomes and nuclear ribosomal DNA. American Journal of Botany, doi:10.3732/ajb.1100570
+[6] Weichun H, Leping L, Jason RM, Gabor TM. (2015), ART: a next-generation sequencing read simulator, Bioinformatics, https://doi.org/10.1093/bioinformatics/btr708
 [7] https://www.niehs.nih.gov/research/resources/software/biostatistics/art/index.cfm
 [8] https://www.ncbi.nlm.nih.gov/assembly/GCF_000001735.3/
-[9] Ankenbrand et al., (2018). chloroExtractor: extraction and assembly of the chloroplast genome from whole genome shotgun data. Journal of Open Source Software, 3(21), 464, https://doi.org/10.21105/joss.00464
+[9] Ankenbrand MJ, Pfaff S, Förster F, et al., (2018). chloroExtractor: extraction and assembly of the chloroplast genome from whole genome shotgun data. Journal of Open Source Software, https://doi.org/10.21105/joss.00464
 [10] https://github.com/chloroExtractorTeam/chloroExtractor
-[11] Christiam Camacho, George Coulouris, Vahram Avagyan, Ning Ma, Jason Papadopoulos, Kevin Bealer and Thomas L MaddenEmail author, BMC Bioinformatics200910:421 https://doi.org/10.1186/1471-2105-10-42
-[12]  Guillaume Marcais and Carl Kingsford, A fast, lock-free approach for efficient parallel counting of occurrences of k-mers. Bioinformatics (2011) 27(6): 764-770 (first published online January 7, 2011) doi:10.1093/bioinformatics/btr011
+[11] Camacho C, Coulouris G, Avagyan V, et al. (2009), Selecting control genes for RT-QPCR using public microarray data, BMC Bioinformatics https://doi.org/10.1186/1471-2105-10-42
+[12] Marcais G, Kingsford C.(2011), A fast, lock-free approach for efficient parallel counting of occurrences of k-mers. Bioinformatics  doi:10.1093/bioinformatics/btr011
 [13] https://github.com/mrmckain/Fast-Plast
 [14] https://github.com/ndierckx/NOVOPlasty
-[15] Dierckxsens N., Mardulyn P. and Smits G. (2016) NOVOPlasty: De novo assembly of organelle genomes from whole genome data. Nucleic Acids Research, doi: 10.1093/nar/gkw955
+[15] Dierckxsens N, Mardulyn P , Smits G. (2016), NOVOPlasty: De novo assembly of organelle genomes from whole genome data. Nucleic Acids Research, doi:10.1093/nar/gkw955
 [16] https://pythonhosted.org/ORG.asm/
 [17] https://git.metabarcoding.org/org-asm/org-asm/wikis/home
 [18] https://github.com/Kinggerm/GetOrganelle
-[19] Jian-Jun Jin*, Wen-Bin Yu*, Jun-Bo Yang, Yu Song, Ting-Shuang Yi, De-Zhu Li. 2018. GetOrganelle: a simple and fast pipeline for de novo assembly of a complete circular chloroplast genome using genome skimming data. bioRxiv, 256479. http://doi.org/10.1101/256479
-[20] Langmead B, Salzberg S. Fast gapped-read alignment with Bowtie 2. Nature Methods. 2012, 9:357-359.
+[19] Jin J, Yu W, Yang J, Song Y, et al. (2018), GetOrganelle: a simple and fast pipeline for de novo assembly of a complete circular chloroplast genome using genome skimming data. bioRxiv, http://doi.org/10.1101/256479
+[20] Langmead B, Salzberg S. (2012), Fast gapped-read alignment with Bowtie 2. Nature Methods, doi:9:357-359.
 [21] https://github.com/holmrenser/IOGA
-[22] Bakker et al. 2015, Herbarium genomics: plastome sequence assembly from a range of herbarium specimens using an Iterative Organelle Genome Assembly pipeline, Biol. J. Linnean Soc.
+[22] Bakker FT, Lei D, et al. (2015), Herbarium genomics: plastome sequence assembly from a range of herbarium specimens using an Iterative Organelle Genome Assembly pipeline, Biol. J. Linnean Soc. https://doi.org/10.1111/bij.12642
 [23] https://jgi.doe.gov/data-and-tools/bbtools/
-[24] Bankevich A., Nurk S., Antipov D., Gurevich A., Dvorkin M., Kulikov A. S., Lesin V., Nikolenko S., Pham S., Prjibelski A., Pyshkin A., Sirotkin A., Vyahhi N., Tesler G., Alekseyev M. A., Pevzner P. A. SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing.	Journal of Computational Biology, 2012 
-[25] Luo R, Liu B, Xie Y, et al. SOAPdenovo2: an empirically improved memory-efficient short-read de novo assembler. GigaScience. 2012;1:18. doi:10.1186/2047-217X-1-18.
+[24] Bankevich A, Nurk S, Antipov D, et al. (2012), SPAdes: A New Genome Assembly Algorithm and Its Applications to Single-Cell Sequencing, Journal of Computational Biology, doi:10.1089/cmb.2012.0021
+[25] Luo R, Liu B, Xie Y, et al. (2012), SOAPdenovo2: an empirically improved memory-efficient short-read de novo assembler. GigaScience.  doi:10.1186/2047-217X-1-18.
 [26] http://1001genomes.org/
 [27] https://pythonhosted.org/ORG.asm/algorithms.html
 [28] https://singularity.lbl.gov/
 [29] https://www.pacb.com/ 
 [30] https://www.illumina.com/
-[31] Korte A, Farlow A. The advantages and limitations of trait analysis with GWAS: a review. Plant Methods. 2013;9:29. doi:10.1186/1746-4811-9-29.
+[31] Korte A, Farlow A. (2013), The advantages and limitations of trait analysis with GWAS: a review. Plant Methods. doi:10.1186/1746-4811-9-29.
 [32] Li, H. (2018). Minimap2: pairwise alignment for nucleotide sequences. Bioinformatics. doi:10.1093/bioinformatics/bty191
 [33] https://www.ncbi.nlm.nih.gov/nuccore/NC_000932.1
-[34] Li H, Handsaker B, Wysoker A, Fennell T, Ruan J, Homer N, Marth G, Abecasis G, Durbin R, and 1000 Genome Project Data Processing Subgroup, The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics (2009) 25(16) 2078-9 19505943
-[35] Li H, A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data, Bioinformatics (2011) 27(21) 2987-93. 21903627
+[34] Li H, Handsaker B, Wysoker A, et al. (2009) The Sequence alignment/map (SAM) format and SAMtools, Bioinformatics doi:10.1093/bioinformatics/btp352
+[35] Li H, (2011) A statistical framework for SNP calling, mutation discovery, association mapping and population genetical parameter estimation from sequencing data, Bioinformatics  doi:10.1093/bioinformatics/btr509
 [36] https://www.r-project.org/
 [37] https://arapheno.1001genomes.org/
 [38] https://cran.r-project.org/web/packages/vcfR/index.html
-[39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in /Arabidopsis thaliana/. Cell. 2016;166:481–491.
+[39] 1001 Genomes Consortium, (2016) 1,135 genomes reveal the global pattern of polymorphism in /Arabidopsis thaliana/. Cell. https://doi.org/10.1016/j.cell.2016.05.063
 [40] http://rocaplab.ocean.washington.edu/old_website/tools/cpbase
 [41] http://rocaplab.ocean.washington.edu/tools/cpbase_test/
-[42] Tonti-Filippini, J. , Nevill, P. G., Dixon, K. and Small, I. (2017), What can we do with 1000 plastid genomes?. Plant J, 90: 808-818. doi:10.1111/tpj.13491
-[43] Massouh A, Schubert J, Yaneva-Roder L, et al. Spontaneous Chloroplast Mutants Mostly Occur by Replication Slippage and Show a Biased Pattern in the Plastome of Oenothera. The Plant Cell. 2016;28(4):911-929. doi:10.1105/tpc.15.00879.
-[44] Greiner S, Sobanski J, Bock R. Why are most organelle genomes transmitted maternally? Bioessays. 2015;37(1):80-94. doi:10.1002/bies.201400110.
-[45] Wicke S, Schneeweiss GM, dePamphilis CW, Müller KF, Quandt D. The evolution of the plastid chromosome in land plants: gene content, gene order, gene function. Plant Molecular Biology. 2011;76(3-5):273-297. doi:10.1007/s11103-011-9762-4.
-[46] Chase MW, Fay MF. Ancient flowering plants: DNA sequences and angiosperm classification. Genome Biology. 2001;2(4):reviews1012.1-reviews1012.4.
-[47] Vydianathan, Ravi & P. Khurana, J & K. Tyagi, A & Khurana, Paramjit. (2007). An update on chloroplast genome. Plant Systematics and Evolution. 271. 101-122. 10.1007/s00606-007-0608-0. 
-[48] Alonso-Blanco C, Andrade J, Becker C, Bemm F, Bergelson J, Borgwardt KM, et al. 1135 genomes reveal the global pattern of polymorphism in /Arabidopsis thaliana/. Cell. 2016;166(2):481–491. doi: 10.1016/j.cell.2016.05.063
-[49] Ankenbrand MJ, Hohlfeld S, Hackl T, Förster F. (2017) AliTV—interactive visualization of whole genome comparisons. PeerJ Computer Science 3:e116 https://doi.org/10.7717/peerj-cs.116
+[42] Tonti-Filippini J, Nevill PG, Dixon K, et al. (2017), What can we do with 1000 plastid genomes?. Plant J, doi:10.1111/tpj.13491
+[43] Massouh A, Schubert J, Yaneva-Roder L, et al. (2016), Spontaneous Chloroplast Mutants Mostly Occur by Replication Slippage and Show a Biased Pattern in the Plastome of Oenothera. The Plant Cell. doi:10.1105/tpc.15.00879.
+[44] Greiner S, Sobanski J, Bock R. (2015), Why are most organelle genomes transmitted maternally? Bioessays. doi:10.1002/bies.201400110.
+[45] Wicke S, Schneeweiss GM, dePamphilis CW, et al. (2011) The evolution of the plastid chromosome in land plants: gene content, gene order, gene function. Plant Molecular Biology.  doi:10.1007/s11103-011-9762-4.
+[46] Chase MW, Fay MF. (2001) Ancient flowering plants: DNA sequences and angiosperm classification. Genome Biology. https://doi.org/10.1186/gb-2001-2-4-reviews1012
+[47] Ravi V, Khurana JP, Tyagi AK, et al. (2007). An update on chloroplast genome. Plant Systematics and Evolution. doi:10.1007/s00606-007-0608-0. 
+[49] Ankenbrand MJ, Hohlfeld S, Förster F, et al. (2017) AliTV—interactive visualization of whole genome comparisons. PeerJ Computer Science, https://doi.org/10.7717/peerj-cs.116
 [50] https://github.com/BioInf-Wuerzburg/SeqFilter
-[51] BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, and Evgeny M. Zdobnov, Bioinformatics, June 9, 2015 doi: 10.1093/bioinformatics/btv351
+[51] Simão FA, Waterhouse RM, Ioannidis P,et al. (2015), BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs.  Bioinformatics, doi:10.1093/bioinformatics/btv351
 [52] https://github.com/chloroExtractorTeam/screening_container
 [53] https://www.docker.com/
 [54] https://hub.docker.com/
 [55] https://hub.docker.com/u/chloroextractorteam/
 [56] Purves Biologie, Sadava D, Hillis D.M, Heller H.C, Berenbaum M.R, (9. Auflage S. 14)
-[57] Howe, C. J. (2016). Chloroplast Genome. In eLS, John Wiley & Sons, Ltd (Ed.). doi:10.1002/9780470015902.a0002016.pub3
+[57] Howe CJ. (2016). Chloroplast Genome. In eLS, John Wiley & Sons,  doi:10.1002/9780470015902.a0002016.pub3
 [58] Burgess, Jeremy (1989). An introduction to plant cell development. Cambridge: Cambridge university press. p. 62. ISBN 0-521-31611-1.
-[59] Shaw, J.; Lickey, E. B.; Schilling, E. E.; Small, R. L. (2007). "Comparison of whole chloroplast genome sequences to choose noncoding regions for phylogenetic studies in angiosperms: The tortoise and the hare III". American Journal of Botany. doi:10.3732/ajb.94.3.275.
-[60] Song, Y.; Wang, S.; Ding, Y.; Xu, J.; Li, M.F.; Zhu, S.; Chen, N. Chloroplast genomic resource of Paris for species discrimination. Sci. Rep. 2017, 7, 3427–3434
+[59] Shaw J, Lickey EB, Schilling EE, et al. (2007). Comparison of whole chloroplast genome sequences to choose noncoding regions for phylogenetic studies in angiosperms: The tortoise and the hare III. American Journal of Botany. doi:10.3732/ajb.94.3.275.
+[60] Song Y, Wang S, Ding Y, et al. (2017) Chloroplast genomic resource of Paris for species discrimination. Sci. Rep. doi:10.1038/s41598-017-02083-7
 [61] https://github.com/dellytools/delly
 [62] https://github.com/genome/breakdancer
 
