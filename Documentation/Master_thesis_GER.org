@@ -16,9 +16,10 @@
 #+LATEX: \thispagestyle{empty}
 #+LATEX: \maketitle
 #+LATEX: \begin{center}
+#+LATEX: \textbf{Seperating the good from the bad... Exploring the genomic landscape of chloroplasts from genomic sequencing datatreduction}
 #+LATEX: \includegraphics[width=.5\linewidth]{./neuSIEGEL.pdf}\\[1cm]
 #+LATEX: {\large Julius-Maximilians-Universität Würzburg}\\
-#+LATEX: {\large Betreuer: Dr. Markus Ankenbrandt}\\
+#+LATEX: {\large Betreuer: Dr. Markus Ankenbrand}\\
 #+LATEX: {\large Betreuer: Prof. Dr. Jörg Schulz}\\
 #+LATEX: {\large Betreuer: Dr. Frank Förster}\\
 #+LATEX: {\large Lehrstuhl für Bioinformatik}\\
@@ -59,13 +60,13 @@ Invertierungen des IR [4]. Durch ihre hohe Konservierung sind Chloroplasten und 
 Barcoding können Pflanzen und ihre Varianten identifiziert werden. Neue Studien zeigen, dass der komplette Chloroplast selbst als ein Art "Ultra-barcode"
 verwendet werden könnte, da die Variation in Chloroplasten in einer Spezies doch mehr variiert als angenommen [5]. 
 #+LATEX: \begin{figure}
-[[./Chloroplast.png]]
-#+LATEX: \caption[Chloroplast Genom Einteilung]{\textbf{Chloroplast Genom Einteilung} Der Chloroplast ist unterteilt in LSC, SSC sowie IR. LSC und SSC werden jeweils von den IRa und IRb unterbrochen.}
+[[./Chloroplast_1.png]]
+#+LATEX: \caption[Chloroplast Genom Einteilung]{\textbf{Chloroplast Genom Einteilung} Der Chloroplast ist unterteilt in Large Single Copy, Small Single Copy und Inverted Repeat, diese unterteilen sich nochma in IRA und IRB. LSC und SSC werden jeweils von den IRs unterbrochen.}
 #+LATEX: \end{figure}
 
 #+LATEX: \begin{figure}
 [[./703px-CtDNA.png]]
-#+LATEX: \caption[Chloroplast Genom: Gen Klassen]{\textbf{Chloroplast Genom: Einteilung Gen Klassen} Das Chloroplast Genom der Tabak pflanze, die innere Beschriftung zeigt den B-Strang, die Äußere den A-Strang der DNA. Die Kerben visualisieren Introns.Wikipedia unter Wikimedia Commonsen Lizenz\url{https://en.wikipedia.org/wiki/File:CtDNA.svg}}
+#+LATEX: \caption[Chloroplast Genom: Gen Klassen]{\textbf{Chloroplast Genom: Einteilung Gen Klassen} Das Chloroplast Genom der Tabak pflanze, die innere Beschriftung zeigt den - strand, die Äußere den + strand der DNA. Die Kerben visualisieren Introns.Wikipedia unter Wikimedia Commonsen Lizenz\url{https://en.wikipedia.org/wiki/File:CtDNA.svg}}
 #+LATEX: \end{figure}
 Die Gene auf einem Chloroplasten lassen sich in verschiedene Klassen einteilen (Fig. 2). Zunächst gibt es die Gene welche für die Photosynthese wichtig sind,
 hier unterteilt man nochmal in Photosystem I (psaA, psaB, etc.), Photosystem II (psbA, psbB, etc.), Cytochrome b6f (petA, petB,etc.), 
@@ -119,7 +120,7 @@ an spezifischen Stellen überrepräsentierte Kmers gefunden werden, diese überr
 Mitochondrien, sie besitzen ihre eigene DNA und kommen im Schnitt häufiger vor als DNA welche im Zellkern zu finden ist. Da der chloroExtractor einen Kmer basierten Ansatz benutzt ist ein solches
 Kmer Diagramm in dessen Logo zu finden(Fig. 3).
 #+LATEX: \begin{figure}
-[[./logo512.png]]
+#+LATEX: \includegraphics[width=.6\linewidth]{./logo512.png}
 #+LATEX: \caption[chloroExtractors Logo]{\textbf{chloroExtractor Logo} Das Logo des chloroExtractors zeigt die Verteilung der Genomischen Daten in einem Kmer Plot. Der erste Peak zeigt die Kmers Pflanzengenom, der zweite kleinere Peak zeigt die Kmers mit Chloroplasten Genom.}
 #+LATEX: \end{figure} 
 Abgesehen von den Ansätzen der Programme gibt es zwei verschiedene Arten von Programmen per se, die einen benutzen bereits vorhandene Programme wie Assambler, Mapper oder Kmer-counter. Diese 
@@ -138,7 +139,10 @@ allen verwendeten Programmen gleich sind. Es könnt so auch einzelnen Programmen
 ab, kann er am genau diesem Punkt wieder gestartet werden ohne das Programm von neu starten zu müssen. Zunächst verwendet der chloroExtractor Jellyfish [12] um aus den Rohdaten Kmere zu bauen, diese werden über ein R
 Skript skaliert und gleichzeitig auf Chloroplasten Gene, mit Bowtie2 [20] gemappt (Fig. 4). Die reads welche gemapt haben und die richtigen Kmere werden mit SPAdes[24] anschließend assembliert, SPAdes arbeitet de novo und benötigt
 keine Referenz. SPAdes verwendet eine De Brujin-Graphen Methode um die Reads richtig zusammen zu fügen, diese werden dann durch ein Perl Skript (fcg.pl) zu einem zirkulären Chloroplasten zusammengebaut. Dieses Skript überprüft
-gleichzeitig mit BLAST+[11] ob es sich bei den ausgegebenen Reads wirklich um Chloroplasten handelt. Es wurden drei Verschiedene Versionen des chloroExtractors verwendet, dies brachten unter anderem Bug fixes welche das 
+gleichzeitig mit BLAST+[11] ob es sich bei den ausgegebenen Reads wirklich um Chloroplasten handelt. Falls es dazu kommt
+das SPAdes den Chloroplasten nicht komplett zusammenbauen kann, dann gibt das fcg.pl Skript die Contigs, welches für den Chloroplasten verwendet werden aus. Hier gibt es verschiedene Fälle. Kann nur die Zirkularität 
+des Chloroplasten nicht aufgelöst werden gibt der chloroExtractor LSC, SSC und IR aus. Sind gar keine Verbindungen der Contigs möglich gibt das fcg.pl Skript jene Contigs aus die einen BLAST+ Treffer besitzen und somit ein
+teil des Chloroplasten sind.  Es wurden drei Verschiedene Versionen des chloroExtractors verwendet, dies brachten unter anderem Bug fixes welche das 
 Programm zum Absturz brachten. Aber auch Verbesserungen am fcg.pl Skript.
  
 #+LATEX: \begin{figure}
@@ -162,14 +166,16 @@ GetOrganelle (Versionen: 1.9.82, 1.0.1, 1.0.3 )[18][19] verwendet zum lokalisier
 Diese wird nur hierfür
 verwendet, das assemblieren hingegen geschieht de novo mit SPAdes. Wie auch beim chloroExtractor wird hier der fastg-Graph verwendet um den Chloroplasten zu finden, aber dies muss in falle 
 des GetOrganelle per Hand, mit Hilfe des Programms Bandage vollzogen werden. Wie bereits erwähnt nutzt der chloroExtractor ein Perl Skript welchen diesen händischen Schritt automatisiert.(Fig. 5) 
-Vom GetOrganelle wurden drei Versionen verwendet. Zunächst 1.9.82, diese wurde geändert zu 1.0.1 (github commit: b390260 vom 31. März 2018) und 1.0.3, hier gab es in den verschiedenen Versionen Bugfixes.
+Vom GetOrganelle wurden drei Versionen verwendet. Zunächst 1.9.82, diese wurde geändert zu 1.0.1 (github commit: b390260 vom 31. März 2018) und 1.0.3. In den Verschiedenen Versionen gab es diverse Bug Fixes, sowie
+kleine Features.
+Zudem wurde das Programm GetOrganelle mit 1.0.1 in einer Wissenschaftlichen Arbeit veröffentlicht [19].
 *** IOGA
 Der Iterative Organellar Genome Assambly, kurz IOGA (Keine Versionsnummer vergeben, github commit: c460ea9 vom 10. Sep. 2016 )[21][22] verwendet BBmap [23] für das filtern und trimmen der reads, um anschließend mit 
 SOAPdenovo2 [25] und SPAdes [24] die Reads zu assemblieren. 
 Auch dieses Programm benötigt eine Referenz. Der IOGA ist in Python geschrieben.
 #+LATEX: \begin{figure}
-[[./graphCE_SRR1945473.png]]
-#+LATEX: \caption[Bandage - Fastg Visualisierung]{\textbf{Bandage - Fastg Visualisierung} Die Visualisierung einer fastg Datei, der eigentlich zirkuläre Chloroplast zeigt sich in einer Form inder SSC und LSC durch eine Kette welche den IR darstellt verbunden sind. Diese Form wird im fcg.pl Skript des chloroExtractors aufgelöst, wobei beim GetOrganelle diese Sturktur per Hand gefunden werden muss.}
+[[./graphCE_SRR1945473_1.png]]
+#+LATEX: \caption[Bandage - Fastg Visualisierung]{\textbf{Bandage - Fastg Visualisierung} Die Visualisierung einer fastg Datei, der eigentlich zirkuläre Chloroplast zeigt sich in einer Form inder SSC (Blau) und LSC (Grün) durch eine Kette welche den IR (Türkis) darstellt verbunden sind. Diese Form wird im fcg.pl Skript des chloroExtractors aufgelöst, wobei beim GetOrganelle diese Sturktur per Hand gefunden werden muss.}
 #+LATEX: \end{figure}
 ** Interesse an Chloroplasten, was tun damit mit diesen Daten?
 Mit der steigenden Anzahl an frei erhältlichen Chloroplasten Genomen, welche gegen Ende 2016 erstmals die 1000 Genome überschritten hat[42], können immer mehr Versuche mit vielen Chloroplasten durchgeführt werden.
@@ -182,7 +188,7 @@ können so auf den Grund gegangen werden, oder auch die Adaption von verschieden
 kodierenden Sequenz, alleine durch Änderung an Transkriptionsfaktoren oder deren Level viel Einfluss auf solche Systeme genommen werden, welche natürlich auch mit dem Chloroplasten zusammenhängen[42]. Wie bereits erwähnt 
 eigenen sich Chloroplasten gut als Barcode Marker. Auch hier können Fortschritte mit mehr Daten erlangt werden. Zudem können mit vielen Chloroplasten Daten sehr gut Phylogenetische Bäume berechnet werden[46].
 Dies sind alles Beispiele wie zwischen vielen Spezies mit Hilfe von Chloroplasten Forschung betrieben werden kann. Aber auch innerhalb einer Spezies tauchen Variabilitäten auf, und dies konnte nur mit vielen verschiedenen
-Chloroplasten der gleichen Spezies herausgefunden werden. So wurden beim 1001 Genom Projekt mehrere Tausend SNPs auf A.thaliana Chloroplasten gecalled[26][48]. 
+Chloroplasten der gleichen Spezies herausgefunden werden. So wurden beim 1001 Genom Projekt mehrere Tausend SNPs auf /A.thaliana/ Chloroplasten gecalled[26][48]. 
 Doch können nicht nur viele Chloroplasten Probleme lösen, schon einzelne neue Chloroplasten können sehr aufschlussreich und informativ sein. So wurde die Idee des chloroExtractors z.B. nur aus dem Grund
 entworfen einen Chloroplasten aus dem Dionaea muscipula ( Venusfliegenfalle ) Genom zu extrahieren, um diesen separat zu haben, um das Genom leichter zu assemblieren und annotieren. Denn es kann durchaus vorkommen
 dass bei neuen Genomen, welche de novo assembliert werden müssen, Verunreinigungen durch Chloroplasten auftreten können. Denn ~5 - 20% der kompletten DNA wird von Plastiden-DNA ausgemacht, je nach Spezies und Gewebe[42].
@@ -192,8 +198,11 @@ dass bei neuen Genomen, welche de novo assembliert werden müssen, Verunreinigun
 Die Aufgaben dieser Thesis ist grob in drei Teile eingeteilt. Zunächst sollen die verschiedenen Programme, der chloroExtractor [9][10], fast-plast[13], IOGA[21][22], GetOrganelle[18][19],
 Org.ASM [16]und NOVOPlasty[14][15] verglichen werden und herausgefunden werden welche das oder die besten Programme sind um damit so viele Chloroplasten Genome zu erzeugen wie 
 möglich. Hier soll vor allem darauf geachtet werden dass die Programme Automatisierbar sind um einen hohen Durchsatz zu haben. Zudem sollen die Programme Ressourcen schonend arbeiten. 
-Der zweite Teil ist das Produzieren von Chloroplasten Genomen, hierzu werden die Pflanzen Genome des 1001 Genom Projektes verwendet. Auf den so
-Produzierten Chloroplasten sollen verschiedene wissenschaftliche Analysen durchgeführt werden, so zum Beispiel eine Varianz Analyse sowie eine Genomweite Assoziationsstudie, kurz GWAS [31].
+Der zweite Teil ist das Produzieren von Chloroplasten Genomen, hierzu werden die Pflanzen Genome des 1001 Genom Projektes verwendet. Nach internen Besprechungen und ersten Tests des chloroExtractors,
+wird angenommen das ca. 10 - 20% der Datensätze einen kompletten Zirkulären Chloroplasten erbringen könnten. Dies hängt von mehreren Variablen ab. Zunächst wie viel Chloroplasten DNA ist in den Daten vorhanden, dies
+unterscheidet sich je nachdem welches Gewebe verwendet wurde zum Sequenzieren. Hier haben Wurzeln weniger Chloroplasten als Blüten oder Blätter. Auch hängt es davon ab wie "gut" die Daten sind, generell gilt je 
+größer die Reads desto besser zu assemblieren, auch zu beachten sind insert Size und Anzahl der Reads.
+Auf den so Produzierten Chloroplasten sollen verschiedene wissenschaftliche Analysen durchgeführt werden, so zum Beispiel eine Varianz Analyse sowie eine Genomweite Assoziationsstudie, kurz GWAS [31].
 Eine GWAS versucht bestimmte Traits, also Eigenschaften mit Genomischen Varianten zu assoziieren, um anschließend eine Aussage darüber treffen zu können ob diese Variante einen Einfluss auf diese 
 Eigenschaft hat oder nicht. Hierzu werden die einzelnen Chromosomen einzeln oder als komplettes Genom angesehen, je nach Ansatz oder Fragestellung.
 Auch sollte eine Struktur Varianz Analyse durchgeführt werden. Zudem könnten diese Daten benutzt werden um Chloroplasten besser als Genetische Marker zu benutzen. 
@@ -205,9 +214,9 @@ Der dritte Teil ist das Suchen nach bisher noch nicht dokumentierten Chloroplast
 ** Evaluation der Programme
 Um die oben genannten Programme zu vergleichen habe ich mir verschiedene Ansätze überlegt.
 Um zunächst zu testen wie genau die Programme funktionieren und ob diese überhaupt funktionieren,
-wurden sie auf dem Testset SRR5216995 (Arabidopsis thaliana: Col-0) mit eine Millionen reads getestet, 
+wurden sie auf dem Testset SRR5216995 (/Arabidopsis thaliana/: Col-0) mit eine Millionen reads getestet, 
 dieser ist frei zugänglich bei NCBI und dient als Testset beim chloroExtractor[9]. Um eine 
-Automatisierung zu erhalten musste für jedes Programm ein Dockercontainer[53] gebaut werden, falls dieser nicht 
+Automatisierung zu erhalten musste für jedes Programm ein Dockercontainer[53](s. Anhang Tab.9) gebaut werden, falls dieser nicht 
 schon einer vorhanden war, letzteres traf nur für den chloroExtractor zu. Diese Dockercontainer sind auf Dockerhub[54] frei
 zur Verfügung[55]. Um das Ziel zu erreichen
 so viele Chloroplasten wie möglich zu extrahieren, musste eine Automatisierungslösung für alle Programme
@@ -222,10 +231,11 @@ Es wurden verschiedene Größe von Dateien verwendet. So sind dies alles Illumin
 Um zu Testen wie gut die verschiedenen Programme mit unterschiedlichen Anteilen von Chloroplasten DNA in
 Genom Daten zurechtkommen, wurden drei verschiedene Testdatensätze simuliert(Genom : Chloroplast - 1:10, 1:100, 1:1000). 
 Mit diesen sollte auch getestet werden ob die Programme mit viel oder wenig Chloroplasten DNA Anteil zurecht kommen oder einen dieser Fälle 
-bevorzugen. Um diese Daten vorzubereiten wurden von Arabidopsis Thaliana (TAIR10 [8]) die jeweiligen Chromosomen wie auch die Daten
+bevorzugen. Um diese Daten vorzubereiten wurden von /Arabidopsis thaliana/ (TAIR10 [8]) die jeweiligen Chromosomen wie auch die Daten
 des Chloroplasten von NCBI heruntergeladen. Diese wurden in den jeweiligen Verhältnissen zusammen kopiert.
-Diese Testdatensätze wurden mit ART[6][7] erzeugt. ART wird dazu verwendet Short-reads zu erzeugen. 
- Mitochondrien DNA wurde nicht mit simuliert, da diese zu 
+Diese Testdatensätze wurden mit ART[6][7](Version: 2.5.8) erzeugt. ART wird dazu verwendet Short-reads zu erzeugen, ART kann keine zirkulären Daten wie Chloroplasten 
+erzeugen, deswegen wurden diese als lineare Sequenzen verwendet mit der Abfolge LSC-IRB-SSC-IRA, mit einem Overlap zwischen IRA und LSC: (IRA)-LCS-IRB-SSC-IRA. 
+Mitochondrien DNA wurde nicht mit simuliert, da diese zu 
 Problemen führen könnte wenn diese aufgrund ihrer ähnlichen Häufigkeit und einigen gleichen Genen als Chloroplasten DNA identifiziert werden. 
 Um die verschiedenen Verhältnisse von Genom und Chloroplasten zu bekommen wurden die Chloroplasten Daten einfach
 vervielfältigt und anschließend zusammen kopiert. Hiernach wurden sie mit folgenden ART Kommandos als short Reads simuliert.
@@ -243,7 +253,7 @@ Für die Tests wurden eine Millionen Reads pro Datei benutzt, da diese genug Chl
 
 **** 1001 Genom Projekt 
 Um einen ersten Eindruck über die Programme und deren Erfolgs rate zu bekommen wurden parallel zu den Tests mit simulierten Daten, die ersten Tests mit realen Datensätzen vorgenommen. 
-Hierzu wurden Daten aus dem 1001 Genom Projekt[26] verwendet, dies sind alles Daten von Arabidopsis thaliana. Es wurden 11 Datensätze ( SRR1945435 - SRR1945445 ) verwendet. Diese sind alle
+Hierzu wurden Daten aus dem 1001 Genom Projekt[26] verwendet, dies sind alles Daten von /Arabidopsis thaliana/. Es wurden 11 Datensätze ( SRR1945435 - SRR1945445 ) verwendet. Diese sind alle
 frei verfügbar und wurden von NCBI heruntergeladen. Es wurden jeweils zwei Millionen Reads pro Datei gezogen, mit 150 Basenpaaren pro Read. 
 
 **** GetOrganelle-Paper preprint
@@ -280,10 +290,10 @@ Für jedes Programm wurde ein Skript geschrieben welches die Laufzeit überprüf
  
 **** Erfolgsrate
 Um zunächst zu überprüfen ob ein wirklich ein kompletter Chloroplast zusammengebaut wurden. Wurde bei den ersten Testdatensätzen ein Referenz Mapping auf
-TAIR10 benutzt. Hierzu wurde mit Bowtie2, später mit minimap2[32]der Chloroplast auf das TAIR10 Chloroplasten Genom gemapt. Auch wurde mit AliTV [49] 
+TAIR10 benutzt. Hierzu wurde mit Bowtie2, später mit minimap2[32](Version: 2.10-r761)  der Chloroplast auf das TAIR10 Chloroplasten Genom gemapt. Auch wurde mit AliTV [49] 
 eine Visualisierung des Mappings erstellt. Nachdem klar war das es sich bei allen ausgegeben Daten um Chloroplasten handelt, und weil diese Art der 
 Auswertung schlecht Automatisierbar war, wurde ein Bash Skript geschrieben welche die Auswertung übernimmt. Dieses Skript überprüft die Größe des
-Chloroplasten und in wie vielen Contigs der Chloroplast ausgegeben wurde. Hierzu wurde das SeqFilter[50] Skript verwendet, und anschließend über ein Bash
+Chloroplasten und in wie vielen Contigs der Chloroplast ausgegeben wurde. Hierzu wurde das SeqFilter[50](Version: 2.1.8) Skript verwendet, und anschließend über ein Bash
 Skript eine Entscheidung getroffen ob es sich um einen kompletten Chloroplasten handelt oder nicht (s. Anhang: ev_stat.sh). Hierzu wurden Verschiedene
 Kategorien eingeführt(s. Tab. 1). Diese Auswertung wurde für dann für alle Testdaten sowie die GetOrganelle Preprint Daten verwendet.
 #+LATEX: \begin{table}[!h]
@@ -302,7 +312,7 @@ Kategorien eingeführt(s. Tab. 1). Diese Auswertung wurde für dann für alle Te
 Einer der weniger entscheidenden aber dennoch wichtigen Punkte nach dem gefiltert wurde ist die Geschwindigkeit, 
 oder besser die Laufzeit der Programme. Zunächst wurde hier die Durchschnittszeit genommen, die der Prozess zum rechnen benötigt,
 anschließend wurde mit dem time Linux Kommando die CPU als auch die Real-zeit gemessen. Die Geschwindigkeit von Programmen mit vielen Abhängigkeiten 
-brauchen im Schnitt länger, da zum benutzen der Dockercontainer Singularity[28] verwendet wurde. Dieses Benötigt Zeit um den Container zu verwenden,
+brauchen im Schnitt länger, da zum benutzen der Dockercontainer Singularity[28](Version: 2.4.5-dist) verwendet wurde. Dieses Benötigt Zeit um den Container zu verwenden,
 zudem wird Zeit in Anspruch genommen wenn viele Daten in den Container gemountet werden müssen.
 **** Benötigte Ressourcen
 Ein weiterer Punkt nachdem aussortiert wurde ist der benötigte RAM verbrauch. Es wurden verschiedene Größen von Dateien verwendet
@@ -320,22 +330,22 @@ Um mehr über die Chloroplasten und deren Verbreitung, sowie Mutationsrate und s
 Zunächst sollte überprüft werden welche Einflüsse die Programme und ihre Strategien den Chloroplasten zu assemblieren, speziell deren Assambler, auf die Varianz der 
 entstehenden Chloroplasten hat. Hierzu wurden die assamblierten Chloroplasten, welche beide verwendeten Programme gemeinsam hatten verwendet. Diese Läufe wurden zunächst
 zehn fach wiederholt, auch um einen Eindruck über die Reproduzierbarkeit der Ergebnisse zu bekommen. Diese Chloroplasten wurden anschließend mit minimap2 [32] auf das 
-Referenzgenom ( TAIR10 Chloroplast [33] ) gemapt. Hiernach wurde eine Varianzanalyse mit Samtools[34] durchgeführt, hierzu wurde der Befehl
-'mpileup/bcftools call' [35] verwendet. Dieser führt eine Varianzanalyse bzw. ein SNP calling durch. Die zweite Varianzanalyse wurde auf allen Chloroplasten welche aus dem
+Referenzgenom ( TAIR10 Chloroplast [33] ) gemapt. Hiernach wurde eine Varianzanalyse mit Samtools[34](Version: 0.1.19-96b5f2294a) durchgeführt, hierzu wurde der Befehl
+'mpileup/bcftools call' [35] (bcftools Versionen:0.1.19-96b5f2294a & 1.8) verwendet. Dieser führt eine Varianzanalyse bzw. ein SNP calling durch. Die zweite Varianzanalyse wurde auf allen Chloroplasten welche aus dem
 1001 Genom Projekt gebaut wurden erstellt. Auch diese wurden auf den Referenz Chloroplasten mit minimap2 gemapt und anschließend mit Samtools' 'mpileup' Funktion einem
 SNP calling unterzogen. 
 
 ** GWAS
 Häufig wird eine GWAS über das komplette Genom berechnet. Doch können auch einzelne Chromosomen oder Organellen bereits signifikante Varianten besitzen. 
-So soll mit dieser GWAS der Einfluss von Chloroplasten Varianten auf Eigenschaften der A.Thaliana getestet werden. Hierzu wurden die SNP callings aus der Varianzanalyse verwendet.
-Verschiedene Trait-Tabellen wurden von Arapheno[37], einer Trait Datenbank für A.Thaliana, heruntergeladen und zusammen mit den Varianzanalyse Daten in ein R[36] Skript gegeben.
+So soll mit dieser GWAS der Einfluss von Chloroplasten Varianten auf Eigenschaften der /A.thaliana/ getestet werden. Hierzu wurden die SNP callings aus der Varianzanalyse verwendet.
+Verschiedene Trait-Tabellen wurden von Arapheno[37], einer Trait Datenbank für /A.thaliana/, heruntergeladen und zusammen mit den Varianzanalyse Daten in ein R[36] Skript gegeben.
 Dieses R Skript nutzt zunächst vcfR[38], ein R Paket, um die verschiedenen VCF (Variance Calling File) Daten einzulesen. Anschließend ruft es ein weiteres R Skript auf welches
 freundlicher weiße von Korte et. al[31] zur Verfügung gestellt wurde und eine GWAS Analyse durchführt.
 
 ** Struktur Varianz Analyse
 Wie bereits erwähnt können Chloroplasten auch verschiedene Strukturelle Änderungen evolvieren. Diese sind durch die Rohdaten, welche meist short Reads sind, nicht aufzudecken.
-Da diese zu kurz sind um komplette Struktur Varianten zu überspannen.[39]
-Hierzu könnten nun die komplett de novo Assemblierten Chloroplasten verwendet werden. 
+Da diese zu kurz sind um komplette Struktur Varianten zu überspannen.[39] Hierzu könnten nun die komplett de novo Assemblierten Chloroplasten verwendet werden.
+Es wurde versucht mit Delly[61] (Version: v0.7.8) und Breakdancer[62](Version: 1.3.6) Struktur Varianten in Chloroplasten zu finden.  
 
 ** Neue Chloroplasten
 Um neue Chloroplasten von Spezies zu finden, welche noch nicht in der CP-Base [40][41] Datenbank sind, wurde eine Liste von Möglichen Daten von NCBI mit CP-Base verglichen. Nur 49 Datensätze waren ohne 
@@ -377,7 +387,7 @@ zu erhalten.
 Die Simulierten Daten, welche mit ART[6][7] erzeugt wurden um das verhalten der Programme bei verschiedenen Verhältnissen zu testen, konnten von drei Programmen, dem chloroExtractor, fast-plast und Org.ASM 
 bei allen drei Datensätzen geschafft werden. Diese schaffen es einen vollständigen zirkulären Chloroplasten zu bauen. NOVOPlasty baut zwar auch einen kompletten Chloroplasten doch gibt dieser 
 nur die drei verschieden Contigs aus (IR, SSC, LSC), und schafft es nicht diese in einen zirkulären Chloroplasten zu vereinen. GetOrganelle wie auch der IOGA schaffen es nicht die
-simulierten Datensätze zusammen zu bauen da sie mit einem Fehler abbrechen oder wie im falle des IOGA nach zwei Wochen Laufzeit abgebrochen werden. (s. Tabelle 1) 
+simulierten Datensätze zusammen zu bauen da sie mit einem Fehler abbrechen oder wie im falle des IOGA nach zwei Wochen Laufzeit abgebrochen werden. (s. Tabelle 2) 
 
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrrrrrr
@@ -402,28 +412,28 @@ zu einem zirkulären Chloroplasten gebaut werden, da immer kein Ringschluss vorh
 #+LATEX: \caption[Bandage: GetOrganelle SRRSRR1945443]{\textbf{Bandage: GetOrganelle SRRSRR1945443} Kein Chloroplast erkennbar im fastg Graphen. Keine vernetzung der Contigs per se erkennbar. Dazu im vergleich der graphen des chloroExtractors (Fig. 8)}
 #+LATEX: \end{figure}
 #+LATEX: \begin{figure}
-[[./graph_CE_SRR1945443.png]]
-#+LATEX: \caption[Bandage: chloroExtractor SRRSRR1945443]{\textbf{Bandage: chloroExtractor SRRSRR1945443} Chloroplast klar erkennbar, dieser zeichnet sich aus durch einen Großen Kreis, verbunden über eine Linie auf einen Kleinen Kreis. Dies sind der LSC verbunden durch den IR mit dem SSC}
+[[./graph_CE_SRR1945443_1.png]]
+#+LATEX: \caption[Bandage: chloroExtractor SRRSRR1945443]{\textbf{Bandage: chloroExtractor SRRSRR1945443} Chloroplast klar erkennbar, dieser zeichnet sich aus durch einen Großen Kreis (LSC - Gelb), verbunden über eine Linie (IR - Grün) auf einen Kleinen Kreis (SSC - Violett). }
 #+LATEX: \end{figure}
 
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrrrrrr
 #+LATEX: \caption[Test Datensatz: 1001 Genom Project, 11 Datensätze]{\textbf{Test Datensatz: 1001 Genom Project} S steht für Success, E für Error, I für Incomplete, die angegebene Zahl steht für die Anzahl der Contigs. Sechs verschiedene Chloroplasten konnten zu einem zirkulären Chloroplasten zusammengebaut werden, dabei werden bereits fünf vom fast-plast abgedeckt und einer wird von chloroExtractor beigesteuert. Felder mit einem "-" wurden Abgebrochen da sie nach einer Woche noch nicht fertig waren.}
 
-| SRA        | CE  | FP | NP  | GO | OA | IOGA |   |
-|            |     |    |     |    |    |      |   |
-|------------+-----+----+-----+----+----+------+---|
-| SRR1945435 | I-5 | I  | I-4 | I  | E  | I-6  |   |
-| SRR1945436 | I-6 | S  | I-3 | I  | I  | I-8  |   |
-| SRR1945437 | I-5 | I  | I-4 | I  | I  | I-10 |   |
-| SRR1945438 | S-3 | S  | I-6 | I  | E  | I-10 |   |
-| SRR1945439 | I-4 | S  | I-1 | I  | I  | I-10 |   |
-| SRR1945440 | I-4 | S  | E   | I  | E  | I-9  |   |
-| SRR1945441 | I-5 | S  | E   | I  | I  | I-6  |   |
-| SRR1945442 | I-4 | I  | I-1 | I  | -  | -    |   |
-| SRR1945443 | S   | I  | I-2 | I  | I  | I-8  |   |
-| SRR1945444 | I-4 | I  | E   | I  | I  | I-8  |   |
-| SRR1945445 | I-4 | I  | E   | I  | E  | I_7  |   |
+| SRA        | CE  | FP | NP  | GO | OA | IOGA |
+|            |     |    |     |    |    |      |
+|------------+-----+----+-----+----+----+------|
+| SRR1945435 | I-5 | I  | I-4 | I  | E  | I-6  |
+| SRR1945436 | I-6 | S  | I-3 | I  | I  | I-8  |
+| SRR1945437 | I-5 | I  | I-4 | I  | I  | I-10 |
+| SRR1945438 | S-3 | S  | I-6 | I  | E  | I-10 |
+| SRR1945439 | I-4 | S  | I-1 | I  | I  | I-10 |
+| SRR1945440 | I-4 | S  | E   | I  | E  | I-9  |
+| SRR1945441 | I-5 | S  | E   | I  | I  | I-6  |
+| SRR1945442 | I-4 | I  | I-1 | I  | -  | -    |
+| SRR1945443 | S   | I  | I-2 | I  | I  | I-8  |
+| SRR1945444 | I-4 | I  | E   | I  | I  | I-8  |
+| SRR1945445 | I-4 | I  | E   | I  | E  | I_7  |
 #+LATEX: \end{table}
 
 ** Daten: GO-Preprint
@@ -445,7 +455,7 @@ So können bereits 35 von 40 Chloroplasten alleine durch fast-plast und chloroEx
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lrrrrrrrr
 #+LATEX: \caption[Test Datensatz: GetOrganelle Preprint, 11 Datensätze]{\textbf{Test Datensatz: GetOrganelle Preprint} 40 von 57 Datensätze konnten komplett gelöst werden. 31 Datensätze konnten mit dem fast-plast zu einem Chloroplasten gebaut werden, die 14 die der chloroExtractor schafft enthalten die restlichen 9 um auf alle 40 Chloroplasten zu kommen. Somit konnten mit zwei Programmen 74\% gelöst werden.}
-| Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Total |
+ | Tool    | SUCCESS | %    | ERROR | PARTIAL | INCOMPl | NO_PAIR | Total |
 | CE      |      14 | ~26% |    11 |      17 |      12 |       3 |       |
 | FP      |      31 | ~57% |     0 |      18 |       5 |       3 |       |
 | GO      |       2 | ~4%  |    21 |      26 |       5 |       3 |       |
@@ -462,8 +472,8 @@ So können bereits 35 von 40 Chloroplasten alleine durch fast-plast und chloroEx
 #+LATEX: \end{figure}
 
 #+LATEX: \begin{figure}
-[[./SRR5602602.png]]
-#+LATEX: \caption[AliTV SRR5602602 - Laurus nobilis]{\textbf{AliTV SRR5602602 - Laurus nobilis} SRR5602602 - Laurus nobilis, SRR5602602 - Laurus nobilis, Daten des GO-Preprints, geschafft von ChloroExtractor, NOVOPlasty, fast-plast und Org.ASM. Orientierung von LSC sowie von SSC und IRs können nicht perfekt aufgelöst werden und können durchaus Verdreht sein.}
+[[./SRR5602602_1.png]]
+#+LATEX: \caption[AliTV SRR5602602 - Laurus nobilis]{\textbf{AliTV SRR5602602 - \textit{Laurus nobilis}} SRR5602602 -\textit{Laurus nobilis} , SRR5602602 - Laurus nobilis, Daten des GO-Preprints, geschafft von ChloroExtractor, NOVOPlasty, fast-plast und Org.ASM. Orientierung von LSC sowie von SSC und IRs können nicht perfekt aufgelöst werden und können durchaus Verdreht sein.}
 #+LATEX: \end{figure}
 
 ** Die besten Programme: fast-plast und chloroExtractor
@@ -531,12 +541,12 @@ ein Erfolg erreicht werden, bei dem nächsten Durchlauf aber nicht. Ob dies ein 
 Die zweite Varianz Analyse bzw. SNP calling wurde auf allen Erfolgreich zusammengebauten Chloroplasten durchgeführt. Das SNP calling ergab dass auf allen 303 Chloroplasten insgesamt 2128 SNPs gefunden wurden. 
 Diese Ergebnisse werden für die GWAS Analyse verwendet.
 #+LATEX: \begin{figure}
-[[./SRR1946153_FP.png]]
-#+LATEX: \caption[fast-plast SRR1946153]{\textbf{fast-plast SRR1946153} Zwei verschiedene Läufe auf den selben Daten, der fast-plast schafft einen davon, den anderen nicht. Hier fehlt ein Teil des IR, wodurch auch nicht als Erfolg gewertet wird. }
+[[./SRR1946153_FP_1.png]]
+#+LATEX: \caption[fast-plast SRR1946153]{\textbf{fast-plast SRR1946153} Drei verschiedene Läufe auf den selben Daten, der fast-plast schafft einen davon nicht (Lauf 1), den anderen aber schon (2 u. 3). Hier fehlt ein Teil des IR, wodurch auch nicht als Erfolg gewertet wird. }
 #+LATEX: \end{figure}
 #+LATEX: \begin{figure}
-[[./SRR1946153_CE.png]]
-#+LATEX: \caption[chloroExtractor SRR1946153]{\textbf{chloroExtractor SRR1946153} Zwei verschiedene Läufe auf den selben Daten, der chloroExtractor bringt das gleiche Ergebnis für beide Durchläufe.}
+[[./SRR1946153_CE_1.png]]
+#+LATEX: \caption[chloroExtractor SRR1946153]{\textbf{chloroExtractor SRR1946153} Drei verschiedene Läufe auf den selben Daten, der chloroExtractor bringt das gleiche Ergebnis für alle Durchläufe. Da die orientierung von LSC, SSC und IR nicht aus short Reads herausgelesen werden kann, kommt es vor das diese Verdreht sind zur Referenz.}
 #+LATEX: \end{figure}
 ** GWAS
 Die GWAS Analyse, welche mit den 303 kompletten Chloroplasten aus den Daten des 1001 Genom Projekts und den 2128 gefunden SNPs durchgeführt wurde, konnte nur auf zwei verschieden Traits berechnet werden. Dies waren 
@@ -545,7 +555,7 @@ keine Berechnungen erstellt werden da die Datenmenge nicht für eine GWAS ausrei
 Zudem konnte für beide berechneten Traits keine Signifikanz für einen SNP gefunden werden.
 ** Struktur Varianz Analyse
 Für die Struktur Varianz Analyse konnten keine Ergebnisse erzielt werden, Grund hierfür war unter anderem fehlende Zeit. Aber auch konnten keine guten Programme gefunden werden welche mit kompletten Chloroplasten
-umgehen konnten, die meisten nutzten direkt Illumina short reads. 
+umgehen konnten. Die meisten nutzten direkt Illumina short reads, wie Delly[62] oder Breakdancer[61]. 
 
 ** Neue Chloroplasten
 Aus NCBI wurden 79657 Datensätze heruntergeladen, dies sind alles Pflanzengenome. Diese Liste wurde mit den Einträgen von CP-base verglichen. Es blieben die Übrig, welche keinen Eintrag in CP-base haben. 
@@ -563,25 +573,25 @@ welche zuvor noch keinen genomisch bekannten Chloroplasten hatten erfolgreich er
 #+LATEX: \begin{table}[!h]
 #+ATTR_latex: :align lr
 #+LATEX: \caption[Liste neue Chloroplasten]{\textbf{Liste neue Chloroplasten} Liste von 17 Spezies welche mit Hilfe des fast-plast und des chloroExtractors nun ein bekanntes Chloroplasten Genom besitzen.}
-| SRA        | Spezies              |
-|------------+----------------------|
-| DRR057122  | Momordica charantia  |
-| DRR089517  | Betula chichibuensis |
-| ERR1462646 | Hippophae rhamnoides |
-| ERR2001942 | Betula pendula       |
-| ERR2003066 | Potentilla micrantha |
-| ERR2174632 | Solanum pennellii    |
-| ERR2187925 | Geum urbanum         |
-| SRR1503730 | Agave tequilana      |
-| SRR2847417 | Manihot glaziovii    |
-| SRR3194007 | Artocarpus altilis   |
-| SRR3724930 | Taraxacum S3         |
-| SRR4457832 | Pityopsis pinifolia  |
-| SRR5046394 | Ephedra gerardiana   |
-| SRR5464169 | Trema orientalis     |
-| SRR5590327 | Lagenaria siceraria  |
-| SRR5799057 | Fragaria vesca       |
-| SRR5838021 | Populus deltoides    |
+| SRA        | Spezies                |
+|------------+------------------------|
+| DRR057122  | /Momordica charantia/  |
+| DRR089517  | /Betula chichibuensis/ |
+| ERR1462646 | /Hippophae rhamnoides/ |
+| ERR2001942 | /Betula pendula/       |
+| ERR2003066 | /Potentilla micrantha/ |
+| ERR2174632 | /Solanum pennellii/    |
+| ERR2187925 | /Geum urbanum/         |
+| SRR1503730 | /Agave tequilana/      |
+| SRR2847417 | /Manihot glaziovii/    |
+| SRR3194007 | /Artocarpus altilis/   |
+| SRR3724930 | /Taraxacum S3/         |
+| SRR4457832 | /Pityopsis pinifolia/  |
+| SRR5046394 | /Ephedra gerardiana/   |
+| SRR5464169 | /Trema orientalis/     |
+| SRR5590327 | /Lagenaria siceraria/  |
+| SRR5799057 | /Fragaria vesca/       |
+| SRR5838021 | /Populus deltoides/    |
 #+LATEX: \end{table}
 
 * Diskussion
@@ -591,8 +601,8 @@ Der SeqFilter zählt die Sequenzen sowie deren Größe. Das Evaluationsskript de
 doch nicht Fehlerlos, so können Falsch Positive Sequenzen vorkommen. Diese könnte eine Sequenz aus 150 kbp Adenin sein, und das Skript würde es als einen Success ansehen. Die Daten wurden Stichprobenartig überprüft und dies 
 kam in diesen Stichproben nicht vor, doch ist es nicht auszuschließen. Um sicher zu gehen müsste jeder erstellter Chloroplast auf eine Referenz gemapt werden oder sogar durch Sequenzierung bestätigt werden. Erste Möglichkeit
 wäre nur Rechenaufwand, könnte aber bei Chloroplasten die noch nicht veröffentlicht wurden oder keine Referenz besitzen schwer werden, zweite Möglichkeit ist sehr Kosten intensiv würde aber letzte Zweifel beseitigen. 
-Eine Verbesserung des Skripts könnte auch eine strengere Beurteilung sein, zumindest wenn man mehr Grundinformationen hat. So könnten bei den Versuchen mit den A.thaliana des 1001 Genom Projekts die Grenzen Strenger gewählt werden, 
-da es sich hier immer um die gleiche Spezies handelt. Doch könnten somit die Anzahl der Falsch Negativen erhöht werden, z.B. wenn eine A.thaliana Art eine Struktur Variante besitzt mit Verlust eines IR. Die Grenzen wurden 
+Eine Verbesserung des Skripts könnte auch eine strengere Beurteilung sein, zumindest wenn man mehr Grundinformationen hat. So könnten bei den Versuchen mit den /A.thaliana/ des 1001 Genom Projekts die Grenzen Strenger gewählt werden, 
+da es sich hier immer um die gleiche Spezies handelt. Doch könnten somit die Anzahl der Falsch Negativen erhöht werden, z.B. wenn eine /A.thaliana/ Art eine Struktur Variante besitzt mit Verlust eines IR. Die Grenzen wurden 
 bewusst großzügiger Gewählt, da dies den größten Teil der Chloroplasten abdecken dürfte. Gerade bei Chloroplasten welche bisher nicht veröffentlicht oder bekannt sind ist eine Abschätzung schwer, da die Größen von Chloroplasten
 doch sehr Variieren können. Eine weitere Möglichkeit zu testen ob es sich wirklich um einen Chloroplasten handelt wäre die Verwendung von Benchmarking Universal Single-Copy Orthologs (BUSCO[51]), hierzu werden extrem konservierte
 orthologe Gene verwendet und überprüft ob diese alle vorhanden sind. Da ein Chloroplast Genom an sich sehr konserviert ist könnte eine Anzahl von Genen genommen werden und diese in einem solchen Modell verwendet werden. 
@@ -611,7 +621,7 @@ Dockercontainer mit einigen Tricks konnte es geschafft werden dieses Programm er
 dies dann das eigentliche Endprodukt des GetOrganelles, da das verbesserte bzw. getrimmte fastg nicht vom fcg.pl Skript erkannt wurde und deshalb nur das fastg aus SPAdes selbst verwendet werden kann, dies aber häufig schlechter
 Ausfällt als das getrimmte oder gar das fastg welches SPAdes im chloroExtractor ausgibt. 
 ** Fazit aus der Erfolgschance 
-Es wurden in dieser Arbeit 303 Chloroplasten Genome von Arabidopsis Thaliana und 17 Neue (s. Tab. 8) erstellt. Nimmt man von den Versuchen die gesamt Zahl, so konnten in etwa 30% der Datensätze zu Chloroplasten Genomen führen.
+Es wurden in dieser Arbeit 303 Chloroplasten Genome von /Arabidopsis thaliana/ und 17 Neue (s. Tab. 8) erstellt. Nimmt man von den Versuchen die gesamt Zahl, so konnten in etwa 30% der Datensätze zu Chloroplasten Genomen führen.
 Dies entspricht Tatsächlich mehr als am Anfang der Arbeit angenommen, hier wurden in etwa 10 - 20% geschätzt. Allerdings auch ohne die anderen Programme, abgesehen von chloroExtractor, großartig getestet zu haben. Nimmt man 
 den nur die Erfolgschance von chloroExtractor war diese erste Abschätzung gar nicht so schlecht. Dies zeigt mir, als einer der Entwickler des chloroExtractors, dass dieser noch mehr verbessert werden kann.  
 ** Erhöhen der Erfolgsrate   
@@ -631,7 +641,7 @@ Doch kann dies alles auch in einem kompletten Dockercontainer benutzt werden. De
 werden. Dieser Container wird gerade verwendet um weitere 12393 Datensätze zu durchsuchen und Chloroplasten zu bauen. Diese Container ist sehr einfach zu benutzen, und alles was dafür gebraucht wird ist Docker[53] oder ein Programm
 welches Dockercontainer ausführen kann wie z.B. Singularity[28]. 
 ** GWAS
-Es wurde eine GWAS Studie auf den 303 A.Thaliana Chloroplasten durchgeführt, doch konnte dies nur auf zwei verschiedenen Eigenschaften berechnet werden. Hierzu gehört die Flowering Time bei 16°C sowie bei 10°C. 
+Es wurde eine GWAS Studie auf den 303 /A.thaliana/ Chloroplasten durchgeführt, doch konnte dies nur auf zwei verschiedenen Eigenschaften berechnet werden. Hierzu gehört die Flowering Time bei 16°C sowie bei 10°C. 
 Die restlichen Arapheno Traits konnten nicht berechnet werden. Dies ist vor allem der Fall da zu wenige Daten zur Verfügung stehen, sowohl von unserer Seite aus als auch von der Eigenschaften Seite aus. Eigenschaften wie
 Größen, Blütenbreite oder Form sind nicht gut genug Katalogisiert um eine geringe Datenmenge, wie sie hier benutzt wurde abzudecken. Dies heißt nicht das keinerlei Assoziation zwischen Chloroplasten Varianz und diesen Eigenschaften besteht.
 Dies zeigt lediglich dass noch mehr Daten benötigen werden um diese GWAS Studie zu beenden‌.
@@ -640,7 +650,7 @@ Es wurde angenommen, dass ein kompletter Chloroplast für eine Struktur Varianz 
 überspannen. Leider konnte diese Annahme nicht überprüft werden, da zu wenig Zeit vorhanden war. Als auch Programme, welche eine solche Analyse durchführen nicht erfolgreich benutzt werden konnten 
 ** Fazit und Zukunftsaussichten
 Chloroplasten Genome können vielseitig verwendet werden und mit der immer steigenden Anzahl dieser Genome können mehr und mehr Analysen durchgeführt werden. Hier wurde eine Möglichkeit gezeigt wie man solche Chloroplasten Genome
-aus bereits existierenden Daten bauen kann. Dies ist aber nur möglich da alle Daten danke Open Science verfügbar waren. Es wurden über 300 Chloroplasten aus bereits vorhandenen Daten erzeugt, die meisten aus Arabidopsis Thaliana
+aus bereits existierenden Daten bauen kann. Dies ist aber nur möglich da alle Daten danke Open Science verfügbar waren. Es wurden 320 Chloroplasten aus bereits vorhandenen Daten erzeugt, die meisten aus /Arabidopsis thaliana/
 Daten, die vom 1001 Genom Projekt verwendet wurden. Es wurden aber auch 17 Neue Chloroplasten Genome erzeugt. Zudem wurde ein erster Ausblick auf die verschiedenen Analysen gegeben welche mit Chloroplasten Genomen möglich sind.
 Als einer der Entwickler des chloroExtractors, bin ich froh darüber wie der chloroExtractor im Vergleich mit anderen Programmen abgeschnitten hat. Doch zeigt mir dies auch, dass der chloroExtractor durchaus noch verbessert 
 werden kann.
@@ -689,7 +699,7 @@ noch viel mehr Chloroplasten Genome erzeugt werden.
 [36] https://www.r-project.org/
 [37] https://arapheno.1001genomes.org/
 [38] https://cran.r-project.org/web/packages/vcfR/index.html
-[39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in Arabidopsis thaliana. Cell. 2016;166:481–491.
+[39] 1001 Genomes Consortium 1,135 genomes reveal the global pattern of polymorphism in /Arabidopsis thaliana/. Cell. 2016;166:481–491.
 [40] http://rocaplab.ocean.washington.edu/old_website/tools/cpbase
 [41] http://rocaplab.ocean.washington.edu/tools/cpbase_test/
 [42] Tonti-Filippini, J. , Nevill, P. G., Dixon, K. and Small, I. (2017), What can we do with 1000 plastid genomes?. Plant J, 90: 808-818. doi:10.1111/tpj.13491
@@ -698,7 +708,7 @@ noch viel mehr Chloroplasten Genome erzeugt werden.
 [45] Wicke S, Schneeweiss GM, dePamphilis CW, Müller KF, Quandt D. The evolution of the plastid chromosome in land plants: gene content, gene order, gene function. Plant Molecular Biology. 2011;76(3-5):273-297. doi:10.1007/s11103-011-9762-4.
 [46] Chase MW, Fay MF. Ancient flowering plants: DNA sequences and angiosperm classification. Genome Biology. 2001;2(4):reviews1012.1-reviews1012.4.
 [47] Vydianathan, Ravi & P. Khurana, J & K. Tyagi, A & Khurana, Paramjit. (2007). An update on chloroplast genome. Plant Systematics and Evolution. 271. 101-122. 10.1007/s00606-007-0608-0. 
-[48] Alonso-Blanco C, Andrade J, Becker C, Bemm F, Bergelson J, Borgwardt KM, et al. 1135 genomes reveal the global pattern of polymorphism in Arabidopsis thaliana. Cell. 2016;166(2):481–491. doi: 10.1016/j.cell.2016.05.063
+[48] Alonso-Blanco C, Andrade J, Becker C, Bemm F, Bergelson J, Borgwardt KM, et al. 1135 genomes reveal the global pattern of polymorphism in /Arabidopsis thaliana/. Cell. 2016;166(2):481–491. doi: 10.1016/j.cell.2016.05.063
 [49] Ankenbrand MJ, Hohlfeld S, Hackl T, Förster F. (2017) AliTV—interactive visualization of whole genome comparisons. PeerJ Computer Science 3:e116 https://doi.org/10.7717/peerj-cs.116
 [50] https://github.com/BioInf-Wuerzburg/SeqFilter
 [51] BUSCO: assessing genome assembly and annotation completeness with single-copy orthologs. Felipe A. Simão, Robert M. Waterhouse, Panagiotis Ioannidis, Evgenia V. Kriventseva, and Evgeny M. Zdobnov, Bioinformatics, June 9, 2015 doi: 10.1093/bioinformatics/btv351
@@ -711,9 +721,8 @@ noch viel mehr Chloroplasten Genome erzeugt werden.
 [58] Burgess, Jeremy (1989). An introduction to plant cell development. Cambridge: Cambridge university press. p. 62. ISBN 0-521-31611-1.
 [59] Shaw, J.; Lickey, E. B.; Schilling, E. E.; Small, R. L. (2007). "Comparison of whole chloroplast genome sequences to choose noncoding regions for phylogenetic studies in angiosperms: The tortoise and the hare III". American Journal of Botany. doi:10.3732/ajb.94.3.275.
 [60] Song, Y.; Wang, S.; Ding, Y.; Xu, J.; Li, M.F.; Zhu, S.; Chen, N. Chloroplast genomic resource of Paris for species discrimination. Sci. Rep. 2017, 7, 3427–3434
-[61]
-[62]
-[63]
+[61] https://github.com/dellytools/delly
+[62] https://github.com/genome/breakdancer
 
 #+LATEX: \clearpage
 * Abbildungs- und Tabellenverzeichnis
@@ -722,16 +731,62 @@ noch viel mehr Chloroplasten Genome erzeugt werden.
 \listoftables
 #+LATEX: \clearpage
 * Anhang
+** Dockercontainer
+#+LATEX: \begin{table}[!ht]
+#+ATTR_latex: :align ll
+#+LATEX: \caption[Dockercontainer]{\textbf{Dockercontainer} Alle erstellten Dockercontainer stehen zur freien Verfügung.}
+| Programm            | Dockerhub link                                                    | 
+|---------------------+-------------------------------------------------------------------+-
+| chloroExtractor     | https://hub.docker.com/r/chloroextractorteam/chloroextractor/     | 
+|                     | Build: b5uvjvdnbcyndhjngua85nv                                    | 
+| fast-plast          | https://hub.docker.com/r/chloroextractorteam/fast-plast_docker/   |
+|                     | Build: bgrmngfwpil4sk2kezi9f                                      |
+| NOVOPlasty          | https://hub.docker.com/r/chloroextractorteam/novoplasty_docker/   |
+|                     | Build: bf9adepndze96bcnteyeabk                                    | 
+| IOGA                | https://hub.docker.com/r/chloroextractorteam/ioga_docker/         |
+|                     | Build: bwnf4xtzhohfcstqjqsvqvw                                    | 
+| GetOrganelle        | https://hub.docker.com/r/chloroextractorteam/getorganelle_docker/ |
+|                     | Build: bwt3bus2r7utsjpgrmjmjuc                                    | 
+| Org.ASM             | https://hub.docker.com/r/chloroextractorteam/org.asm_docker/      | 
+|                     | Build: bmcx88c2d79orvuykgivy4q                                    | 
+|                     |                                                                   | 
+| Screening Container | https://hub.docker.com/r/chloroextractorteam/screening_container/ |
+|                     | Build: bdsankaqpukcgfmkmdq9yud                                    | 
+#+LATEX: \end{table}
+#+LATEX: \begin{table}[!ht]
+#+ATTR_latex: :align ll
+#+LATEX: \caption[Git Links]{\textbf{Git Links} Alle verwendeten Programme stehen zur freien Verfügung.}
+| Programm            | git link                                                   |
+|---------------------+------------------------------------------------------------|
+| chloroExtractor     | https://github.com/chloroExtractorTeam/chloroExtractor     |
+|                     |                                                            |
+| fast-plast          | https://github.com/mrmckain/Fast-Plast                     |
+|                     |                                                            |
+| NOVOPlasty          | https://github.com/ndierckx/NOVOPlasty                     |
+|                     |                                                            |
+| IOGA                | https://github.com/holmrenser/IOGA                         |
+|                     |                                                            |
+| GetOrganelle        | https://github.com/Kinggerm/GetOrganelle                   |
+|                     |                                                            |
+| Org.ASM             | https://git.metabarcoding.org/org-asm/org-asm              |
+|                     |                                                            |
+|                     |                                                            |
+| Screening Container | https://github.com/chloroExtractorTeam/screening_container |
+|                     |                                                            |
+#+LATEX: \end{table}
+
+
+#+LATEX: \clearpage
 ** Danksagung
 Ich möchte allen Danken, welche mich in meiner Zeit als Student vor allem in den letzten Semestern unterstützt haben.
 Zunächst Danke ich dem kompletten CCTB, in dem ich in den letzten Semestern mit mehr als nur Kollegen zusammenarbeiten durfte.
-Hier möchte ich im besonderen meinen Betreuern Markus Ankenbrandt und Jörg Schulz danken, welche sich die Zeit nehmen müssen diese 
+Hier möchte ich im besonderen meinen Betreuern Markus Ankenbrand und Jörg Schulz danken, welche sich die Zeit nehmen müssen diese 
 Arbeit zu korrigieren und immer mit Rat zur Seite standen. Speziell möchte ich auch meinen ganz besonderen Dank an Frank Förster aussprechen, der uns mehr als nur beratend zur Seite stand und mehrere Nächste 
 geopfert hat um unseren chloroExtractor zu verbessern und zu fixen. 
 Auch möchte ich aber meiner kompletten Familie danken, meinen Eltern Roland und Maria, sowie meinen beiden Brüdern Florian und Christopher, sowie meinem Bruder im Geiste Martin "Löwe" Piekar, sowie natürlich den Damen
 welche es mit diesen drei Chaoten aushalten, die da wären Vanja, Julia und Charlotte. Natürlich danke ich auch all meinen anderen Freunden welche es mit mir all die Jahre ausgehalten haben, und dies planen noch weiter zu tun,
-So wie der World of Warcraft Community, der Gilde Maestri delle Arte und dem Raid Invictus, welche mich immer gut unterhalten haben, und das ein oder andere mal evtl. auch zu viel von der Arbeit abgehalten haben.
-
+so wie der World of Warcraft Community, der Gilde Maestri delle Arte und dem Raid Invictus, welche mich immer gut unterhalten haben, und das ein oder andere mal evtl. auch zu viel von der Arbeit abgehalten haben.
+Auch geht mein Dank an Kaffee, vielen dank für Substitution von Schlaf mit Koffein. 
   
  
 ** Skripte
@@ -757,3 +812,4 @@ Würzburg, \today \hfill Simon Pfaff
 #  LocalWords:  Bash Skripte
 
 
+ 
